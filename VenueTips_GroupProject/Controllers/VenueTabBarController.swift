@@ -9,22 +9,30 @@
 import UIKit
 
 class VenueTabBarController: UITabBarController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    setupTabBar()
+  }
+  
+  private func setupTabBar() {
+    
+    let searchTabBarController = SearchController()
+    searchTabBarController.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "search"), tag: 0)
+    
+    let favoriteTabBarController = FavoriteController()
+    favoriteTabBarController.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(named: "add"), tag: 1)
+    
+    let settingsTabBarController = SettingsController()
+    settingsTabBarController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 2)
+    
+    let tabBarList = [UINavigationController(rootViewController: searchTabBarController),
+                      UINavigationController(rootViewController: favoriteTabBarController),
+                      UINavigationController(rootViewController: settingsTabBarController)]
+    
+   setViewControllers(tabBarList, animated: true)
+    
+  }
+  
 }
