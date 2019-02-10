@@ -12,7 +12,7 @@ class FavoriteView: UIView {
   
   lazy var favoriteCollectionView: UICollectionView = {
     let favoriteLayout = UICollectionViewFlowLayout()
-    favoriteLayout.itemSize = CGSize(width: 200, height: 300)
+    favoriteLayout.itemSize = CGSize(width: 120, height: 120)
     favoriteLayout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
     
     
@@ -45,12 +45,10 @@ extension FavoriteView {
     addSubview(favoriteCollectionView)
     favoriteCollectionView.translatesAutoresizingMaskIntoConstraints = false
     
-    favoriteCollectionView.centerXAnchor.constraint(equalToSystemSpacingAfter: safeAreaLayoutGuide.centerXAnchor, multiplier: 1).isActive = true
-    favoriteCollectionView.centerYAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.centerYAnchor, multiplier: 1).isActive = true
-    favoriteCollectionView.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 1).isActive = true
-    favoriteCollectionView.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 1).isActive = true
-    
-    
+    favoriteCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+    favoriteCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
+    favoriteCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
+    favoriteCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
     
   }
   

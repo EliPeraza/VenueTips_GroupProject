@@ -28,7 +28,7 @@ class FavoriteController: UIViewController {
 
 extension FavoriteController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 10
+    return 60
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -43,7 +43,7 @@ extension FavoriteController: UICollectionViewDelegateFlowLayout, UICollectionVi
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     
-    return CGSize.init(width: favoriteView.favoriteCollectionView.bounds.width - 30, height: (favoriteView.favoriteCollectionView.bounds.height) / 2)
+    return CGSize.init(width: 120, height: 120)
     
   }
   
