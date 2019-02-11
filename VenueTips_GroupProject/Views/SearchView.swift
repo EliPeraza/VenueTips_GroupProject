@@ -55,7 +55,7 @@ class SearchView: UIView {
             venueSearchBar.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0),
             venueSearchBar.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 0),
             
-            locationSearchBar.topAnchor.constraint(equalTo: venueSearchBar.bottomAnchor, constant: 8),
+            locationSearchBar.topAnchor.constraint(equalTo: venueSearchBar.bottomAnchor, constant: 0),
             locationSearchBar.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0),
             locationSearchBar.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 0),
             
