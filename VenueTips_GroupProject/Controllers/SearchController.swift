@@ -14,6 +14,7 @@ class SearchController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         view.addSubview(searchView)
         searchView.searchTableView.dataSource = self
         searchView.searchTableView.delegate = self
@@ -34,6 +35,7 @@ extension SearchController: UITableViewDataSource {
         return cell
     }
 }
+
 
 extension SearchController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

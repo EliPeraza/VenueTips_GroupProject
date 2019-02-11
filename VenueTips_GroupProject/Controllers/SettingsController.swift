@@ -1,5 +1,5 @@
 //
-//  ResultsController.swift
+//  VenueController.swift
 //  VenueTips_GroupProject
 //
 //  Created by Elizabeth Peraza  on 2/8/19.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-class ResultsController: UIViewController {
+class SettingsController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+      view.backgroundColor = #colorLiteral(red: 0.4588235294, green: 0.7921568627, blue: 0.7647058824, alpha: 1)
 
-      view.backgroundColor = #colorLiteral(red: 0.2925806642, green: 0.06769999117, blue: 0.2471010089, alpha: 1)
     }
     
 
-  
 
 }
