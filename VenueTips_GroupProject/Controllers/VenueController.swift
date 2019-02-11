@@ -9,22 +9,26 @@
 import UIKit
 
 class VenueController: UIViewController {
-
+    var nearbyVenues = [VenueDetails]() {
+        didSet {
+            dump(nearbyVenues)
+        }
+    }
+    let venueView = VenueView()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        view.addSubview(venueView)
+        VenueAPIClient.searchForVenueNearBy(location: "40.7,-74") { (appError, venues) in
+            if let appError = appError {
+                print(AppError.errorMessage(appError))
+            }
+            if let venues = venues{
+                self.nearbyVenues = venues
+            }
+        }
+        
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
