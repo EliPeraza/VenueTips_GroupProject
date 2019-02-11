@@ -6,8 +6,6 @@
 //  Copyright © 2019 Elizabeth Peraza . All rights reserved.
 //
 
-import Foundation
-
 struct Venue: Codable {
   let response: VenueInfo
 }
@@ -25,14 +23,14 @@ struct VenueDetails: Codable {
 }
 
 struct LocationInfo: Codable {
-  let address: String
-  let crossStreet: String
+  let address: String?
+  let crossStreet: String?
   let lat: Double
   let lng: Double
-  let distance: Int
-  let postalCode: String
+  let distance: Int?
+  let postalCode: String?
   let cc: String
-  let city: String
+  let city: String?
   let state: String
   let country: String
   let formattedAddress: [String]
@@ -41,4 +39,3 @@ struct CategoryInfo: Codable {
   let name: String
   let pluralName: String
 }
-
