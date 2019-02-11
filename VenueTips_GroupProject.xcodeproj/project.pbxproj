@@ -34,6 +34,8 @@
 		1E880102220E2C080093142A /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E880101220E2C080093142A /* FavoriteView.swift */; };
 		1E88010422109EF40093142A /* FavoriteCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E88010322109EF40093142A /* FavoriteCollectionCell.swift */; };
 		1E8801062210BF360093142A /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8801052210BF360093142A /* Image.swift */; };
+		1E88012C2211E9610093142A /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E88012B2211E9610093142A /* MainMenuController.swift */; };
+		1E88012E2211E9870093142A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E88012D2211E9870093142A /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +68,8 @@
 		1E880101220E2C080093142A /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		1E88010322109EF40093142A /* FavoriteCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionCell.swift; sourceTree = "<group>"; };
 		1E8801052210BF360093142A /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		1E88012B2211E9610093142A /* MainMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
+		1E88012D2211E9870093142A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +190,7 @@
 				1E8800FB220E2B680093142A /* SearchDetailedController.swift */,
 				1E8800F5220E2A930093142A /* ResultsController.swift */,
 				1E8800FF220E2BF70093142A /* FavoriteController.swift */,
+				1E88012B2211E9610093142A /* MainMenuController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 		1E8800EA220E1F3C0093142A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1E88012D2211E9870093142A /* MainView.swift */,
 				1E8800E8220E1F350093142A /* VenueView.swift */,
 				1E8800F7220E2AC30093142A /* SearchView.swift */,
 				1E8800FD220E2B7D0093142A /* SearchDetailedView.swift */,
@@ -299,8 +305,10 @@
 				1E8800E9220E1F350093142A /* VenueView.swift in Sources */,
 				1E8800BB220DF9EE0093142A /* AppDelegate.swift in Sources */,
 				1E8800FE220E2B7D0093142A /* SearchDetailedView.swift in Sources */,
+				1E88012E2211E9870093142A /* MainView.swift in Sources */,
 				1E88010422109EF40093142A /* FavoriteCollectionCell.swift in Sources */,
 				1E8800D9220E1E350093142A /* ImageHelper.swift in Sources */,
+				1E88012C2211E9610093142A /* MainMenuController.swift in Sources */,
 				1E8800E3220E1E9E0093142A /* DataPersistenceManager.swift in Sources */,
 				1E880100220E2BF70093142A /* FavoriteController.swift in Sources */,
 				1E880102220E2C080093142A /* FavoriteView.swift in Sources */,
@@ -443,7 +451,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9DN3HV8LU2;
+				DEVELOPMENT_TEAM = 8B3K38L4MX;
 				INFOPLIST_FILE = VenueTips_GroupProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -461,7 +469,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9DN3HV8LU2;
+				DEVELOPMENT_TEAM = 8B3K38L4MX;
 				INFOPLIST_FILE = VenueTips_GroupProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
