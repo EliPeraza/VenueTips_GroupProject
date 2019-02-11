@@ -94,7 +94,6 @@
 		1E8800B9220DF9EE0093142A /* VenueTips_GroupProject */ = {
 			isa = PBXGroup;
 			children = (
-
 				1E8800E7220E1EF80093142A /* Controllers */,
 				1E8800EA220E1F3C0093142A /* Views */,
 				1E8800EC220E1FAD0093142A /* Cells */,
@@ -110,7 +109,6 @@
 			path = VenueTips_GroupProject;
 			sourceTree = "<group>";
 		};
-
 		1E8800D0220E1D820093142A /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,7 +132,6 @@
 				1E8800C1220DF9F00093142A /* Assets.xcassets */,
 				1E8800C3220DF9F00093142A /* LaunchScreen.storyboard */,
 			);
-
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
@@ -277,7 +274,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
 				1E8800E6220E1EF20093142A /* VenueController.swift in Sources */,
 				1E8800D4220E1DF70093142A /* NetworkHelper.swift in Sources */,
 				1E8800E0220E1E7F0093142A /* VenueAPIClient.swift in Sources */,
@@ -439,7 +435,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9DN3HV8LU2;
+				DEVELOPMENT_TEAM = 8B3K38L4MX;
 				INFOPLIST_FILE = VenueTips_GroupProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -457,7 +453,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9DN3HV8LU2;
+				DEVELOPMENT_TEAM = 8B3K38L4MX;
 				INFOPLIST_FILE = VenueTips_GroupProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
