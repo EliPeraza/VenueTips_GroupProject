@@ -18,7 +18,7 @@ class VenueTabBarController: UITabBarController {
   
   private func setupTabBar() {
     
-    let searchTabBarController = SearchController()
+    let searchTabBarController = MainMenuController()
     searchTabBarController.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "search"), tag: 0)
     
     let favoriteTabBarController = FavoriteController()
