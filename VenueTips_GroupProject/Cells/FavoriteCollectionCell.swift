@@ -10,8 +10,26 @@ import UIKit
 
 class FavoriteCollectionCell: UICollectionViewCell {
   
+  lazy var imageToShow: UIImageView = {
+    var image = UIImageView()
+    return image
+  }()
   
   
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    setImageConstraints()
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  func setImageConstraints() {
+    addSubview(imageToShow)
+    imageToShow.translatesAutoresizingMaskIntoConstraints = false
+    imageToShow.frame = frame
+  }
   
   
 }
