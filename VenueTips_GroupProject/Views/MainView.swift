@@ -70,7 +70,7 @@ class MainView: UIView {
         super.init(frame: UIScreen.main.bounds)
         commonInit()
         backgroundColor = .white
-//        exploreNearByCollectionView.register(NearByCollectionViewCell.self, forCellWithReuseIdentifier: "NearByCell")
+        exploreNearByCollectionView.register(MainViewCell.self, forCellWithReuseIdentifier: "MainViewCell")
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

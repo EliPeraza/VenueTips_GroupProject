@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E2365602213791100953D92 /* MainViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E23655F2213791100953D92 /* MainViewCell.swift */; };
 		1E8800BB220DF9EE0093142A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8800BA220DF9EE0093142A /* AppDelegate.swift */; };
 		1E8800C2220DF9F00093142A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8800C1220DF9F00093142A /* Assets.xcassets */; };
 		1E8800C5220DF9F00093142A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E8800C3220DF9F00093142A /* LaunchScreen.storyboard */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E23655F2213791100953D92 /* MainViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewCell.swift; sourceTree = "<group>"; };
 		1E8800B7220DF9EE0093142A /* VenueTips_GroupProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VenueTips_GroupProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8800BA220DF9EE0093142A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E8800C1220DF9F00093142A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				1E88010322109EF40093142A /* FavoriteCollectionCell.swift */,
+				1E23655F2213791100953D92 /* MainViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				1E8800E0220E1E7F0093142A /* VenueAPIClient.swift in Sources */,
 				1E8800F0220E29DD0093142A /* ImageAPIClient.swift in Sources */,
 				1E8800CD220E1C0A0093142A /* APIKeys.swift in Sources */,
+				1E2365602213791100953D92 /* MainViewCell.swift in Sources */,
 				1E8800DE220E1E6B0093142A /* String+DateExtension.swift in Sources */,
 				1E8800EE220E20660093142A /* KeysForUserDefaults.swift in Sources */,
 				1E8800D7220E1E270093142A /* AppError.swift in Sources */,
@@ -451,7 +455,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8B3K38L4MX;
+
 				INFOPLIST_FILE = VenueTips_GroupProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -469,7 +473,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8B3K38L4MX;
+
 				INFOPLIST_FILE = VenueTips_GroupProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -9,7 +9,21 @@
 import UIKit
 
 class SearchView: UIView {
-
+    
+    lazy var cancelButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Dismiss", for: .normal)
+        button.setTitleColor(.red, for: .normal)
+        button.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
+        button.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        return button
+    }()
+    
+    @objc private func cancelButtonPressed() {
+        
+    }
+    
+    
     lazy var venueSearchBar: UISearchBar = {
        let searchBar = UISearchBar()
        searchBar.placeholder = "Search Venue"
@@ -31,6 +45,7 @@ class SearchView: UIView {
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         commonInit()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,15 +58,22 @@ class SearchView: UIView {
     }
     
     private func setupConstraints() {
+        addSubview(cancelButton)
         addSubview(venueSearchBar)
         addSubview(locationSearchBar)
         addSubview(searchTableView)
+        cancelButton.translatesAutoresizingMaskIntoConstraints = false
         venueSearchBar.translatesAutoresizingMaskIntoConstraints = false
         locationSearchBar.translatesAutoresizingMaskIntoConstraints = false
         searchTableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            venueSearchBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
+            cancelButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 45),
+            cancelButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            cancelButton.trailingAnchor.constraint(equalTo:  safeAreaLayoutGuide.trailingAnchor),
+            cancelButton.bottomAnchor.constraint(equalTo: venueSearchBar.topAnchor),
+            
+            venueSearchBar.topAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: 4),
             venueSearchBar.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0),
             venueSearchBar.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 0),
             
@@ -59,7 +81,7 @@ class SearchView: UIView {
             locationSearchBar.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0),
             locationSearchBar.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 0),
             
-            searchTableView.topAnchor.constraint(equalTo: locationSearchBar.bottomAnchor, constant: 4),
+            searchTableView.topAnchor.constraint(equalTo: locationSearchBar.bottomAnchor, constant: 0),
             searchTableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0),
             searchTableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 0),
             searchTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0)
