@@ -22,9 +22,17 @@ class FavoriteController: UIViewController {
     favoriteView.favoriteCollectionView.dataSource = self
     favoriteView.favoriteCollectionView.delegate = self
     
+    let addCategoryButton = UIBarButtonItem(title: "New Category", style: UIBarButtonItem.Style.plain, target: self, action: #selector(addCategoryButtonPressed))
+    self.navigationItem.rightBarButtonItem = addCategoryButton
+    
+  }
+  
+  @objc private func addCategoryButtonPressed() {
+    
   }
   
 }
+
 
 extension FavoriteController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
