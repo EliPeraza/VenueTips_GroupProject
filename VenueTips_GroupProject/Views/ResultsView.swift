@@ -16,21 +16,22 @@ class ResultsView: UIView {
         return searchBar
     }()
 
-    lazy var mapView: UIView = {
-        let mapView = UIView()
+    lazy var mapView: MKMapView = {
+        let mapView = MKMapView()
+        mapView.mapType = .standard
         return mapView
     }()
     
     lazy var button: UIButton = {
         let button = UIButton()
         button.backgroundColor = .green
+//        button.setImage("", for: .normal)
         return button
     }()
 
     
     lazy var listTableView: UITableView = {
         let listTableView = UITableView()
-        listTableView.isHidden = true
         return listTableView
     }()
 
@@ -57,25 +58,26 @@ class ResultsView: UIView {
     func setConstraints() {
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
-        searchBar.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
-        searchBar.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
+        searchBar.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        searchBar.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
         mapView.translatesAutoresizingMaskIntoConstraints = false
         mapView.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
-        mapView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
-        mapView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
+        mapView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        mapView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        mapView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
-        button.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
-        button.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
-        button.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.30).isActive = true
+        button.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        button.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        button.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         listTableView.translatesAutoresizingMaskIntoConstraints = false
-        listTableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
-        listTableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
-        listTableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
-        listTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true 
+        listTableView.heightAnchor.constraint(equalToConstant: 10).isActive = true
+        listTableView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        listTableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        listTableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true 
     }
     
     
