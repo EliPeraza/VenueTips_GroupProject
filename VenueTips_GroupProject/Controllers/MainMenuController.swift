@@ -21,25 +21,25 @@ class MainMenuController: UIViewController, UISearchBarDelegate{
         super.viewDidLoad()
         view.addSubview(mainView)
         mainView.venueSearchBar.delegate = self
-//        mainView.exploreNearByCollectionView.dataSource = self
-//        mainView.exploreNearByCollectionView.delegate = self
-        //        VenueAPIClient.searchForVenueAnyLocation(location: "Queens, NY", keyword: "tacos") { (appError, venues) in
-        //            if let appError = appError {
-        //                print(appError)
-        //            }
-        //            if let venues = venues{
-        //                self.nearbyVenues = venues
-        //            }
-        //
-        //        }
-        //        VenueAPIClient.searchForVenueNearBy(location: "40.7,-74") { (appError, venues) in
-        //            if let appError = appError {
-        //                print(appError)
-        //            }
-        //            if let venues = venues{
-        //                self.nearbyVenues = venues
-        //            }
-        //        }
+        mainView.exploreNearByCollectionView.dataSource = self
+        mainView.exploreNearByCollectionView.delegate = self
+                VenueAPIClient.searchForVenueAnyLocation(location: "Queens, NY", keyword: "tacos") { (appError, venues) in
+                    if let appError = appError {
+                        print(appError)
+                    }
+                    if let venues = venues{
+                        self.nearbyVenues = venues
+                    }
+        
+                }
+                VenueAPIClient.searchForVenueNearBy(location: "40.7,-74") { (appError, venues) in
+                    if let appError = appError {
+                        print(appError)
+                    }
+                    if let venues = venues{
+                        self.nearbyVenues = venues
+                    }
+                }
     }
     
 //    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
