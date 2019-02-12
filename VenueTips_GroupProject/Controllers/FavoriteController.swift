@@ -22,9 +22,17 @@ class FavoriteController: UIViewController {
     favoriteView.favoriteCollectionView.dataSource = self
     favoriteView.favoriteCollectionView.delegate = self
     
+    let addCategoryButton = UIBarButtonItem(title: "New Category", style: UIBarButtonItem.Style.plain, target: self, action: #selector(addCategoryButtonPressed))
+    self.navigationItem.rightBarButtonItem = addCategoryButton
+    
+  }
+  
+  @objc private func addCategoryButtonPressed() {
+    
   }
   
 }
+
 
 extension FavoriteController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -36,6 +44,23 @@ extension FavoriteController: UICollectionViewDelegateFlowLayout, UICollectionVi
     guard let cell = self.favoriteView.favoriteCollectionView.dequeueReusableCell(withReuseIdentifier: "FavoriteCollectionCell", for: indexPath) as? FavoriteCollectionCell else {return UICollectionViewCell()}
     
     cell.backgroundColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+    
+    let venueID = "4bddccbe6198c9b67bb911ff"
+    let date = "20190208"
+  
+    ImageAPIClient.searchImageForVenue(venueID: venueID, date: date) { (appError, PhotoDetails) in
+
+      let url = "\(PhotoDetails?.first?.prefix)original\(PhotoDetails?.first?.suffix)"
+      ImageHelper.fetchImageFromNetwork(urlString: url, completion: { (appError, imageToSet) in
+        if let appError = appError {
+          print(appError.errorMessage())
+        }
+        if let imageToSet = imageToSet {
+         cell.imageToShow.image = imageToSet
+        }
+      })
+    }
+    
     
     return cell
     

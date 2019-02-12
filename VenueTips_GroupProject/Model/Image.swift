@@ -9,11 +9,15 @@
 import Foundation
 
 struct Image: Codable {
-  let response: Photos
+  let response: PhotoInfo
+}
+
+struct PhotoInfo: Codable {
+  let photos: Photos
 }
 
 struct Photos: Codable {
-  let items: [PhotoDetails]
+  let items: [PhotoDetails]?
 }
 
 struct PhotoDetails: Codable {
@@ -23,7 +27,7 @@ struct PhotoDetails: Codable {
   let suffix: String
   let width: Int
   let height: Int
-  let visibility: String
+//  let visibility: String
 }
 
 
