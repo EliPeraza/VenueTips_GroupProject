@@ -14,7 +14,7 @@ class SearchController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        searchView.cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
         view.addSubview(searchView)
         searchView.searchTableView.dataSource = self
         searchView.searchTableView.delegate = self
@@ -22,6 +22,9 @@ class SearchController: UIViewController {
         
     }
    
+    @objc private func cancelButtonPressed() {
+       dismiss(animated: true, completion: nil)
+    }
 
 }
 
