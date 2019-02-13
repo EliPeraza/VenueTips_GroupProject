@@ -14,14 +14,11 @@ class SearchView: UIView {
         let button = UIButton()
         button.setTitle("Dismiss", for: .normal)
         button.setTitleColor(.red, for: .normal)
-        button.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
         button.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         return button
     }()
     
-    @objc private func cancelButtonPressed() {
-        
-    }
+    
     
     
     lazy var venueSearchBar: UISearchBar = {

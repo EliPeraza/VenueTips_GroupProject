@@ -18,7 +18,7 @@ class ResultsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(resultsView)
-      view.backgroundColor = #colorLiteral(red: 0.2925806642, green: 0.06769999117, blue: 0.2471010089, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.2925806642, green: 0.06769999117, blue: 0.2471010089, alpha: 1)
         locationManager.delegate = self
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             locationManager.desiredAccuracy = kCLLocationAccuracyBest

@@ -87,6 +87,9 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         let searchVC = SearchController()
         searchVC.modalPresentationStyle = .overCurrentContext
+
+        searchBar.resignFirstResponder()
+
         present(searchVC, animated: true, completion: nil)
     }
     
