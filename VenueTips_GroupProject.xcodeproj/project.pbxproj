@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1E2365602213791100953D92 /* MainViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E23655F2213791100953D92 /* MainViewCell.swift */; };
-		1E2365682214C41400953D92 /* Trending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2365672214C41400953D92 /* Trending.swift */; };
 		1E23656A2214C41E00953D92 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2365692214C41E00953D92 /* Categories.swift */; };
 		1E23656C2214C42F00953D92 /* TrendingAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E23656B2214C42F00953D92 /* TrendingAPIClient.swift */; };
 		1E23656E2214C43B00953D92 /* CategoriesAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E23656D2214C43B00953D92 /* CategoriesAPIClient.swift */; };
@@ -47,7 +46,6 @@
 
 /* Begin PBXFileReference section */
 		1E23655F2213791100953D92 /* MainViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewCell.swift; sourceTree = "<group>"; };
-		1E2365672214C41400953D92 /* Trending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trending.swift; sourceTree = "<group>"; };
 		1E2365692214C41E00953D92 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		1E23656B2214C42F00953D92 /* TrendingAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingAPIClient.swift; sourceTree = "<group>"; };
 		1E23656D2214C43B00953D92 /* CategoriesAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesAPIClient.swift; sourceTree = "<group>"; };
@@ -136,7 +134,6 @@
 			children = (
 				1E8800CE220E1CC40093142A /* Venue.swift */,
 				1E8801052210BF360093142A /* Image.swift */,
-				1E2365672214C41400953D92 /* Trending.swift */,
 				1E2365692214C41E00953D92 /* Categories.swift */,
 			);
 			path = Model;
@@ -311,7 +308,6 @@
 				1E8800D4220E1DF70093142A /* NetworkHelper.swift in Sources */,
 				1E8800E0220E1E7F0093142A /* VenueAPIClient.swift in Sources */,
 				1E8800F0220E29DD0093142A /* ImageAPIClient.swift in Sources */,
-				1E2365682214C41400953D92 /* Trending.swift in Sources */,
 				1E8800CD220E1C0A0093142A /* APIKeys.swift in Sources */,
 				1E2365602213791100953D92 /* MainViewCell.swift in Sources */,
 				1E8800DE220E1E6B0093142A /* String+DateExtension.swift in Sources */,
