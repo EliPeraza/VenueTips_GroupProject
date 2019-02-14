@@ -9,40 +9,67 @@
 import UIKit
 
 class SearchController: UIViewController {
-
-    let searchView = SearchView()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        searchView.cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
-        view.addSubview(searchView)
-        searchView.searchTableView.dataSource = self
-        searchView.searchTableView.delegate = self
-        searchView.searchTableView.register(UITableViewCell.self, forCellReuseIdentifier: "SearchCell")
+  
+  let searchView = SearchView()
+  
+  
+  var categoriesTest = [CategoriesDetails]() {
+    didSet {
+      DispatchQueue.main.async {
+        self.searchView.searchTableView.reloadData()
+        print("These are the number of categories: \(self.categoriesTest.count)")
         
+      }
     }
-   
-    @objc private func cancelButtonPressed() {
-       dismiss(animated: true, completion: nil)
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    searchView.cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
+    view.addSubview(searchView)
+    searchView.searchTableView.dataSource = self
+    searchView.searchTableView.delegate = self
+    searchView.searchTableView.register(UITableViewCell.self, forCellReuseIdentifier: "SearchCell")
+    
+    getCategories()
+  }
+  
+  @objc private func cancelButtonPressed() {
+    dismiss(animated: true, completion: nil)
+  }
+  
+  
+  func getCategories() {
+    CategoriesAPIClient.getCategories(location: "40.7,-74", date: "20190208") { (appError, categories) in
+      if let appError = appError {
+        print(appError)
+      }
+      if let categoriesData = categories {
+        self.categoriesTest = categoriesData
+        dump(self.categoriesTest)
+      }
     }
-
+  }
+  
 }
 
 extension SearchController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return categoriesTest.count
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = searchView.searchTableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath)
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = searchView.searchTableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath)
-        cell.textLabel?.text = "Searched Venue"
+    let currentCategory = categoriesTest[indexPath.row]
+    cell.textLabel?.text = currentCategory.name
     
-        return cell
-    }
+    return cell
+  }
 }
 
 extension SearchController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 100
+  }
 }
