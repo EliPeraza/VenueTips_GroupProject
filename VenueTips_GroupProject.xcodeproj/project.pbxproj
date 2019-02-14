@@ -345,10 +345,7 @@
 				1E8800E3220E1E9E0093142A /* DataPersistenceManager.swift in Sources */,
 				1E880100220E2BF70093142A /* FavoriteController.swift in Sources */,
 				1E880102220E2C080093142A /* FavoriteView.swift in Sources */,
-<<<<<<< HEAD
-=======
-				1E23659C2216150E00953D92 /* FavoritesDetailedController.swift in Sources */,
->>>>>>> 415637b5cb11632ca9094e263af3293f460d1761
+
 				1E8801062210BF360093142A /* Image.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
