@@ -32,7 +32,8 @@ class MainViewCell: UICollectionViewCell {
   }()
   override init(frame: CGRect) {
     super.init(frame: frame)
-    self.backgroundColor = .yellow
+    self.layer.borderColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
+    self.layer.borderWidth = 2
     
     setupViews()
   }
@@ -59,7 +60,7 @@ class MainViewCell: UICollectionViewCell {
   func setupVenueName(){
     addSubview(venueNameLabel)
     venueNameLabel.translatesAutoresizingMaskIntoConstraints = false
-    venueNameLabel.topAnchor.constraint(equalTo: venueImage.bottomAnchor, constant: 30).isActive = true
+    venueNameLabel.topAnchor.constraint(equalTo: venueImage.bottomAnchor, constant: 5).isActive = true
     venueNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
     venueNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
   }

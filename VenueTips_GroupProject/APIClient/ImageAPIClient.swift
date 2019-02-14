@@ -11,7 +11,7 @@ import Foundation
 struct ImageAPIClient {
   static func searchImageForVenue(venueID: String, date: String, completionHandler: @escaping (AppError?, [PhotoDetails]?) -> Void){
     
-    let imageURLString = "https://api.foursquare.com/v2/venues/\(venueID)/photos?client_id=H02XVB2YYM3PCYFESXBGEFFI0A15HOYTK2BHLZBCHSUHUTVH&client_secret=XQGJPPQK51FL4YZRG412AMGU03PVZHPSCJHMVE5IAOXNCZGD&v=\(date)"
+    let imageURLString = "https://api.foursquare.com/v2/venues/\(venueID)/photos?client_id=\(APIKeys.clientID)&client_secret=\(APIKeys.clientSecret)&v=\(date)"
     
     print(imageURLString)
     NetworkHelper.shared.performDataTask(endpointURLString: imageURLString) { (appError, data) in
