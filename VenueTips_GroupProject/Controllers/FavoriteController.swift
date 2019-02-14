@@ -12,6 +12,7 @@ class FavoriteController: UIViewController {
   
   let favoriteView = FavoriteView()
 
+    let thisTest = "Test"
   
   var categoriesTest = [CategoriesDetails]() {
     didSet {
