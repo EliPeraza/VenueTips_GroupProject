@@ -17,8 +17,6 @@ class MainView: UIView {
     lazy var button0: UIButton = {
         var button = UIButton()
         button.setImage(UIImage(named: "restaurant"), for: .normal)
-        button.titleEdgeInsets = UIEdgeInsets(top: 0,left: 0,bottom: -30 ,right: 0)
-        button.imageEdgeInsets = UIEdgeInsets(top: 6,left: 100,bottom: 6,right: 14)
         button.setTitle("Lunch", for: .normal)
         button.layer.borderColor = #colorLiteral(red: 0.2221263647, green: 0.5435168147, blue: 1, alpha: 1)
         button.setTitleColor(#colorLiteral(red: 0.2221263647, green: 0.5435168147, blue: 1, alpha: 1), for: .normal)
