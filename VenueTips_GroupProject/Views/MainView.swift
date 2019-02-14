@@ -16,38 +16,54 @@ class MainView: UIView {
     }()
     lazy var button0: UIButton = {
         var button = UIButton()
-        button.setTitle("button 0", for: .normal)
-        button.backgroundColor = .orange
+        button.setImage(UIImage(named: "restaurant"), for: .normal)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0,left: 0,bottom: -30 ,right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 6,left: 100,bottom: 6,right: 14)
+        button.setTitle("Lunch", for: .normal)
+        button.layer.borderColor = #colorLiteral(red: 0.2221263647, green: 0.5435168147, blue: 1, alpha: 1)
+        button.setTitleColor(#colorLiteral(red: 0.2221263647, green: 0.5435168147, blue: 1, alpha: 1), for: .normal)
+        button.tag = 0
         return button
     }()
     lazy var button1: UIButton = {
         var button = UIButton()
-        button.setTitle("Button1", for: .normal)
-        button.backgroundColor = .orange
+        button.setTitle("Breakfast", for: .normal)
+        button.layer.borderColor = #colorLiteral(red: 1, green: 0.7747257352, blue: 0, alpha: 1)
+        button.setTitleColor(#colorLiteral(red: 1, green: 0.7747257352, blue: 0, alpha: 1), for: .normal)
+        
+        button.tag = 1
         return button
     }()
     lazy var button2: UIButton = {
         var button = UIButton()
-        button.setTitle("Button2", for: .normal)
-        button.backgroundColor = .orange
+        button.setTitle("Coffee", for: .normal)
+        button.layer.borderColor = #colorLiteral(red: 0.5787474513, green: 0.3215198815, blue: 0, alpha: 1)
+        button.setTitleColor(#colorLiteral(red: 0.5787474513, green: 0.3215198815, blue: 0, alpha: 1), for: .normal)
+        button.tag = 2
         return button
     }()
     lazy var button3: UIButton = {
         var button = UIButton()
-        button.setTitle("Button3", for: .normal)
-        button.backgroundColor = .orange
+        button.setTitle("Night Life", for: .normal)
+        button.layer.borderColor = #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
+        button.setTitleColor(#colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1), for: .normal)
+        button.tag = 3
         return button
     }()
     lazy var button4: UIButton = {
         var button = UIButton()
-        button.setTitle("Button4", for: .normal)
-        button.backgroundColor = .orange
+        button.setTitle("Parks", for: .normal)
+        button.layer.borderColor = #colorLiteral(red: 0.3084011078, green: 0.5618229508, blue: 0, alpha: 1)
+        button.setTitleColor(#colorLiteral(red: 0.3084011078, green: 0.5618229508, blue: 0, alpha: 1), for: .normal)
+        button.tag = 4
         return button
     }()
     lazy var button5: UIButton = {
         var button = UIButton()
-        button.setTitle("Button5", for: .normal)
-        button.backgroundColor = .orange
+        button.setTitle("Trending", for: .normal)
+        button.layer.borderColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        button.setTitleColor(#colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1), for: .normal)
+        button.tag = 5
         return button
     }()
     lazy var exploreNearByLabel: UILabel = {
@@ -63,9 +79,12 @@ class MainView: UIView {
         layout.sectionInset = UIEdgeInsets.init(top: 20, left: 10, bottom: 20, right: 10)
         layout.scrollDirection = .horizontal
         var collectionView = UICollectionView.init(frame: self.bounds, collectionViewLayout: layout)
-        collectionView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        collectionView.layer.borderColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
+        collectionView.layer.borderWidth = 4
+        collectionView.backgroundColor = .clear
         return collectionView
     }()
+   lazy var buttons = [UIButton]()
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         commonInit()
@@ -76,6 +95,7 @@ class MainView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     func commonInit(){
+        buttons = [button0, button1, button2, button3, button4, button5]
         setupViews()
     }
     func setupViews(){
@@ -90,20 +110,24 @@ class MainView: UIView {
         for button in buttons{
             addSubview(button)
             button.translatesAutoresizingMaskIntoConstraints = false
-            button.heightAnchor.constraint(equalToConstant: 80).isActive = true
-            button.widthAnchor.constraint(equalToConstant: 80).isActive = true
+            button.heightAnchor.constraint(equalToConstant: 90).isActive = true
+            button.widthAnchor.constraint(equalToConstant: 90).isActive = true
+            button.backgroundColor = .clear
+            button.layer.borderWidth = 5
+            button.layer.cornerRadius = 10
+            
         }
         button1.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         button1.topAnchor.constraint(equalTo: venueSearchBar.bottomAnchor, constant: 50).isActive = true
-        button0.centerXAnchor.constraint(equalTo: button1.centerXAnchor, constant: -100).isActive = true
+        button0.centerXAnchor.constraint(equalTo: button1.centerXAnchor, constant: -110).isActive = true
         button0.centerYAnchor.constraint(equalTo: button1.centerYAnchor).isActive = true
-        button2.centerXAnchor.constraint(equalTo: button1.centerXAnchor, constant: 100).isActive = true
+        button2.centerXAnchor.constraint(equalTo: button1.centerXAnchor, constant: 110).isActive = true
         button2.centerYAnchor.constraint(equalTo: button1.centerYAnchor).isActive = true
-        button4.centerYAnchor.constraint(equalTo: button1.centerYAnchor, constant: 100).isActive = true
+        button4.centerYAnchor.constraint(equalTo: button1.centerYAnchor, constant: 110).isActive = true
         button4.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        button3.centerXAnchor.constraint(equalTo: button4.centerXAnchor, constant: -100).isActive = true
+        button3.centerXAnchor.constraint(equalTo: button4.centerXAnchor, constant: -110).isActive = true
         button3.centerYAnchor.constraint(equalTo: button4.centerYAnchor).isActive = true
-        button5.centerXAnchor.constraint(equalTo: button4.centerXAnchor, constant: 100).isActive = true
+        button5.centerXAnchor.constraint(equalTo: button4.centerXAnchor, constant: 110).isActive = true
         button5.centerYAnchor.constraint(equalTo: button4.centerYAnchor).isActive = true
         
     }
@@ -117,7 +141,7 @@ class MainView: UIView {
     func setupLabel(){
         addSubview(exploreNearByLabel)
         exploreNearByLabel.translatesAutoresizingMaskIntoConstraints = false
-        exploreNearByLabel.topAnchor.constraint(equalTo: button4.bottomAnchor, constant: 75).isActive = true
+        exploreNearByLabel.topAnchor.constraint(equalTo: button4.bottomAnchor, constant: 30).isActive = true
         exploreNearByLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11).isActive  = true
         exploreNearByLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11).isActive = true
         
@@ -125,7 +149,7 @@ class MainView: UIView {
     func setupCollectionView(){
         addSubview(exploreNearByCollectionView)
         exploreNearByCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        exploreNearByCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        exploreNearByCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         exploreNearByCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         exploreNearByCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         exploreNearByCollectionView.topAnchor.constraint(equalTo: exploreNearByLabel.bottomAnchor, constant: 20).isActive = true
