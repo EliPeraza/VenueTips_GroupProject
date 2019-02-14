@@ -15,10 +15,16 @@ class FavoriteCollectionCell: UICollectionViewCell {
     return image
   }()
   
+  lazy var title: UILabel = {
+   var label = UILabel()
+    return label
+  }()
+  
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     setImageConstraints()
+    setLabelConstraints()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -29,6 +35,14 @@ class FavoriteCollectionCell: UICollectionViewCell {
     addSubview(imageToShow)
     imageToShow.translatesAutoresizingMaskIntoConstraints = false
     imageToShow.frame = frame
+  }
+  
+  func setLabelConstraints() {
+   addSubview(title)
+    title.translatesAutoresizingMaskIntoConstraints = false
+    title.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0.5 ).isActive = true
+    title.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 11).isActive = true
+    title.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -11).isActive = true 
   }
   
   

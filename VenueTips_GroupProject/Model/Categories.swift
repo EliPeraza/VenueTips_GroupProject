@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+struct Categories: Codable {
+  let response: CategoriesInfo
+}
+
+struct CategoriesInfo: Codable {
+  let categories: [CategoriesDetails]
+}
+
+struct CategoriesDetails: Codable {
+  let id: String
+  let name: String
+}

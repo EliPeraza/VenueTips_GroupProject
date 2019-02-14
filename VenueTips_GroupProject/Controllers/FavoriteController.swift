@@ -11,6 +11,17 @@ import UIKit
 class FavoriteController: UIViewController {
   
   let favoriteView = FavoriteView()
+
+  
+  var categoriesTest = [CategoriesDetails]() {
+    didSet {
+      DispatchQueue.main.async {
+        self.favoriteView.favoriteCollectionView.reloadData()
+        print("These are the number of categories: \(self.categoriesTest.count)")
+
+      }
+    }
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -25,43 +36,44 @@ class FavoriteController: UIViewController {
     let addCategoryButton = UIBarButtonItem(title: "New Category", style: UIBarButtonItem.Style.plain, target: self, action: #selector(addCategoryButtonPressed))
     self.navigationItem.rightBarButtonItem = addCategoryButton
     
+    getCategories()
+    
   }
   
   @objc private func addCategoryButtonPressed() {
     
   }
   
+  func getCategories() {
+    CategoriesAPIClient.getCategories(location: "40.7,-74", date: "20190208") { (appError, categories) in
+      if let appError = appError {
+        print(appError)
+      }
+      if let categoriesData = categories {
+       self.categoriesTest = categoriesData
+        dump(self.categoriesTest)
+      }
+    }
+  }
+  
+  
+  
 }
 
 
 extension FavoriteController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 60
+    return categoriesTest.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
     guard let cell = self.favoriteView.favoriteCollectionView.dequeueReusableCell(withReuseIdentifier: "FavoriteCollectionCell", for: indexPath) as? FavoriteCollectionCell else {return UICollectionViewCell()}
     
+    let currentCategory = categoriesTest[indexPath.row]
+    
+    cell.title.text = currentCategory.name
     cell.backgroundColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
-    
-    let venueID = "4bddccbe6198c9b67bb911ff"
-    let date = "20190208"
-  
-    ImageAPIClient.searchImageForVenue(venueID: venueID, date: date) { (appError, PhotoDetails) in
-
-      let url = "\(PhotoDetails?.first?.prefix)original\(PhotoDetails?.first?.suffix)"
-      ImageHelper.fetchImageFromNetwork(urlString: url, completion: { (appError, imageToSet) in
-        if let appError = appError {
-          print(appError.errorMessage())
-        }
-        if let imageToSet = imageToSet {
-         cell.imageToShow.image = imageToSet
-        }
-      })
-    }
-    
-    
     return cell
     
   }
