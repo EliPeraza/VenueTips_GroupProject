@@ -42,6 +42,9 @@
 		1E8801062210BF360093142A /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8801052210BF360093142A /* Image.swift */; };
 		1E88012C2211E9610093142A /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E88012B2211E9610093142A /* MainMenuController.swift */; };
 		1E88012E2211E9870093142A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E88012D2211E9870093142A /* MainView.swift */; };
+		62115973221623C800E38477 /* CategoryToSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62115972221623C800E38477 /* CategoryToSave.swift */; };
+		621159752216241F00E38477 /* VenueToSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621159742216241F00E38477 /* VenueToSave.swift */; };
+		621159772216245600E38477 /* FavoritesDetailedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621159762216245600E38477 /* FavoritesDetailedController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +85,9 @@
 		1E8801052210BF360093142A /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		1E88012B2211E9610093142A /* MainMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
 		1E88012D2211E9870093142A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		62115972221623C800E38477 /* CategoryToSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryToSave.swift; sourceTree = "<group>"; };
+		621159742216241F00E38477 /* VenueToSave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueToSave.swift; sourceTree = "<group>"; };
+		621159762216245600E38477 /* FavoritesDetailedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesDetailedController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,9 +138,11 @@
 		1E8800D0220E1D820093142A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				62115972221623C800E38477 /* CategoryToSave.swift */,
 				1E8800CE220E1CC40093142A /* Venue.swift */,
 				1E8801052210BF360093142A /* Image.swift */,
 				1E2365692214C41E00953D92 /* Categories.swift */,
+				621159742216241F00E38477 /* VenueToSave.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -207,6 +215,7 @@
 				1E8800F5220E2A930093142A /* ResultsController.swift */,
 				1E8800FF220E2BF70093142A /* FavoriteController.swift */,
 				1E88012B2211E9610093142A /* MainMenuController.swift */,
+				621159762216245600E38477 /* FavoritesDetailedController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -317,10 +326,12 @@
 				1E8800F6220E2A930093142A /* ResultsController.swift in Sources */,
 				1E8800F4220E2A7C0093142A /* SearchController.swift in Sources */,
 				1E8800F8220E2AC30093142A /* SearchView.swift in Sources */,
+				621159772216245600E38477 /* FavoritesDetailedController.swift in Sources */,
 				1E8800CF220E1CC40093142A /* Venue.swift in Sources */,
 				1E8800F2220E2A500093142A /* VenueTabBarController.swift in Sources */,
 				1E8800DB220E1E4E0093142A /* Date+Extension.swift in Sources */,
 				1E2365742214C8F100953D92 /* FavoritesDetailedView.swift in Sources */,
+				621159752216241F00E38477 /* VenueToSave.swift in Sources */,
 				1E23656A2214C41E00953D92 /* Categories.swift in Sources */,
 				1E8800FC220E2B680093142A /* SearchDetailedController.swift in Sources */,
 				1E2365702214C49D00953D92 /* DataManager.swift in Sources */,
@@ -337,6 +348,7 @@
 				1E880100220E2BF70093142A /* FavoriteController.swift in Sources */,
 				1E880102220E2C080093142A /* FavoriteView.swift in Sources */,
 				1E8801062210BF360093142A /* Image.swift in Sources */,
+				62115973221623C800E38477 /* CategoryToSave.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
