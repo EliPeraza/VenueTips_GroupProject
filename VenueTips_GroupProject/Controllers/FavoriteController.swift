@@ -38,11 +38,23 @@ class FavoriteController: UIViewController {
 //    getCategories()
     
   }
+
   
   @objc private func addCategoryButtonPressed() {
     showAlert()
   }
   
+  func getCategories() {
+    CategoriesAPIClient.getCategories(location: "40.7,-74", date: "20190208") { (appError, categories) in
+      if let appError = appError {
+        print(appError)
+      }
+      if let categoriesData = categories {
+       self.categoriesTest = categoriesData
+        dump(self.categoriesTest)
+      }
+    }
+  }
 //  func getCategories() {
 //    CategoriesAPIClient.getCategories(location: "40.7,-74", date: "20190208") { (appError, categories) in
 //      if let appError = appError {

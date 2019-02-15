@@ -13,6 +13,10 @@
 		1E23656E2214C43B00953D92 /* CategoriesAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E23656D2214C43B00953D92 /* CategoriesAPIClient.swift */; };
 		1E2365702214C49D00953D92 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E23656F2214C49D00953D92 /* DataManager.swift */; };
 		1E2365742214C8F100953D92 /* FavoritesDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2365732214C8F100953D92 /* FavoritesDetailedView.swift */; };
+		1E23659C2216150E00953D92 /* FavoritesDetailedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E23659B2216150E00953D92 /* FavoritesDetailedController.swift */; };
+		1E23659E2216162600953D92 /* CategoryToSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E23659D2216162600953D92 /* CategoryToSave.swift */; };
+		1E2365A02216163300953D92 /* VenueToSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E23659F2216163300953D92 /* VenueToSave.swift */; };
+		1E2365D0221755F900953D92 /* VenueTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2365CF221755F900953D92 /* VenueTip.swift */; };
 		1E8800BB220DF9EE0093142A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8800BA220DF9EE0093142A /* AppDelegate.swift */; };
 		1E8800C2220DF9F00093142A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8800C1220DF9F00093142A /* Assets.xcassets */; };
 		1E8800C5220DF9F00093142A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E8800C3220DF9F00093142A /* LaunchScreen.storyboard */; };
@@ -25,7 +29,6 @@
 		1E8800DE220E1E6B0093142A /* String+DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8800DD220E1E6B0093142A /* String+DateExtension.swift */; };
 		1E8800E0220E1E7F0093142A /* VenueAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8800DF220E1E7F0093142A /* VenueAPIClient.swift */; };
 		1E8800E3220E1E9E0093142A /* DataPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8800E2220E1E9E0093142A /* DataPersistenceManager.swift */; };
-		1E8800E6220E1EF20093142A /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8800E5220E1EF20093142A /* SettingsController.swift */; };
 		1E8800E9220E1F350093142A /* VenueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8800E8220E1F350093142A /* VenueView.swift */; };
 		1E8800EE220E20660093142A /* KeysForUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8800ED220E20660093142A /* KeysForUserDefaults.swift */; };
 		1E8800F0220E29DD0093142A /* ImageAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8800EF220E29DD0093142A /* ImageAPIClient.swift */; };
@@ -54,6 +57,10 @@
 		1E23656D2214C43B00953D92 /* CategoriesAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesAPIClient.swift; sourceTree = "<group>"; };
 		1E23656F2214C49D00953D92 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		1E2365732214C8F100953D92 /* FavoritesDetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesDetailedView.swift; sourceTree = "<group>"; };
+		1E23659B2216150E00953D92 /* FavoritesDetailedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesDetailedController.swift; sourceTree = "<group>"; };
+		1E23659D2216162600953D92 /* CategoryToSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryToSave.swift; sourceTree = "<group>"; };
+		1E23659F2216163300953D92 /* VenueToSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueToSave.swift; sourceTree = "<group>"; };
+		1E2365CF221755F900953D92 /* VenueTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueTip.swift; sourceTree = "<group>"; };
 		1E8800B7220DF9EE0093142A /* VenueTips_GroupProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VenueTips_GroupProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8800BA220DF9EE0093142A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E8800C1220DF9F00093142A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,7 +75,6 @@
 		1E8800DD220E1E6B0093142A /* String+DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DateExtension.swift"; sourceTree = "<group>"; };
 		1E8800DF220E1E7F0093142A /* VenueAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueAPIClient.swift; sourceTree = "<group>"; };
 		1E8800E2220E1E9E0093142A /* DataPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistenceManager.swift; sourceTree = "<group>"; };
-		1E8800E5220E1EF20093142A /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		1E8800E8220E1F350093142A /* VenueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueView.swift; sourceTree = "<group>"; };
 		1E8800ED220E20660093142A /* KeysForUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysForUserDefaults.swift; sourceTree = "<group>"; };
 		1E8800EF220E29DD0093142A /* ImageAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPIClient.swift; sourceTree = "<group>"; };
@@ -142,7 +148,9 @@
 				1E8800CE220E1CC40093142A /* Venue.swift */,
 				1E8801052210BF360093142A /* Image.swift */,
 				1E2365692214C41E00953D92 /* Categories.swift */,
-				621159742216241F00E38477 /* VenueToSave.swift */,
+				1E23659F2216163300953D92 /* VenueToSave.swift */,
+				1E2365CF221755F900953D92 /* VenueTip.swift */,
+
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -209,7 +217,6 @@
 			isa = PBXGroup;
 			children = (
 				1E8800F1220E2A500093142A /* VenueTabBarController.swift */,
-				1E8800E5220E1EF20093142A /* SettingsController.swift */,
 				1E8800F3220E2A7C0093142A /* SearchController.swift */,
 				1E8800FB220E2B680093142A /* SearchDetailedController.swift */,
 				1E8800F5220E2A930093142A /* ResultsController.swift */,
@@ -313,10 +320,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E8800E6220E1EF20093142A /* SettingsController.swift in Sources */,
 				1E8800D4220E1DF70093142A /* NetworkHelper.swift in Sources */,
 				1E8800E0220E1E7F0093142A /* VenueAPIClient.swift in Sources */,
 				1E8800F0220E29DD0093142A /* ImageAPIClient.swift in Sources */,
+				1E2365D0221755F900953D92 /* VenueTip.swift in Sources */,
 				1E8800CD220E1C0A0093142A /* APIKeys.swift in Sources */,
 				1E2365602213791100953D92 /* MainViewCell.swift in Sources */,
 				1E8800DE220E1E6B0093142A /* String+DateExtension.swift in Sources */,
