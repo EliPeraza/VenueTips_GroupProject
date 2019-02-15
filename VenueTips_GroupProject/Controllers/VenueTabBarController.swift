@@ -23,13 +23,10 @@ class VenueTabBarController: UITabBarController {
     
     let favoriteTabBarController = FavoriteController()
     favoriteTabBarController.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(named: "add"), tag: 1)
-    
-    let settingsTabBarController = SettingsController()
-    settingsTabBarController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 2)
+
     
     let tabBarList = [UINavigationController(rootViewController: searchTabBarController),
-                      UINavigationController(rootViewController: favoriteTabBarController),
-                      UINavigationController(rootViewController: settingsTabBarController)]
+                      UINavigationController(rootViewController: favoriteTabBarController)]
     
    setViewControllers(tabBarList, animated: true)
     
