@@ -10,13 +10,17 @@ import UIKit
 
 class FavoritesDetailedController: UIViewController {
 
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-
-    }
-
-
+    print("test")
+    
+    
+    
+  }
+  
+  
+  
+  
 }

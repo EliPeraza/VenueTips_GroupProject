@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+
+struct CategoryToSave: Codable {
+
+   let categoryName: String
+  
+}
