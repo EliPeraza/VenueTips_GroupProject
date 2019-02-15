@@ -19,7 +19,7 @@ enum MainCategories: CaseIterable {
     case Coffee
     case NightLife
     case Parks
-    case Tranding
+    case Gyms
 }
 class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
