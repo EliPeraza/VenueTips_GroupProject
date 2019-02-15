@@ -8,6 +8,9 @@
 
 import Foundation
 
+
 struct CategoryToSave: Codable {
-    let categoryName: String
+
+   let categoryName: String
+  
 }

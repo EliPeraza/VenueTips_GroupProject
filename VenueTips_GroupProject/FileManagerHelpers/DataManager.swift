@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 struct DataManager {
    static private var categories = [CategoryToSave]()
    static private var venues = [Venue]()
