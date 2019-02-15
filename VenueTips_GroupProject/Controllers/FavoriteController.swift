@@ -44,7 +44,6 @@ class FavoriteController: UIViewController {
     showAlert()
   }
   
-<<<<<<< HEAD
   func getCategories() {
     CategoriesAPIClient.getCategories(location: "40.7,-74", date: "20190208") { (appError, categories) in
       if let appError = appError {
@@ -56,7 +55,6 @@ class FavoriteController: UIViewController {
       }
     }
   }
-=======
 //  func getCategories() {
 //    CategoriesAPIClient.getCategories(location: "40.7,-74", date: "20190208") { (appError, categories) in
 //      if let appError = appError {
@@ -87,7 +85,6 @@ class FavoriteController: UIViewController {
     }
   
   
->>>>>>> 01c3dc1194e0230a0c7925a76ef0c3a1b51fe1fa
 }
 
 

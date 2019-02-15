@@ -8,8 +8,6 @@
 
 import Foundation
 
-<<<<<<< HEAD
-=======
 struct DataManager {
    static private var categories = [CategoryToSave]()
    static private var venues = [Venue]()
@@ -82,4 +80,3 @@ struct DataManager {
     }
     
 }
->>>>>>> 01c3dc1194e0230a0c7925a76ef0c3a1b51fe1fa
