@@ -9,8 +9,5 @@
 import Foundation
 
 struct VenueToSave: Codable {
-  
-   let breakfast: String
-   let date: String
-  
+    
 }

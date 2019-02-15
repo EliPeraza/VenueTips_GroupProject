@@ -8,14 +8,7 @@
 
 import Foundation
 
-<<<<<<< HEAD
 
 struct CategoryToSave: Codable {
-
-   let restaurants: String 
-  
-=======
-struct CategoryToSave: Codable {
-    let categoryName: String
->>>>>>> 01c3dc1194e0230a0c7925a76ef0c3a1b51fe1fa
+  let categoryName: String
 }
