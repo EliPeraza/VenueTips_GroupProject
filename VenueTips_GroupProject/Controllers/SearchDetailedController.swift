@@ -10,12 +10,24 @@ import UIKit
 
 class SearchDetailedController: UIViewController {
 
+    var searchDetailedView: SearchDetailedView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-      view.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+        view.backgroundColor = .white
+        view.addSubview(searchDetailedView)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: #selector(favoriteButtonPressed))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Add Comment", style: .plain, target: self, action: #selector(addCommentPressed))
+        
     }
     
+    @objc func favoriteButtonPressed() {
+        
+    }
 
-
+    @objc func addCommentPressed() {
+        
+    }
+    
+    
 }

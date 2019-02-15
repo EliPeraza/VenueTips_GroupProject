@@ -102,3 +102,4 @@ extension FavoriteController: UICollectionViewDelegateFlowLayout, UICollectionVi
         print(categories[indexPath.row].categoryName)
     }
 }
+
