@@ -43,7 +43,10 @@ class FavoriteController: UIViewController {
   @objc private func addCategoryButtonPressed() {
     
   }
-  
+   
+    
+    
+    
   func getCategories() {
     CategoriesAPIClient.getCategories(location: "40.7,-74", date: "20190208") { (appError, categories) in
       if let appError = appError {

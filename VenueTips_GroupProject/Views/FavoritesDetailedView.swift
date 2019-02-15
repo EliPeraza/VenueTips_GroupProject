@@ -8,15 +8,6 @@
 
 import UIKit
 
-//class FavoritesDetailedView: UIView {
-//
-//    lazy var image: UIImage = {
-//        let image = UIImage()
-//    }()
-//
-//    lazy var venueName: UILabel = {
-//        let venueName = UILabel()
-//    }
-//
-//    lazy var address
-//}
+class FavoritesDetailedView: UIView {
+
+}
