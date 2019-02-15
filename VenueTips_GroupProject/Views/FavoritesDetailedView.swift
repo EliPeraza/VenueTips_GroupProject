@@ -10,6 +10,7 @@ import UIKit
 
 class FavoritesDetailedView: UIView {
 
+
   lazy var favoriteVenuesTableView: UITableView = {
     var tableView = UITableView()
     
@@ -24,6 +25,5 @@ class FavoritesDetailedView: UIView {
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
 
 }

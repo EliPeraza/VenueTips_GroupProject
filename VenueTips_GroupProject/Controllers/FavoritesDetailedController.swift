@@ -9,6 +9,7 @@
 import UIKit
 
 class FavoritesDetailedController: UIViewController {
+
   
   override func viewDidLoad() {
     super.viewDidLoad()
