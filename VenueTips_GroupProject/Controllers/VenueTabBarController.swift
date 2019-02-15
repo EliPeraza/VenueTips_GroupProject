@@ -26,7 +26,9 @@ class VenueTabBarController: UITabBarController {
 
     
     let tabBarList = [UINavigationController(rootViewController: searchTabBarController),
-                      UINavigationController(rootViewController: favoriteTabBarController)]
+                      UINavigationController(rootViewController: favoriteTabBarController)
+                      ]
+
     
    setViewControllers(tabBarList, animated: true)
     
