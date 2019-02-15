@@ -39,6 +39,7 @@ class FavoriteController: UIViewController {
     getCategories()
     
   }
+
   
   @objc private func addCategoryButtonPressed() {
     
@@ -55,9 +56,6 @@ class FavoriteController: UIViewController {
       }
     }
   }
-  
-  
-  
 }
 
 
