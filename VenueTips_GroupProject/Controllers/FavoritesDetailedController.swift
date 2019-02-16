@@ -27,12 +27,12 @@ class FavoritesDetailedController: UIViewController {
 
 extension FavoritesDetailedController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 10
+    return 20
   }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = UITableViewCell()
     
-    cell.backgroundColor = .black
+    cell.backgroundColor = #colorLiteral(red: 0.4588235294, green: 0.7921568627, blue: 0.7647058824, alpha: 1)
     cell.textLabel?.text = testLabel
     
     return cell

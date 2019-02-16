@@ -9,8 +9,10 @@
 import UIKit
 
 class SearchDetailedController: UIViewController {
+  
+  var venueInfoReceivedFromMain: VenueDetails? 
 
-    var searchDetailedView: SearchDetailedView!
+    var searchDetailedView = SearchDetailedView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,16 +20,21 @@ class SearchDetailedController: UIViewController {
         view.addSubview(searchDetailedView)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: #selector(favoriteButtonPressed))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Add Comment", style: .plain, target: self, action: #selector(addCommentPressed))
+      
+      setupDetailed()
         
     }
     
     @objc func favoriteButtonPressed() {
-        
     }
 
     @objc func addCommentPressed() {
         
     }
-    
+  
+  func setupDetailed() {
+    searchDetailedView.venueName.text = venueInfoReceivedFromMain?.name
+  
+  }
     
 }
