@@ -100,8 +100,10 @@ extension FavoriteController: UICollectionViewDelegateFlowLayout, UICollectionVi
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     print(categories[indexPath.row].categoryName)
     
+    let currentCategory = categories[indexPath.row]
+    
     let detailedFavoritesController = FavoritesDetailedController()
-    detailedFavoritesController.testLabel = "Hello"
+    detailedFavoritesController.categoryNamePassedFromFavoriteCollection = currentCategory.categoryName
     navigationController?.pushViewController(detailedFavoritesController, animated: true)
     
   }

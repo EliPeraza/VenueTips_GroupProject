@@ -10,7 +10,7 @@ import UIKit
 
 class FavoritesDetailedController: UIViewController {
   
-  var testLabel = ""
+  var categoryNamePassedFromFavoriteCollection = ""
 
   var favoritesDetailedView = FavoritesDetailedView()
   
@@ -33,7 +33,7 @@ extension FavoritesDetailedController: UITableViewDelegate, UITableViewDataSourc
     let cell = UITableViewCell()
     
     cell.backgroundColor = #colorLiteral(red: 0.4588235294, green: 0.7921568627, blue: 0.7647058824, alpha: 1)
-    cell.textLabel?.text = testLabel
+    cell.textLabel?.text = categoryNamePassedFromFavoriteCollection
     
     return cell
   }
