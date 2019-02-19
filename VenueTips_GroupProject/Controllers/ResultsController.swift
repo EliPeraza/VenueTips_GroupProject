@@ -129,9 +129,7 @@ extension ResultsController: MKMapViewDelegate{
         let filterVenue = venues.filter{$0.name == name!}
         let venueToSend = filterVenue.first!
         print(venueToSend.name)
-        //TO DO: SEND FILTERED VENUE TO DETAIL
-        
-        
+        //TO DO: SEND FILTERED VENUE TO DETAIL     
     }
 }
 
