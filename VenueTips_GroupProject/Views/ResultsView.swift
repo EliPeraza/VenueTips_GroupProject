@@ -25,7 +25,7 @@ class ResultsView: UIView {
     lazy var button: UIButton = {
         let button = UIButton()
         button.backgroundColor = .green
-//        button.setImage("", for: .normal)
+//        button.setImage("", for: .normal) speak to Leandro to get image for button and cell file
         return button
     }()
 
@@ -37,6 +37,7 @@ class ResultsView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
+//        listTableView.register(<#T##cellClass: AnyClass?##AnyClass?#>, forCellReuseIdentifier: <#T##String#>)
         commonInit()
     }
     

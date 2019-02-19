@@ -14,6 +14,8 @@ class ResultsController: UIViewController {
     var resultsView = ResultsView()
     var mapView = MKMapView()
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(resultsView)
