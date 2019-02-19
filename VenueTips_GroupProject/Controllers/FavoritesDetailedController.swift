@@ -36,5 +36,6 @@ extension FavoritesDetailedController: UITableViewDelegate, UITableViewDataSourc
     cell.textLabel?.text = categoryNamePassedFromFavoriteCollection
     
     return cell
+
   }
 }
