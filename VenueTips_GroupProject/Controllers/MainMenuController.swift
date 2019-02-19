@@ -136,6 +136,24 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
     present(searchVC, animated: true, completion: nil)
   }
   
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+    guard let cell = collectionView.cellForItem(at: indexPath) as? MainViewCell else {
+      print("No Cell")
+      return}
+    
+    let venueToSegue = nearbyVenues[indexPath.row]
+    
+    
+    let searchDetailedController = SearchDetailedController()
+    
+    searchDetailedController.imageReceivedFromMain = cell.venueImage.image
+    searchDetailedController.venueInfoReceivedFromMain = venueToSegue
+    
+    navigationController?.pushViewController(searchDetailedController, animated: true)
+    
+  }
+  
   
 }
 extension MainMenuController: CLLocationManagerDelegate {
