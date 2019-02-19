@@ -17,6 +17,7 @@ class ResultsController: UIViewController {
     private var location = String()
     private var category = String()
     
+
     private var annotations =  [MKAnnotation]()
     var venues = [VenueDetails]() {
         didSet{
