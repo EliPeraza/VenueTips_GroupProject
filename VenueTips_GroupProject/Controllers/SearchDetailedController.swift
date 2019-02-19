@@ -11,16 +11,17 @@ import UIKit
 class SearchDetailedController: UIViewController {
   
   var venueInfoReceivedFromMain: VenueDetails?
+  
   var imageReceivedFromMain: UIImage?
   
-  var searchDetailedView = SearchDetailedView()
+  let searchDetailedView = SearchDetailedView()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .white
     view.addSubview(searchDetailedView)
+    view.backgroundColor = .white
     navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: #selector(favoriteButtonPressed))
-    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Add Comment", style: .plain, target: self, action: #selector(addCommentPressed))
+    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed))
     
     setupDetailed()
     
@@ -30,19 +31,19 @@ class SearchDetailedController: UIViewController {
     
   }
   
-  @objc func addCommentPressed() {
+  @objc func cancelButtonPressed() {
     
   }
   
   func setupDetailed() {
     searchDetailedView.venueName.text = venueInfoReceivedFromMain?.name
-    if let address = venueInfoReceivedFromMain?.location {
-      
     searchDetailedView.venueAddress.setTitle("Directions", for: .normal)
-    }
-    
+    searchDetailedView.addCommentButton.setTitle("Add a tip", for: .normal)
+    searchDetailedView.commentsLabel.text = "Tips by other users:"
     if let image = imageReceivedFromMain {
-      searchDetailedView.venueImage.image =  image
+      searchDetailedView.venueImage.image = image
+    } else {
+     searchDetailedView.venueImage.image = UIImage(named: "settings")
     }
     
     
