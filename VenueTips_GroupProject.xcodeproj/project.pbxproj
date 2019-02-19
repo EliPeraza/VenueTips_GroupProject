@@ -14,6 +14,7 @@
 		1E2365702214C49D00953D92 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E23656F2214C49D00953D92 /* DataManager.swift */; };
 		1E2365742214C8F100953D92 /* FavoritesDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2365732214C8F100953D92 /* FavoritesDetailedView.swift */; };
 		1E2365D0221755F900953D92 /* VenueTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2365CF221755F900953D92 /* VenueTip.swift */; };
+		1E2365D322176D3800953D92 /* VenueToSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2365D222176D3800953D92 /* VenueToSave.swift */; };
 		1E8800BB220DF9EE0093142A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8800BA220DF9EE0093142A /* AppDelegate.swift */; };
 		1E8800C2220DF9F00093142A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8800C1220DF9F00093142A /* Assets.xcassets */; };
 		1E8800C5220DF9F00093142A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E8800C3220DF9F00093142A /* LaunchScreen.storyboard */; };
@@ -55,6 +56,7 @@
 		1E2365732214C8F100953D92 /* FavoritesDetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesDetailedView.swift; sourceTree = "<group>"; };
 		1E23659F2216163300953D92 /* VenueToSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueToSave.swift; sourceTree = "<group>"; };
 		1E2365CF221755F900953D92 /* VenueTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueTip.swift; sourceTree = "<group>"; };
+		1E2365D222176D3800953D92 /* VenueToSave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueToSave.swift; sourceTree = "<group>"; };
 		1E8800B7220DF9EE0093142A /* VenueTips_GroupProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VenueTips_GroupProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8800BA220DF9EE0093142A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E8800C1220DF9F00093142A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -101,12 +103,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E2365D1221765A500953D92 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				621159742216241F00E38477 /* VenueToSave.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		1E8800AE220DF9EE0093142A = {
 			isa = PBXGroup;
 			children = (
 				1E8800B9220DF9EE0093142A /* VenueTips_GroupProject */,
 				1E8800B8220DF9EE0093142A /* Products */,
-				45CAD908221766CF009FB1B4 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,6 +148,7 @@
 		1E8800D0220E1D820093142A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1E2365D222176D3800953D92 /* VenueToSave.swift */,
 				62115972221623C800E38477 /* CategoryToSave.swift */,
 				1E8800CE220E1CC40093142A /* Venue.swift */,
 				1E8801052210BF360093142A /* Image.swift */,
@@ -327,6 +337,7 @@
 				1E8800F0220E29DD0093142A /* ImageAPIClient.swift in Sources */,
 				1E2365D0221755F900953D92 /* VenueTip.swift in Sources */,
 				1E8800CD220E1C0A0093142A /* APIKeys.swift in Sources */,
+				1E2365D322176D3800953D92 /* VenueToSave.swift in Sources */,
 				1E2365602213791100953D92 /* MainViewCell.swift in Sources */,
 				1E8800DE220E1E6B0093142A /* String+DateExtension.swift in Sources */,
 				1E8800EE220E20660093142A /* KeysForUserDefaults.swift in Sources */,
@@ -495,6 +506,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9DN3HV8LU2;
 				INFOPLIST_FILE = VenueTips_GroupProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -512,6 +524,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9DN3HV8LU2;
 				INFOPLIST_FILE = VenueTips_GroupProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

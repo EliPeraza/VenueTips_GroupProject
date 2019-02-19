@@ -13,13 +13,14 @@ enum ViewControllers{
   case MainVC
   case SearchVC
 }
-enum MainCategories: CaseIterable {
-  case Lunch
-  case Breakfast
-  case Coffee
-  case NightLife
-  case Parks
-  case Tranding
+enum MainCategories: String, CaseIterable {
+
+    case Lunch = "Lunch"
+    case Breakfast = "Breakfast"
+    case Coffee = "Coffee"
+    case Bar = "Bars"
+    case Parks = "Parks"
+    case Gyms = "Gyms"
 }
 class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
   
@@ -64,7 +65,7 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
     let myCurrentRegion = "\(currentLocation.latitude),\(currentLocation.longitude)"
     let category = MainCategories.allCases[sender.tag]
     let vc: ViewControllers = .MainVC
-    let resultsController = ResultsController()
+    let resultsController = ResultsController(vc: vc, location: myCurrentRegion, category: category.rawValue)
     navigationController?.pushViewController(resultsController, animated: true)
   }
   func getLocationVenues(){
@@ -133,6 +134,24 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
     searchVC.modalPresentationStyle = .overCurrentContext
     searchBar.resignFirstResponder()
     present(searchVC, animated: true, completion: nil)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+    guard let cell = collectionView.cellForItem(at: indexPath) as? MainViewCell else {
+      print("No Cell")
+      return}
+    
+    let venueToSegue = nearbyVenues[indexPath.row]
+    
+    
+    let searchDetailedController = SearchDetailedController()
+    
+    searchDetailedController.imageReceivedFromMain = cell.venueImage.image
+    searchDetailedController.venueInfoReceivedFromMain = venueToSegue
+    
+    navigationController?.pushViewController(searchDetailedController, animated: true)
+    
   }
   
   

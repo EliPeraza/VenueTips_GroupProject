@@ -58,7 +58,7 @@ class MainView: UIView {
     }()
     lazy var button5: UIButton = {
         var button = UIButton()
-        button.setTitle("Trending", for: .normal)
+        button.setTitle("Gyms", for: .normal)
         button.layer.borderColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         button.setTitleColor(#colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1), for: .normal)
         button.tag = 5
