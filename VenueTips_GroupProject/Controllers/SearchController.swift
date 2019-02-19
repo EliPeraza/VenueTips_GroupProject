@@ -11,7 +11,7 @@ import UIKit
 class SearchController: UIViewController {
   
   let searchView = SearchView()
-  
+
   var categoriesTest = [CategoriesDetails]() {
     didSet {
       DispatchQueue.main.async {
@@ -67,6 +67,24 @@ extension SearchController: UITableViewDataSource {
     
     return cell
   }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let resultsCategory = categoriesTest[indexPath.row].name
+        let vc = ViewControllers.SearchVC
+
+        if let searchLocation = searchView.locationSearchBar.text {
+            //To do: Segue here
+        }
+        if (searchView.locationSearchBar.text?.isEmpty)! {
+//            print("Show alert")
+            let alert = UIAlertController(title: "Please enter a location", message: nil, preferredStyle: .alert)
+            let ok = UIAlertAction.init(title: "OK", style: .default) { (UIAlertAction) in
+                alert.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
+        }
+    }
 }
 
 extension SearchController: UITableViewDelegate {
