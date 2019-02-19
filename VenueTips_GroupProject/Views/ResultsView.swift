@@ -25,7 +25,8 @@ class ResultsView: UIView {
     
     lazy var button: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .green
+        button.setImage(UIImage(named: "icons8-chevron_up"), for: .normal)
+        button.backgroundColor = .clear
 //        button.setImage("", for: .normal) speak to Leandro to get image for button and cell file
         return button
     }()
@@ -52,8 +53,9 @@ class ResultsView: UIView {
         backgroundColor = .blue
         self.addSubview(searchBar)
         self.addSubview(mapView)
-        self.addSubview(button)
         self.addSubview(listTableView)
+        self.addSubview(button)
+        
         setConstraints()
     }
 
@@ -67,19 +69,19 @@ class ResultsView: UIView {
         mapView.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
         mapView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         mapView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        mapView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        mapView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        button.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         button.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         button.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         listTableView.translatesAutoresizingMaskIntoConstraints = false
-        listTableView.heightAnchor.constraint(equalToConstant: 10).isActive = true
+        listTableView.heightAnchor.constraint(equalToConstant: 0).isActive = true
         listTableView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         listTableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        listTableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true 
+        listTableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
     
     

@@ -59,13 +59,12 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
   }
   @objc func categoryButtonPressed(sender: UIButton) {
     print("\(MainCategories.allCases[sender.tag])")
-    //TO DO: SEND LOCATION, CATEGORY, AND VC TO RESULT CONTROLLER, USE INIT()?
     guard let currentLocation = locationManager.location?.coordinate  else {print("No location found")
       return}
     let myCurrentRegion = "\(currentLocation.latitude),\(currentLocation.longitude)"
     let category = MainCategories.allCases[sender.tag]
     let vc: ViewControllers = .MainVC
-    let resultsController = ResultsController(vc: vc, location: myCurrentRegion, category: category.rawValue)
+    let resultsController = ResultsController(vc: vc, location: myCurrentRegion, category: category.rawValue, coordinates: true)
     navigationController?.pushViewController(resultsController, animated: true)
   }
   func getLocationVenues(){
@@ -133,7 +132,10 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
     let searchVC = SearchController()
     searchVC.modalPresentationStyle = .overCurrentContext
     searchBar.resignFirstResponder()
+    searchVC.segueDelegate = self
     present(searchVC, animated: true, completion: nil)
+//    let searchController = SearchController()
+//    navigationController?.pushViewController(searchController, animated: true)
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -168,4 +170,22 @@ extension MainMenuController: CLLocationManagerDelegate {
     //        let myCurrentRegion = MKCoordinateRegion(center: currentLocation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
     //        mapView.setRegion(myCurrentRegion, animated: true)
   }
+}
+
+extension MainMenuController: SegueDelegate {
+    func prepareForSegue(vc: ViewControllers, location: String, keyword: String) {
+        
+        if location == "Current Location" {
+            var locationToSend = String()
+            if let currentLocation = locationManager.location?.coordinate{
+               locationToSend = "\(currentLocation.latitude),\(currentLocation.longitude)"
+                let resultVC = ResultsController(vc: vc, location: locationToSend, category: keyword,coordinates: true)
+                navigationController?.pushViewController(resultVC, animated: true)
+            }
+        } else {
+            let resultVC = ResultsController(vc: vc, location: location, category: keyword, coordinates: false)
+            navigationController?.pushViewController(resultVC, animated: true)
+        }
+        
+    }
 }

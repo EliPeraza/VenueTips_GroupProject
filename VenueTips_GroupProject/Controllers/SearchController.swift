@@ -7,11 +7,13 @@
 //
 
 import UIKit
-
+protocol SegueDelegate: AnyObject{
+    func prepareForSegue(vc: ViewControllers, location: String, keyword: String)
+}
 class SearchController: UIViewController {
   
   let searchView = SearchView()
-
+  weak var segueDelegate: SegueDelegate?
   var categoriesTest = [CategoriesDetails]() {
     didSet {
       DispatchQueue.main.async {
@@ -26,6 +28,7 @@ class SearchController: UIViewController {
     super.viewDidLoad()
     searchView.cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
     view.addSubview(searchView)
+    
     searchView.locationSearchBar.delegate = self
     searchView.venueSearchBar.delegate = self
     searchView.searchTableView.dataSource = self
@@ -69,11 +72,12 @@ extension SearchController: UITableViewDataSource {
   }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let resultsCategory = categoriesTest[indexPath.row].name
+        let resultsCategory = categoriesTest[indexPath.row].name.replacingOccurrences(of: " ", with: "")
         let vc = ViewControllers.SearchVC
 
         if let searchLocation = searchView.locationSearchBar.text {
-            //To do: Segue here
+        dismiss(animated: true, completion: nil)
+        segueDelegate?.prepareForSegue(vc: vc, location: searchLocation, keyword: resultsCategory)
         }
         if (searchView.locationSearchBar.text?.isEmpty)! {
 //            print("Show alert")
@@ -108,6 +112,7 @@ extension SearchController: UISearchBarDelegate {
         guard let location = searchView.locationSearchBar.text,
                 !location.isEmpty else {return}
             locationToSend = location
-        
+        dismiss(animated: true, completion: nil)
+        segueDelegate?.prepareForSegue(vc: vc, location: locationToSend, keyword: venueToSend)    
     }
 }

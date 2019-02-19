@@ -9,14 +9,17 @@
 import UIKit
 import CoreLocation
 import MapKit
-
+enum ScreenState {
+    case on
+    case off
+}
 class ResultsController: UIViewController {
     private var resultsView = ResultsView()
-
+    private var sceenState: ScreenState = .off
     private var vc: ViewControllers?
     private var location = String()
     private var category = String()
-    
+    private var coordinates = Bool()
 
     private var annotations =  [MKAnnotation]()
     var venues = [VenueDetails]() {
@@ -36,18 +39,42 @@ class ResultsController: UIViewController {
         resultsView.listTableView.delegate = self
         resultsView.searchBar.delegate = self
         resultsView.mapView.delegate = self
+        resultsView.button.addTarget(self, action: #selector(pullViewButtonPressed), for: .touchUpInside)
         if vc == .MainVC{
         setupMap()
             getVenues(location: location, keyword: category, date: "20190219")
+        } else {
+            if coordinates {
+            getVenues(location: location, keyword: category, date: "20190219")
+            } else {
+                getVenuesByLocation()
+            }
         }
     }
-
-
-    init(vc: ViewControllers,location: String, category: String){
+    @objc func pullViewButtonPressed() {
+        if sceenState == .off {
+            sceenState = .on
+            resultsView.button.setImage(UIImage(named: "icons8-chevron_down"), for: .normal)
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear, animations: {
+                print(self.resultsView.listTableView.frame)
+                self.resultsView.listTableView.frame = CGRect(x: self.self.resultsView.listTableView.frame.origin.x, y: self.resultsView.listTableView.frame.origin.y, width: self.resultsView.listTableView.frame.width, height: self.resultsView.frame.height)
+                
+            })
+        } else {
+            sceenState = .off
+            resultsView.button.setImage(UIImage(named: "icons8-chevron_up"), for: .normal)
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear, animations: {
+                self.resultsView.listTableView.frame = CGRect(x: 0.0, y: self.resultsView.listTableView.frame.origin.y + self.resultsView.frame.height, width: self.resultsView.listTableView.frame.width, height: 0)
+            })
+        }
+    }
+    
+    init(vc: ViewControllers,location: String, category: String,coordinates: Bool){
         super.init(nibName: nil, bundle: nil)
         self.vc = vc
         self.location = location
         self.category = category
+        self.coordinates = coordinates
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -75,6 +102,17 @@ class ResultsController: UIViewController {
                 self.venues = venues
             }
             
+        }
+        
+    }
+    func getVenuesByLocation() {
+        VenueAPIClient.searchForVenueAnyLocation(location: location, keyword: category, date: "20190219") { (appError, venues) in
+            if let appError = appError {
+                print(appError)
+            }
+            if let venues = venues {
+                self.venues = venues
+            }
         }
     }
     func addAnnotation() {
