@@ -14,10 +14,6 @@ class FavoritesDetailedController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    print("test")
-    
-    
-    
   }
   
   

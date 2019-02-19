@@ -13,14 +13,14 @@ enum ViewControllers{
   case MainVC
   case SearchVC
 }
-enum MainCategories: CaseIterable {
+enum MainCategories: String, CaseIterable {
 
-    case Lunch
-    case Breakfast
-    case Coffee
-    case NightLife
-    case Parks
-    case Gyms
+    case Lunch = "Lunch"
+    case Breakfast = "Breakfast"
+    case Coffee = "Coffee"
+    case Bar = "Bars"
+    case Parks = "Parks"
+    case Gyms = "Gyms"
 }
 class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
   
@@ -65,7 +65,7 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
     let myCurrentRegion = "\(currentLocation.latitude),\(currentLocation.longitude)"
     let category = MainCategories.allCases[sender.tag]
     let vc: ViewControllers = .MainVC
-    let resultsController = ResultsController()
+    let resultsController = ResultsController(vc: vc, location: myCurrentRegion, category: category.rawValue)
     navigationController?.pushViewController(resultsController, animated: true)
   }
   func getLocationVenues(){
