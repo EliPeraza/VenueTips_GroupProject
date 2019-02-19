@@ -19,6 +19,7 @@ class ResultsView: UIView {
     lazy var mapView: MKMapView = {
         let mapView = MKMapView()
         mapView.mapType = .standard
+        mapView.showsUserLocation = true
         return mapView
     }()
     

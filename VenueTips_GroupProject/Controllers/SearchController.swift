@@ -26,6 +26,8 @@ class SearchController: UIViewController {
     super.viewDidLoad()
     searchView.cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
     view.addSubview(searchView)
+    searchView.locationSearchBar.delegate = self
+    searchView.venueSearchBar.delegate = self
     searchView.searchTableView.dataSource = self
     searchView.searchTableView.delegate = self
     searchView.searchTableView.register(UITableViewCell.self, forCellReuseIdentifier: "SearchCell")
@@ -89,4 +91,23 @@ extension SearchController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 100
   }
+}
+
+extension SearchController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        var locationToSend = String()
+        var venueToSend = String()
+        let vc: ViewControllers = .SearchVC
+        guard let venue = searchView.venueSearchBar.text,
+            !venue.isEmpty,
+        let searchTextEncoded =  venue.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+            else { return getCategories() }
+        categoriesTest = categoriesTest.filter{ $0.name.contains(searchTextEncoded.capitalized) }
+        venueToSend = venue
+        guard let location = searchView.locationSearchBar.text,
+                !location.isEmpty else {return}
+            locationToSend = location
+        
+    }
 }

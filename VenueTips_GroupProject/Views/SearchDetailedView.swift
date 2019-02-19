@@ -17,25 +17,26 @@ class SearchDetailedView: UIView {
     
     lazy var venueName: UILabel = {
         let venueName = UILabel()
-        venueName.backgroundColor = .red
+        venueName.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         return venueName
     }()
     
     lazy var venueAddress: UIButton = {
         let venueAddress = UIButton()
-        venueAddress.backgroundColor = .green
+        venueAddress.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+      venueAddress.titleLabel?.textColor = .black
         return venueAddress
     }()
     
     lazy var commentsLabel: UILabel = {
         let commentsLabel = UILabel()
-        commentsLabel.backgroundColor = .blue
+        commentsLabel.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         return commentsLabel
     }()
     
     lazy var commentsScrollView: UIScrollView = {
         let commentsScrollView = UIScrollView()
-        commentsScrollView.backgroundColor = .yellow
+        commentsScrollView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         return commentsScrollView
     }()
     
