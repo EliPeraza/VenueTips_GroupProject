@@ -27,6 +27,7 @@ class SearchDetailedController: UIViewController {
   }
   
   @objc func favoriteButtonPressed() {
+    
   }
   
   @objc func addCommentPressed() {
