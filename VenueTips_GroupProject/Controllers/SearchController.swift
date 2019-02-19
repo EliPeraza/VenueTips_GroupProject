@@ -102,18 +102,19 @@ extension SearchController: UISearchBarDelegate {
         guard let venue = searchView.venueSearchBar.text,
             !venue.isEmpty,
         let searchTextEncoded =  venue.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-            else { return getCategories() }
+            else {return getCategories() }
         categoriesTest = categoriesTest.filter{ $0.name.contains(searchTextEncoded.capitalized) }
         venueToSend = venue
         guard let location = searchView.locationSearchBar.text,
                 !location.isEmpty else {return}
             locationToSend = location
-        let alert = UIAlertController(title: "No Results Found", message: nil, preferredStyle: .alert)
-        let ok = UIAlertAction.init(title: "Ok", style: .default) { (UIAlertAction) in
-            alert.dismiss(animated: true, completion: nil)
-        }
-        alert.addAction(ok)
-        present(alert, animated: true, completion: nil)
+        
+//        let alert = UIAlertController(title: "Please Enter Location", message: nil, preferredStyle: .alert)
+//        let ok = UIAlertAction.init(title: "Ok", style: .default) { (UIAlertAction) in
+//            alert.dismiss(animated: true, completion: nil)
+//        }
+//        alert.addAction(ok)
+//        present(alert, animated: true, completion: nil)
         
     }
 }
