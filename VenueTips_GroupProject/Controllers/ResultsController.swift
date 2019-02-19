@@ -49,6 +49,7 @@ class ResultsController: UIViewController {
             } else {
                 getVenuesByLocation()
             }
+            getVenues(location: location, keyword: category, date: DateHelper.formatISOToDate(dateString: "MM/dd/yyyy"))
         }
     }
     @objc func pullViewButtonPressed() {
@@ -157,7 +158,7 @@ extension ResultsController: CLLocationManagerDelegate {
 extension ResultsController: UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.text {
-        getVenues(location: location, keyword: text, date: "20190219")
+        getVenues(location: location, keyword: text, date: DateHelper.formatISOToDate(dateString: "MM/dd/yyyy"))
         }
     }
 }

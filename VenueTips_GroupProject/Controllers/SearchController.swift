@@ -44,7 +44,7 @@ class SearchController: UIViewController {
   
   
   func getCategories() {
-    CategoriesAPIClient.getCategories(location: "40.7,-74", date: "20190208") { (appError, categories) in
+    CategoriesAPIClient.getCategories(location: "40.7,-74", date: DateHelper.formatISOToDate(dateString: "MM/dd/yyyy")) { (appError, categories) in
       if let appError = appError {
         print(appError)
       }
@@ -114,5 +114,12 @@ extension SearchController: UISearchBarDelegate {
             locationToSend = location
         dismiss(animated: true, completion: nil)
         segueDelegate?.prepareForSegue(vc: vc, location: locationToSend, keyword: venueToSend)    
+        let alert = UIAlertController(title: "No Results Found", message: nil, preferredStyle: .alert)
+        let ok = UIAlertAction.init(title: "Ok", style: .default) { (UIAlertAction) in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
+        
     }
 }
