@@ -22,6 +22,8 @@ enum MainCategories: String, CaseIterable {
     case Parks = "Parks"
     case Gyms = "Gyms"
 }
+
+
 class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
   
   var mainView = MainView()
