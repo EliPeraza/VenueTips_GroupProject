@@ -11,7 +11,7 @@ import UIKit
 class MainView: UIView {
     lazy var venueSearchBar: UISearchBar = {
         var searchBar = UISearchBar()
-        searchBar.placeholder = "E.g Sushi, Tacos, Halal"
+        searchBar.placeholder = "E.g Sushi, Tacos, Halal, etc."
         return searchBar
     }()
     lazy var button0: UIButton = {
@@ -69,8 +69,9 @@ class MainView: UIView {
     }()
     lazy var exploreNearByLabel: UILabel = {
         var label = UILabel()
-        label.text = "Explore Near By"
-        label.font = UIFont(name: "Arial", size: 22)
+        label.text = "Explore Nearby"
+//        label.font = UIFont(name: "Arial", size: 22)
+        label.font = UIFont.boldSystemFont(ofSize: 22)
         label.textAlignment = .center
         return label
     }()
@@ -80,7 +81,7 @@ class MainView: UIView {
         layout.sectionInset = UIEdgeInsets.init(top: 20, left: 10, bottom: 20, right: 10)
         layout.scrollDirection = .horizontal
         var collectionView = UICollectionView.init(frame: self.bounds, collectionViewLayout: layout)
-        collectionView.layer.borderColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
+        collectionView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         collectionView.layer.borderWidth = 4
         collectionView.backgroundColor = .clear
         return collectionView
