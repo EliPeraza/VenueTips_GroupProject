@@ -22,17 +22,25 @@ class SearchDetailedController: UIViewController {
     view.backgroundColor = .white
     navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: #selector(favoriteButtonPressed))
     navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed))
+
+    searchDetailedView.addCommentButton.addTarget(self, action: #selector(addTipButtonPressed), for: .touchUpInside)
+    
     searchDetailedView.venueAddress.addTarget(self, action: #selector(directionPressed), for: .touchUpInside)
     
     setupDetailed()
     
-    
+  }
+  
+  @objc func addTipButtonPressed() {
+    let addTipController = AddTipControllerViewController()
+    navigationController?.pushViewController(addTipController, animated: true)
   }
     @objc func directionPressed() {
         openMaps()
     }
   @objc func favoriteButtonPressed() {
-    
+    //TODO: Pull new controller with table view with categories to select where we are saving the venue
+    //Call the 
   }
   
   @objc func cancelButtonPressed() {
