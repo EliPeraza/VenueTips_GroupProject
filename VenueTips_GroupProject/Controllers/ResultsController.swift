@@ -26,7 +26,7 @@ class ResultsController: UIViewController {
         didSet{
             DispatchQueue.main.async {
                 self.addAnnotation()
-                
+                self.resultsView.listTableView.reloadData()
             }
         }
     }
@@ -56,14 +56,14 @@ class ResultsController: UIViewController {
         if sceenState == .off {
             sceenState = .on
             resultsView.button.setImage(UIImage(named: "icons8-chevron_down"), for: .normal)
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear, animations: {
+            UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
                 print(self.resultsView.listTableView.frame)
                 self.resultsView.listTableView.frame = CGRect(x: self.resultsView.listTableView.frame.origin.x, y: self.resultsView.listTableView.frame.origin.y, width: self.resultsView.listTableView.frame.width, height: -(self.resultsView.safeAreaLayoutGuide.layoutFrame.height - self.resultsView.searchBar.frame.height))
             })
         } else {
             sceenState = .off
             resultsView.button.setImage(UIImage(named: "icons8-chevron_up"), for: .normal)
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear, animations: {
+            UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
                 self.resultsView.listTableView.frame = CGRect(x: 0.0, y: self.resultsView.safeAreaLayoutGuide.layoutFrame.origin.y + self.resultsView.safeAreaLayoutGuide.layoutFrame.height, width: self.resultsView.listTableView.frame.width, height: 0)
             })
         }
@@ -135,9 +135,44 @@ extension ResultsController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "VenueListCell", for: indexPath) as? VenueListCell else {
+            print("No cell")
+            return UITableViewCell()
+        }
+        let venueToSet = venues[indexPath.row]
+        cell.nameLabel.text = venueToSet.name
+        cell.addressLabel.text = venueToSet.location.address
+        ImageAPIClient.searchImageForVenue(venueID: venueToSet.id, date: "20190219") { (appError, photoDetail) in
+            if let appError = appError {
+                print(appError)
+            }
+            if let photoDetail = photoDetail {
+                if let photodetail = photoDetail.first{
+                    let url = "\(photodetail.prefix)original\(photodetail.suffix)"
+                    if let image = ImageHelper.fetchImageFromCache(urlString: url){
+                        DispatchQueue.main.async {
+                            cell.venueImage.image = image
+                        }
+                    } else {
+                        ImageHelper.fetchImageFromNetwork(urlString: url, completion: { (appError, photo) in
+                            if let appError = appError {
+                                print(appError)
+                                cell.venueImage.image = UIImage(named: "placeholder")
+                            }
+                            if let photo = photo {
+                                cell.venueImage.image = photo
+                            }
+                        })
+                    }
+                } else {
+                    print("photo detail is nil")
+                }
+            }
+        }
         return cell
-        //TO DO: CREATE A CELL FILE
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
     }
 }
 
@@ -157,7 +192,7 @@ extension ResultsController: CLLocationManagerDelegate {
 extension ResultsController: UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.text {
-        getVenues(location: location, keyword: text, date: DateHelper.formatISOToDate(dateString: "MM/dd/yyyy"))
+        getVenues(location: location, keyword: text, date: "20190220")
         }
     }
 }

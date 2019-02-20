@@ -13,9 +13,9 @@ struct VenueAPIClient {
     static func searchForVenueNearBy(location: String,keyword: String?,date: String,completionHandler: @escaping (AppError?, [VenueDetails]?) -> Void){
         var url = String()
         if let keyword = keyword {
-            url = "https://api.foursquare.com/v2/venues/search?ll=\(location)&client_id=\(APIKeys.clientID)&client_secret=\(APIKeys.clientSecret)&v=\(date)&query=\(keyword)"
+            url = "https://api.foursquare.com/v2/venues/search?ll=\(location)&client_id=\(APIKeys.clientID)&client_secret=\(APIKeys.clientSecret)&v=\(date)&query=\(keyword)&radius=3000"
         } else {
-            url = "https://api.foursquare.com/v2/venues/search?ll=\(location)&client_id=\(APIKeys.clientID)&client_secret=\(APIKeys.clientSecret)&v=\(date)"
+            url = "https://api.foursquare.com/v2/venues/search?ll=\(location)&client_id=\(APIKeys.clientID)&client_secret=\(APIKeys.clientSecret)&v=\(date)&radius=3000"
         }
         NetworkHelper.shared.performDataTask(endpointURLString: url) { (appError, data) in
             if appError != nil {

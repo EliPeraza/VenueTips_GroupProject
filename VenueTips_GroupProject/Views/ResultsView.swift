@@ -39,7 +39,8 @@ class ResultsView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
-//        listTableView.register(<#T##cellClass: AnyClass?##AnyClass?#>, forCellReuseIdentifier: <#T##String#>)
+
+        listTableView.register(VenueListCell.self, forCellReuseIdentifier: "VenueListCell")
         commonInit()
     }
     
@@ -50,7 +51,7 @@ class ResultsView: UIView {
     }
 
     private func commonInit() {
-        backgroundColor = .blue
+        backgroundColor = .white
         self.addSubview(searchBar)
         self.addSubview(mapView)
         self.addSubview(listTableView)
