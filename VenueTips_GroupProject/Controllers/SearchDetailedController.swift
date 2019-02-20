@@ -41,7 +41,10 @@ class SearchDetailedController: UIViewController {
     }
   @objc func favoriteButtonPressed() {
     //TODO: Pull new controller with table view with categories to select where we are saving the venue
-    //Call the 
+    //Call the
+    let saveToFavoritesVC = SaveToFavoritesController()
+    saveToFavoritesVC.venueName = venueInfoReceivedFromMain!.name
+    navigationController?.pushViewController(saveToFavoritesVC, animated: true)
   }
   
   @objc func cancelButtonPressed() {
