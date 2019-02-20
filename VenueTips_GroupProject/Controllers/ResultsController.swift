@@ -41,8 +41,8 @@ class ResultsController: UIViewController {
         resultsView.searchBar.delegate = self
         resultsView.mapView.delegate = self
         resultsView.button.addTarget(self, action: #selector(pullViewButtonPressed), for: .touchUpInside)
-        if vc == .MainVC {
         setupMap()
+        if vc == .MainVC {
             getVenues(location: location, keyword: category, date: date)
         } else {
             if coordinates {
@@ -50,7 +50,7 @@ class ResultsController: UIViewController {
             } else {
                 getVenuesByLocation()
             }
-            getVenues(location: location, keyword: category, date: date)
+//            getVenues(location: location, keyword: category, date: date)
 //             getVenues(location: location, keyword: category, date: DateHelper.formatISOToDate(dateString: "MM/dd/yyyy"))
 
         }
@@ -206,8 +206,12 @@ extension ResultsController: MKMapViewDelegate{
         let name = view.annotation!.title!
         let filterVenue = venues.filter{$0.name == name!}
         let venueToSend = filterVenue.first!
-        print(venueToSend.name)
-        //TO DO: SEND FILTERED VENUE TO DETAIL     
+        let detailVC = SearchDetailedController()
+//        detailVC.modalPresentationStyle = .overCurrentContext
+        detailVC.venueInfoReceivedFromMain = venueToSend
+        navigationController?.pushViewController(detailVC, animated: true)
+//        present(detailVC, animated: true, completion: nil)
+        //TO DO: SEND FILTERED VENUE TO DETAIL
     }
 }
 
