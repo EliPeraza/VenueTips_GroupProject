@@ -14,6 +14,7 @@ enum ScreenState {
     case off
 }
 class ResultsController: UIViewController {
+    private let date = DateHelper.formatISOToDate(dateString: "yyyyMMdd")
     private var resultsView = ResultsView()
     private var sceenState: ScreenState = .off
     private var vc: ViewControllers?
@@ -42,14 +43,16 @@ class ResultsController: UIViewController {
         resultsView.button.addTarget(self, action: #selector(pullViewButtonPressed), for: .touchUpInside)
         if vc == .MainVC {
         setupMap()
-            getVenues(location: location, keyword: category, date: "20190219")
+            getVenues(location: location, keyword: category, date: date)
         } else {
             if coordinates {
-            getVenues(location: location, keyword: category, date: "20190219")
+            getVenues(location: location, keyword: category, date: date)
             } else {
                 getVenuesByLocation()
             }
+            getVenues(location: location, keyword: category, date: date)
 //             getVenues(location: location, keyword: category, date: DateHelper.formatISOToDate(dateString: "MM/dd/yyyy"))
+
         }
     }
     @objc func pullViewButtonPressed() {
@@ -106,7 +109,7 @@ class ResultsController: UIViewController {
         
     }
     func getVenuesByLocation() {
-        VenueAPIClient.searchForVenueAnyLocation(location: location, keyword: category, date: "20190219") { (appError, venues) in
+        VenueAPIClient.searchForVenueAnyLocation(location: location, keyword: category, date: date) { (appError, venues) in
             if let appError = appError {
                 print(appError)
             }
@@ -142,7 +145,7 @@ extension ResultsController: UITableViewDataSource, UITableViewDelegate{
         let venueToSet = venues[indexPath.row]
         cell.nameLabel.text = venueToSet.name
         cell.addressLabel.text = venueToSet.location.address
-        ImageAPIClient.searchImageForVenue(venueID: venueToSet.id, date: "20190219") { (appError, photoDetail) in
+        ImageAPIClient.searchImageForVenue(venueID: venueToSet.id, date: date) { (appError, photoDetail) in
             if let appError = appError {
                 print(appError)
             }
@@ -192,7 +195,8 @@ extension ResultsController: CLLocationManagerDelegate {
 extension ResultsController: UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.text {
-        getVenues(location: location, keyword: text, date: "20190220")
+        getVenues(location: location, keyword: text, date: date)
+        getVenues(location: location, keyword: text, date: date)
         }
     }
 }
