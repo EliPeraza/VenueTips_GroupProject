@@ -32,7 +32,7 @@ extension FavoritesDetailedController: UITableViewDelegate, UITableViewDataSourc
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = UITableViewCell()
     
-    cell.backgroundColor = #colorLiteral(red: 0.4588235294, green: 0.7921568627, blue: 0.7647058824, alpha: 1)
+    cell.backgroundColor = .clear
     cell.textLabel?.text = categoryNamePassedFromFavoriteCollection
     
     return cell
