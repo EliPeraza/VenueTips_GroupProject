@@ -49,7 +49,7 @@ class ResultsController: UIViewController {
             } else {
                 getVenuesByLocation()
             }
-            getVenues(location: location, keyword: category, date: DateHelper.formatISOToDate(dateString: "MM/dd/yyyy"))
+//             getVenues(location: location, keyword: category, date: DateHelper.formatISOToDate(dateString: "MM/dd/yyyy"))
         }
     }
     @objc func pullViewButtonPressed() {
@@ -58,14 +58,13 @@ class ResultsController: UIViewController {
             resultsView.button.setImage(UIImage(named: "icons8-chevron_down"), for: .normal)
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear, animations: {
                 print(self.resultsView.listTableView.frame)
-                self.resultsView.listTableView.frame = CGRect(x: self.self.resultsView.listTableView.frame.origin.x, y: self.resultsView.listTableView.frame.origin.y, width: self.resultsView.listTableView.frame.width, height: self.resultsView.frame.height)
-                
+                self.resultsView.listTableView.frame = CGRect(x: self.resultsView.listTableView.frame.origin.x, y: self.resultsView.listTableView.frame.origin.y, width: self.resultsView.listTableView.frame.width, height: -(self.resultsView.safeAreaLayoutGuide.layoutFrame.height - self.resultsView.searchBar.frame.height))
             })
         } else {
             sceenState = .off
             resultsView.button.setImage(UIImage(named: "icons8-chevron_up"), for: .normal)
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear, animations: {
-                self.resultsView.listTableView.frame = CGRect(x: 0.0, y: self.resultsView.listTableView.frame.origin.y + self.resultsView.frame.height, width: self.resultsView.listTableView.frame.width, height: 0)
+                self.resultsView.listTableView.frame = CGRect(x: 0.0, y: self.resultsView.safeAreaLayoutGuide.layoutFrame.origin.y + self.resultsView.safeAreaLayoutGuide.layoutFrame.height, width: self.resultsView.listTableView.frame.width, height: 0)
             })
         }
     }
