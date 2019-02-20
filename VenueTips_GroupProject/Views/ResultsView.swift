@@ -13,6 +13,7 @@ class ResultsView: UIView {
 
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
+        searchBar.placeholder = "Enter Venue or Food e.g Tacos or Yoga"
         return searchBar
     }()
 

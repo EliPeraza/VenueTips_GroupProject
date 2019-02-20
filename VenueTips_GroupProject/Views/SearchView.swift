@@ -29,7 +29,7 @@ class SearchView: UIView {
     
     lazy var locationSearchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.text = "Current Location"
+        searchBar.placeholder = "Enter Location"
         return searchBar
     }()
     
