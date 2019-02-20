@@ -32,7 +32,7 @@ struct VenueAPIClient {
         }
     }
     static func searchForVenueAnyLocation(location: String, keyword: String,date: String, completionHandler: @escaping(AppError?,[VenueDetails]?)-> Void) {
-        let location = location.replacingOccurrences(of: " ", with: "")
+        let location = location.replacingOccurrences(of: " ", with: "_")
         let url = "https://api.foursquare.com/v2/venues/search?near=\(location)&client_id=\(APIKeys.clientID)&client_secret=\(APIKeys.clientSecret)&v=\(date)&query=\(keyword)&radius=3000"
         print(url)
         NetworkHelper.shared.performDataTask(endpointURLString: url ) { (appError, data) in
