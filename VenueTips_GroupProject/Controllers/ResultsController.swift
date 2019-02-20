@@ -51,7 +51,6 @@ class ResultsController: UIViewController {
                 getVenuesByLocation()
             }
             getVenues(location: location, keyword: category, date: date)
-//             getVenues(location: location, keyword: category, date: DateHelper.formatISOToDate(dateString: "MM/dd/yyyy"))
 
         }
     }
