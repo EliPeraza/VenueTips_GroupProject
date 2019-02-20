@@ -22,8 +22,10 @@ class SearchDetailedController: UIViewController {
     view.backgroundColor = .white
     navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: #selector(favoriteButtonPressed))
     navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed))
+
     
     setupDetailed()
+    
     
   }
   
@@ -45,8 +47,6 @@ class SearchDetailedController: UIViewController {
     } else {
      searchDetailedView.venueImage.image = UIImage(named: "placeholder")
     }
-    
-    
-  }
+}
   
 }

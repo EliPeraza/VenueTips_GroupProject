@@ -22,6 +22,8 @@ enum MainCategories: String, CaseIterable {
     case Parks = "Parks"
     case Gyms = "Gyms"
 }
+
+
 class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
   
   var mainView = MainView()
@@ -43,15 +45,7 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
     mainView.venueSearchBar.delegate = self
     mainView.exploreNearByCollectionView.dataSource = self
     mainView.exploreNearByCollectionView.delegate = self
-    //            VenueAPIClient.searchForVenueAnyLocation(location: "Queens, NY", keyword: "tacos") { (appError, venues) in
-    //              if let appError = appError {
-    //                print(appError)
-    //              }
-    //              if let venues = venues{
-    //                self.nearbyVenues = venues
-    //              }
-    //
-    //            }
+
     
   }
   func addActionToButtons(){

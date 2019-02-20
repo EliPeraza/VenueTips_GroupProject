@@ -71,7 +71,7 @@ class ResultsView: UIView {
         mapView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         mapView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
+      
         button.translatesAutoresizingMaskIntoConstraints = false
         button.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         button.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
