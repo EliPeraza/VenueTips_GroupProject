@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import MapKit
 class SearchDetailedController: UIViewController {
   
   var venueInfoReceivedFromMain: VenueDetails?
@@ -25,6 +25,8 @@ class SearchDetailedController: UIViewController {
 
     searchDetailedView.addCommentButton.addTarget(self, action: #selector(addTipButtonPressed), for: .touchUpInside)
     
+    searchDetailedView.venueAddress.addTarget(self, action: #selector(directionPressed), for: .touchUpInside)
+    
     setupDetailed()
     
   }
@@ -33,7 +35,9 @@ class SearchDetailedController: UIViewController {
     let addTipController = AddTipControllerViewController()
     navigationController?.pushViewController(addTipController, animated: true)
   }
-  
+    @objc func directionPressed() {
+        openMaps()
+    }
   @objc func favoriteButtonPressed() {
     //TODO: Pull new controller with table view with categories to select where we are saving the venue
     //Call the 
@@ -42,7 +46,21 @@ class SearchDetailedController: UIViewController {
   @objc func cancelButtonPressed() {
     navigationController?.popViewController(animated: true)
   }
-  
+    func openMaps() {
+            let latitude: CLLocationDegrees = (venueInfoReceivedFromMain?.location.lat)!
+            let longitude: CLLocationDegrees = (venueInfoReceivedFromMain?.location.lng)!
+
+            let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+            let regionSpan = MKCoordinateRegion(center: coordinates, latitudinalMeters: 1000, longitudinalMeters: 1000)
+            let options = [
+                MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+                MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+            ]
+            let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+            let mapItem = MKMapItem(placemark: placemark)
+            mapItem.name = venueInfoReceivedFromMain?.name
+            mapItem.openInMaps(launchOptions: options)
+    }
   func setupDetailed() {
     searchDetailedView.venueName.text = venueInfoReceivedFromMain?.name
     searchDetailedView.venueAddress.setTitle("Directions", for: .normal)
