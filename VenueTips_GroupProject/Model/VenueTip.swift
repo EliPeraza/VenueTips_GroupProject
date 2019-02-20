@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct VenueTip {
+struct VenueTip: Codable {
 
   let venueID: String
   let userName: String
