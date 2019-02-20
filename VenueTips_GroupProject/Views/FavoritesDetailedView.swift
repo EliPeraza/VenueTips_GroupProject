@@ -29,9 +29,6 @@ class FavoritesDetailedView: UIView {
   private func tableViewConstraints() {
    addSubview(favoriteVenuesTableView)
     favoriteVenuesTableView.translatesAutoresizingMaskIntoConstraints = false
-    favoriteVenuesTableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
-    favoriteVenuesTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -11).isActive = true
-    favoriteVenuesTableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 11).isActive = true
-    favoriteVenuesTableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -11).isActive = true
+    favoriteVenuesTableView.frame = frame
   }
 }
