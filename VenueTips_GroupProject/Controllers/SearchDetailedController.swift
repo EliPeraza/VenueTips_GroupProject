@@ -33,6 +33,7 @@ class SearchDetailedController: UIViewController {
   
   @objc func addTipButtonPressed() {
     let addTipController = AddTipControllerViewController()
+    addTipController.venueID = venueInfoReceivedFromMain?.id ?? "no id"
     navigationController?.pushViewController(addTipController, animated: true)
   }
     @objc func directionPressed() {
@@ -67,8 +68,8 @@ class SearchDetailedController: UIViewController {
   func setupDetailed() {
     searchDetailedView.venueName.text = venueInfoReceivedFromMain?.name
     searchDetailedView.venueAddress.setTitle("Directions", for: .normal)
-    searchDetailedView.addCommentButton.setTitle("Add a tip", for: .normal)
-    searchDetailedView.commentsLabel.text = "Tips by other users:"
+    searchDetailedView.addCommentButton.setTitle("Add a Comment", for: .normal)
+    searchDetailedView.commentsLabel.text = "Comments by other users:"
     if let image = imageReceivedFromMain {
       searchDetailedView.venueImage.image = image
     } else {

@@ -102,7 +102,7 @@ extension FavoriteController: UICollectionViewDelegateFlowLayout, UICollectionVi
     let currentCategory = categories[indexPath.row]
     
     cell.title.text = currentCategory.categoryName
-    cell.backgroundColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+    cell.backgroundColor = #colorLiteral(red: 0.7934073227, green: 0.8359052415, blue: 0.7860631249, alpha: 1)
     return cell
     
   }
@@ -119,7 +119,7 @@ extension FavoriteController: UICollectionViewDelegateFlowLayout, UICollectionVi
   }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     
-    return CGSize.init(width: 120, height: 120)
+    return CGSize.init(width: 300, height: 300)
     
   }
 }
