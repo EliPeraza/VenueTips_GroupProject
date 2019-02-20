@@ -32,7 +32,7 @@ class SearchDetailedController: UIViewController {
   }
   
   @objc func cancelButtonPressed() {
-    
+    navigationController?.popViewController(animated: true)
   }
   
   func setupDetailed() {
@@ -43,7 +43,7 @@ class SearchDetailedController: UIViewController {
     if let image = imageReceivedFromMain {
       searchDetailedView.venueImage.image = image
     } else {
-     searchDetailedView.venueImage.image = UIImage(named: "settings")
+     searchDetailedView.venueImage.image = UIImage(named: "placeholder")
     }
     
     

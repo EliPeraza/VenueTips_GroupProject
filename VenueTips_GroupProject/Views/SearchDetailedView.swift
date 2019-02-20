@@ -84,23 +84,13 @@ extension SearchDetailedView {
     venueImage.translatesAutoresizingMaskIntoConstraints = false
     venueImage.centerXAnchor.constraint(equalToSystemSpacingAfter: safeAreaLayoutGuide.centerXAnchor, multiplier: 0.5).isActive = true
     venueImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
-    venueImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3).isActive = true
-    venueImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3).isActive = true
+    venueImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4).isActive = true
+    venueImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8).isActive = true
   }
-  
-  func addCommentButtonConstraints() {
-    self.addSubview(addCommentButton)
-    addCommentButton.translatesAutoresizingMaskIntoConstraints = false
-    addCommentButton.topAnchor.constraint(equalTo: venueImage.bottomAnchor, constant: 11).isActive = true
-    addCommentButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11).isActive = true
-    addCommentButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11).isActive = true
-    addCommentButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-  }
-  
+
   func venueNameConstraints() {
     self.addSubview(venueName)
     venueName.translatesAutoresizingMaskIntoConstraints = false
-    venueName.topAnchor.constraint(equalTo: addCommentButton.bottomAnchor, constant: 11).isActive = true
     venueName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11).isActive = true
     venueName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11).isActive = true
     venueName.heightAnchor.constraint(equalToConstant: 30).isActive = true
@@ -113,6 +103,16 @@ extension SearchDetailedView {
     venueAddress.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11).isActive = true
     venueAddress.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11).isActive = true
     venueAddress.heightAnchor.constraint(equalToConstant: 40).isActive = true
+  }
+  
+  
+  func addCommentButtonConstraints() {
+    self.addSubview(addCommentButton)
+    addCommentButton.translatesAutoresizingMaskIntoConstraints = false
+    addCommentButton.topAnchor.constraint(equalTo: venueImage.bottomAnchor, constant: 11).isActive = true
+    addCommentButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 11).isActive = true
+    addCommentButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -11).isActive = true
+    
   }
   
   func commentsLabelConstraints() {

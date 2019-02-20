@@ -40,7 +40,7 @@ class ResultsController: UIViewController {
         resultsView.searchBar.delegate = self
         resultsView.mapView.delegate = self
         resultsView.button.addTarget(self, action: #selector(pullViewButtonPressed), for: .touchUpInside)
-        if vc == .MainVC{
+        if vc == .MainVC {
         setupMap()
             getVenues(location: location, keyword: category, date: "20190219")
         } else {
