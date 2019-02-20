@@ -80,7 +80,7 @@ class SearchDetailedController: UIViewController {
     func directionTrailCalling(request: MKDirections.Request){
         let direction = MKDirections(request: request)
         direction.calculate { (directions, error) in
-            guard let directionFinallyGotten = directions else {return print(error)}
+            guard let directionFinallyGotten = directions else {return print(error!)}
             for location in directionFinallyGotten.routes{
                 self.test.mapView.addOverlay(location.polyline)
                 self.test.mapView.setVisibleMapRect(location.polyline.boundingMapRect, animated: true)
