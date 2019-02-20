@@ -16,42 +16,44 @@ class MainView: UIView {
     }()
     lazy var button0: UIButton = {
         var button = UIButton()
-        button.setImage(UIImage(named: "restaurant"), for: .normal)
+        button.setImage(UIImage(named: "lunch"), for: .normal)
         button.setTitle("Lunch", for: .normal)
-        button.layer.borderColor = #colorLiteral(red: 0.2221263647, green: 0.5435168147, blue: 1, alpha: 1)
+        button.layer.borderColor = #colorLiteral(red: 0.9241021276, green: 0.6724008918, blue: 0.9294951558, alpha: 1)
         button.setTitleColor(#colorLiteral(red: 0.2221263647, green: 0.5435168147, blue: 1, alpha: 1), for: .normal)
         button.tag = 0
         return button
     }()
     lazy var button1: UIButton = {
         var button = UIButton()
-        button.setTitle("Breakfast", for: .normal)
-        button.layer.borderColor = #colorLiteral(red: 1, green: 0.7747257352, blue: 0, alpha: 1)
+        button.setImage(UIImage(named: "sandwich"), for: .normal)
+        button.layer.borderColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
         button.setTitleColor(#colorLiteral(red: 1, green: 0.7747257352, blue: 0, alpha: 1), for: .normal)
-        
         button.tag = 1
         return button
     }()
     lazy var button2: UIButton = {
         var button = UIButton()
+        button.setImage(UIImage(named: "coffee"), for: .normal)
         button.setTitle("Coffee", for: .normal)
-        button.layer.borderColor = #colorLiteral(red: 0.5787474513, green: 0.3215198815, blue: 0, alpha: 1)
+        button.layer.borderColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
         button.setTitleColor(#colorLiteral(red: 0.5787474513, green: 0.3215198815, blue: 0, alpha: 1), for: .normal)
         button.tag = 2
         return button
     }()
     lazy var button3: UIButton = {
         var button = UIButton()
+        button.setImage(UIImage(named: "party"), for: .normal)
         button.setTitle("Night Life", for: .normal)
-        button.layer.borderColor = #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
+        button.layer.borderColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
         button.setTitleColor(#colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1), for: .normal)
         button.tag = 3
         return button
     }()
     lazy var button4: UIButton = {
         var button = UIButton()
+        button.setImage(UIImage(named: "park"), for: .normal)
         button.setTitle("Parks", for: .normal)
-        button.layer.borderColor = #colorLiteral(red: 0.3084011078, green: 0.5618229508, blue: 0, alpha: 1)
+        button.layer.borderColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
         button.setTitleColor(#colorLiteral(red: 0.3084011078, green: 0.5618229508, blue: 0, alpha: 1), for: .normal)
         button.tag = 4
         return button
@@ -59,7 +61,8 @@ class MainView: UIView {
     lazy var button5: UIButton = {
         var button = UIButton()
         button.setTitle("Gyms", for: .normal)
-        button.layer.borderColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        button.setImage(UIImage(named: "dumbell"), for: .normal)
+        button.layer.borderColor = #colorLiteral(red: 0.4441329837, green: 0.473487258, blue: 0.9047655463, alpha: 1)
         button.setTitleColor(#colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1), for: .normal)
         button.tag = 5
         return button
