@@ -84,7 +84,7 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
   func searchForCurrentLocation() {
     if let currentLocation = locationManager.location?.coordinate{
       let myCurrentRegion = "\(currentLocation.latitude),\(currentLocation.longitude)"
-      VenueAPIClient.searchForVenueNearBy(location: myCurrentRegion, keyword: nil, date: DateHelper.formatISOToDate(dateString: "MM/dd/yyyy")) { (appError, venueDetail) in
+      VenueAPIClient.searchForVenueNearBy(location: myCurrentRegion, keyword: nil, date: DateHelper.formatISOToDate(dateString: "yyyyMMdd")) { (appError, venueDetail) in
         if let appError = appError {
           print(appError)
         } else if let venueDetail = venueDetail {

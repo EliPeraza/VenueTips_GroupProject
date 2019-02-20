@@ -42,14 +42,14 @@ class ResultsController: UIViewController {
         resultsView.button.addTarget(self, action: #selector(pullViewButtonPressed), for: .touchUpInside)
         if vc == .MainVC{
         setupMap()
-            getVenues(location: location, keyword: category, date: "20190219")
+            getVenues(location: location, keyword: category, date: DateHelper.formatISOToDate(dateString: "yyyyMMdd"))
         } else {
             if coordinates {
-            getVenues(location: location, keyword: category, date: "20190219")
+            getVenues(location: location, keyword: category, date: DateHelper.formatISOToDate(dateString: "yyyyMMdd"))
             } else {
                 getVenuesByLocation()
             }
-            getVenues(location: location, keyword: category, date: DateHelper.formatISOToDate(dateString: "MM/dd/yyyy"))
+            getVenues(location: location, keyword: category, date: DateHelper.formatISOToDate(dateString: "yyyyMMdd"))
         }
     }
     @objc func pullViewButtonPressed() {
@@ -107,7 +107,7 @@ class ResultsController: UIViewController {
         
     }
     func getVenuesByLocation() {
-        VenueAPIClient.searchForVenueAnyLocation(location: location, keyword: category, date: "20190219") { (appError, venues) in
+        VenueAPIClient.searchForVenueAnyLocation(location: location, keyword: category, date: DateHelper.formatISOToDate(dateString: "yyyyMMdd")) { (appError, venues) in
             if let appError = appError {
                 print(appError)
             }
@@ -158,7 +158,7 @@ extension ResultsController: CLLocationManagerDelegate {
 extension ResultsController: UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.text {
-        getVenues(location: location, keyword: text, date: DateHelper.formatISOToDate(dateString: "MM/dd/yyyy"))
+        getVenues(location: location, keyword: text, date: DateHelper.formatISOToDate(dateString: "yyyyMMdd"))
         }
     }
 }
