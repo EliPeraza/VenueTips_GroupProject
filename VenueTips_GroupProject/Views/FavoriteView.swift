@@ -17,8 +17,7 @@ class FavoriteView: UIView {
     
     
     let favoriteCollectionView = UICollectionView.init(frame: self.bounds, collectionViewLayout: favoriteLayout)
-    favoriteCollectionView.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
-    
+    favoriteCollectionView.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
     return favoriteCollectionView
   }()
   
