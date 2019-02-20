@@ -86,8 +86,6 @@ class ResultsView: UIView {
         listTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
-    
-    
 }
 
 
