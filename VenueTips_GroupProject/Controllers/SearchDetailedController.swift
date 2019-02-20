@@ -23,11 +23,15 @@ class SearchDetailedController: UIViewController {
     navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: #selector(favoriteButtonPressed))
     navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed))
 
-    
+    searchDetailedView.addCommentButton.addTarget(self, action: #selector(addTipButtonPressed), for: .touchUpInside)
     
     setupDetailed()
     
-    
+  }
+  
+  @objc func addTipButtonPressed() {
+    let addTipController = AddTipControllerViewController()
+    navigationController?.pushViewController(addTipController, animated: true)
   }
   
   @objc func favoriteButtonPressed() {

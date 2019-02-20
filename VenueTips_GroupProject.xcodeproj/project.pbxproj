@@ -18,8 +18,8 @@
 		1E23662F221CA27700953D92 /* VenueListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E23662E221CA27700953D92 /* VenueListCell.swift */; };
 		1E236631221CA2AB00953D92 /* SaveToFavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E236630221CA2AB00953D92 /* SaveToFavoritesView.swift */; };
 		1E236633221CA2BE00953D92 /* SaveToFavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E236632221CA2BE00953D92 /* SaveToFavoritesController.swift */; };
-		1E6C1222221DBCE10011C8AA /* AddATipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C1221221DBCE10011C8AA /* AddATipView.swift */; };
-		1E6C1224221DBCF00011C8AA /* AddATipController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C1223221DBCF00011C8AA /* AddATipController.swift */; };
+		1E6C1226221DC27B0011C8AA /* AddTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C1225221DC27B0011C8AA /* AddTipView.swift */; };
+		1E6C1228221DC2EE0011C8AA /* AddTipControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C1227221DC2EE0011C8AA /* AddTipControllerViewController.swift */; };
 		1E8800BB220DF9EE0093142A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8800BA220DF9EE0093142A /* AppDelegate.swift */; };
 		1E8800C2220DF9F00093142A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8800C1220DF9F00093142A /* Assets.xcassets */; };
 		1E8800C5220DF9F00093142A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E8800C3220DF9F00093142A /* LaunchScreen.storyboard */; };
@@ -65,8 +65,8 @@
 		1E23662E221CA27700953D92 /* VenueListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueListCell.swift; sourceTree = "<group>"; };
 		1E236630221CA2AB00953D92 /* SaveToFavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveToFavoritesView.swift; sourceTree = "<group>"; };
 		1E236632221CA2BE00953D92 /* SaveToFavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveToFavoritesController.swift; sourceTree = "<group>"; };
-		1E6C1221221DBCE10011C8AA /* AddATipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddATipView.swift; sourceTree = "<group>"; };
-		1E6C1223221DBCF00011C8AA /* AddATipController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddATipController.swift; sourceTree = "<group>"; };
+		1E6C1225221DC27B0011C8AA /* AddTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTipView.swift; sourceTree = "<group>"; };
+		1E6C1227221DC2EE0011C8AA /* AddTipControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTipControllerViewController.swift; sourceTree = "<group>"; };
 		1E8800B7220DF9EE0093142A /* VenueTips_GroupProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VenueTips_GroupProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8800BA220DF9EE0093142A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E8800C1220DF9F00093142A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -229,7 +229,7 @@
 				1E88012B2211E9610093142A /* MainMenuController.swift */,
 				621159762216245600E38477 /* FavoritesDetailedController.swift */,
 				1E236632221CA2BE00953D92 /* SaveToFavoritesController.swift */,
-				1E6C1223221DBCF00011C8AA /* AddATipController.swift */,
+				1E6C1227221DC2EE0011C8AA /* AddTipControllerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -245,7 +245,7 @@
 				1E880101220E2C080093142A /* FavoriteView.swift */,
 				1E2365732214C8F100953D92 /* FavoritesDetailedView.swift */,
 				1E236630221CA2AB00953D92 /* SaveToFavoritesView.swift */,
-				1E6C1221221DBCE10011C8AA /* AddATipView.swift */,
+				1E6C1225221DC27B0011C8AA /* AddTipView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -335,11 +335,11 @@
 				1E8800E0220E1E7F0093142A /* VenueAPIClient.swift in Sources */,
 				1E8800F0220E29DD0093142A /* ImageAPIClient.swift in Sources */,
 				1E2365D0221755F900953D92 /* VenueTip.swift in Sources */,
+				1E6C1228221DC2EE0011C8AA /* AddTipControllerViewController.swift in Sources */,
 				1E8800CD220E1C0A0093142A /* APIKeys.swift in Sources */,
 				1E2365D322176D3800953D92 /* VenueToSave.swift in Sources */,
 				1E2365602213791100953D92 /* MainViewCell.swift in Sources */,
 				1E8800DE220E1E6B0093142A /* String+DateExtension.swift in Sources */,
-				1E6C1224221DBCF00011C8AA /* AddATipController.swift in Sources */,
 				1E8800EE220E20660093142A /* KeysForUserDefaults.swift in Sources */,
 				1E8800D7220E1E270093142A /* AppError.swift in Sources */,
 				1E8800FA220E2AF30093142A /* ResultsView.swift in Sources */,
@@ -352,8 +352,8 @@
 				1E8800DB220E1E4E0093142A /* Date+Extension.swift in Sources */,
 				1E23662F221CA27700953D92 /* VenueListCell.swift in Sources */,
 				1E2365742214C8F100953D92 /* FavoritesDetailedView.swift in Sources */,
+				1E6C1226221DC27B0011C8AA /* AddTipView.swift in Sources */,
 				1E23656A2214C41E00953D92 /* Categories.swift in Sources */,
-				1E6C1222221DBCE10011C8AA /* AddATipView.swift in Sources */,
 				1E8800FC220E2B680093142A /* SearchDetailedController.swift in Sources */,
 				1E2365702214C49D00953D92 /* DataManager.swift in Sources */,
 				1E23656E2214C43B00953D92 /* CategoriesAPIClient.swift in Sources */,
