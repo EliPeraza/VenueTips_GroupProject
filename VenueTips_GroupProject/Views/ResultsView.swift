@@ -13,7 +13,8 @@ class ResultsView: UIView {
 
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.placeholder = "E.g. Sushi, Tacos etc."
+        searchBar.placeholder = "Enter Venue or Food e.g Tacos or Yoga"
+
         return searchBar
     }()
 
@@ -85,8 +86,6 @@ class ResultsView: UIView {
         listTableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         listTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
-    
-    
     
 }
 

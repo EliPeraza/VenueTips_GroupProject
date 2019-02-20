@@ -52,6 +52,7 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
   func addActionToButtons(){
     mainView.buttons.forEach {$0.addTarget(self, action: #selector(categoryButtonPressed(sender:)), for: .touchUpInside)}
   }
+    
   @objc func categoryButtonPressed(sender: UIButton) {
     print("\(MainCategories.allCases[sender.tag])")
     guard let currentLocation = locationManager.location?.coordinate  else {print("No location found")
@@ -156,7 +157,6 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
     navigationController?.pushViewController(searchDetailedController, animated: true)
     
   }
-  
   
 }
 extension MainMenuController: CLLocationManagerDelegate {
