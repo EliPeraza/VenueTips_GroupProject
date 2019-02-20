@@ -25,6 +25,7 @@ class SearchDetailedController: UIViewController {
     
     setupDetailed()
     
+    
   }
   
   @objc func favoriteButtonPressed() {
@@ -39,14 +40,12 @@ class SearchDetailedController: UIViewController {
     searchDetailedView.venueName.text = venueInfoReceivedFromMain?.name
     searchDetailedView.venueAddress.setTitle("Directions", for: .normal)
     searchDetailedView.addCommentButton.setTitle("Add a tip", for: .normal)
-//    searchDetailedView.commentsLabel.text = "Tips by other users:"
+    searchDetailedView.commentsLabel.text = "Tips by other users:"
     if let image = imageReceivedFromMain {
       searchDetailedView.venueImage.image = image
     } else {
      searchDetailedView.venueImage.image = UIImage(named: "placeholder")
     }
-    
-    
-  }
+}
   
 }
