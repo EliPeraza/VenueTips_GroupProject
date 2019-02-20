@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+struct VenueTip {
+
+  let venueID: String
+  let userName: String
+  let userTip: String
+  
+}
