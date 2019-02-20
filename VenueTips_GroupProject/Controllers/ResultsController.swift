@@ -14,6 +14,7 @@ enum ScreenState {
     case off
 }
 class ResultsController: UIViewController {
+    private let date = DateHelper.formatISOToDate(dateString: "yyyyMMdd")
     private var resultsView = ResultsView()
     private var sceenState: ScreenState = .off
     private var vc: ViewControllers?
@@ -26,7 +27,7 @@ class ResultsController: UIViewController {
         didSet{
             DispatchQueue.main.async {
                 self.addAnnotation()
-                
+                self.resultsView.listTableView.reloadData()
             }
         }
     }
@@ -40,32 +41,33 @@ class ResultsController: UIViewController {
         resultsView.searchBar.delegate = self
         resultsView.mapView.delegate = self
         resultsView.button.addTarget(self, action: #selector(pullViewButtonPressed), for: .touchUpInside)
-        if vc == .MainVC{
+        if vc == .MainVC {
         setupMap()
-            getVenues(location: location, keyword: category, date: DateHelper.formatISOToDate(dateString: "yyyyMMdd"))
+            getVenues(location: location, keyword: category, date: date)
         } else {
             if coordinates {
-            getVenues(location: location, keyword: category, date: DateHelper.formatISOToDate(dateString: "yyyyMMdd"))
+            getVenues(location: location, keyword: category, date: date)
             } else {
                 getVenuesByLocation()
             }
-            getVenues(location: location, keyword: category, date: DateHelper.formatISOToDate(dateString: "yyyyMMdd"))
+            getVenues(location: location, keyword: category, date: date)
+//             getVenues(location: location, keyword: category, date: DateHelper.formatISOToDate(dateString: "MM/dd/yyyy"))
+
         }
     }
     @objc func pullViewButtonPressed() {
         if sceenState == .off {
             sceenState = .on
             resultsView.button.setImage(UIImage(named: "icons8-chevron_down"), for: .normal)
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear, animations: {
+            UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
                 print(self.resultsView.listTableView.frame)
-                self.resultsView.listTableView.frame = CGRect(x: self.self.resultsView.listTableView.frame.origin.x, y: self.resultsView.listTableView.frame.origin.y, width: self.resultsView.listTableView.frame.width, height: self.resultsView.frame.height)
-                
+                self.resultsView.listTableView.frame = CGRect(x: self.resultsView.listTableView.frame.origin.x, y: self.resultsView.listTableView.frame.origin.y, width: self.resultsView.listTableView.frame.width, height: -(self.resultsView.safeAreaLayoutGuide.layoutFrame.height - self.resultsView.searchBar.frame.height))
             })
         } else {
             sceenState = .off
             resultsView.button.setImage(UIImage(named: "icons8-chevron_up"), for: .normal)
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear, animations: {
-                self.resultsView.listTableView.frame = CGRect(x: 0.0, y: self.resultsView.listTableView.frame.origin.y + self.resultsView.frame.height, width: self.resultsView.listTableView.frame.width, height: 0)
+            UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
+                self.resultsView.listTableView.frame = CGRect(x: 0.0, y: self.resultsView.safeAreaLayoutGuide.layoutFrame.origin.y + self.resultsView.safeAreaLayoutGuide.layoutFrame.height, width: self.resultsView.listTableView.frame.width, height: 0)
             })
         }
     }
@@ -107,7 +109,7 @@ class ResultsController: UIViewController {
         
     }
     func getVenuesByLocation() {
-        VenueAPIClient.searchForVenueAnyLocation(location: location, keyword: category, date: DateHelper.formatISOToDate(dateString: "yyyyMMdd")) { (appError, venues) in
+        VenueAPIClient.searchForVenueAnyLocation(location: location, keyword: category, date: date) { (appError, venues) in
             if let appError = appError {
                 print(appError)
             }
@@ -136,9 +138,44 @@ extension ResultsController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "VenueListCell", for: indexPath) as? VenueListCell else {
+            print("No cell")
+            return UITableViewCell()
+        }
+        let venueToSet = venues[indexPath.row]
+        cell.nameLabel.text = venueToSet.name
+        cell.addressLabel.text = venueToSet.location.address
+        ImageAPIClient.searchImageForVenue(venueID: venueToSet.id, date: date) { (appError, photoDetail) in
+            if let appError = appError {
+                print(appError)
+            }
+            if let photoDetail = photoDetail {
+                if let photodetail = photoDetail.first{
+                    let url = "\(photodetail.prefix)original\(photodetail.suffix)"
+                    if let image = ImageHelper.fetchImageFromCache(urlString: url){
+                        DispatchQueue.main.async {
+                            cell.venueImage.image = image
+                        }
+                    } else {
+                        ImageHelper.fetchImageFromNetwork(urlString: url, completion: { (appError, photo) in
+                            if let appError = appError {
+                                print(appError)
+                                cell.venueImage.image = UIImage(named: "placeholder")
+                            }
+                            if let photo = photo {
+                                cell.venueImage.image = photo
+                            }
+                        })
+                    }
+                } else {
+                    print("photo detail is nil")
+                }
+            }
+        }
         return cell
-        //TO DO: CREATE A CELL FILE
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
     }
 }
 
@@ -158,7 +195,8 @@ extension ResultsController: CLLocationManagerDelegate {
 extension ResultsController: UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.text {
-        getVenues(location: location, keyword: text, date: DateHelper.formatISOToDate(dateString: "yyyyMMdd"))
+        getVenues(location: location, keyword: text, date: date)
+        getVenues(location: location, keyword: text, date: date)
         }
     }
 }
