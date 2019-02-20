@@ -33,6 +33,7 @@ class SearchDetailedController: UIViewController {
   
   @objc func addTipButtonPressed() {
     let addTipController = AddTipControllerViewController()
+    addTipController.venueID = venueInfoReceivedFromMain?.id ?? "no id"
     navigationController?.pushViewController(addTipController, animated: true)
   }
     @objc func directionPressed() {
