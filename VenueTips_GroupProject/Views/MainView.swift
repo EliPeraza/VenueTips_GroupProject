@@ -69,7 +69,7 @@ class MainView: UIView {
     }()
     lazy var exploreNearByLabel: UILabel = {
         var label = UILabel()
-        label.text = "Explore Near By"
+        label.text = "Explore Nearby"
         label.font = UIFont(name: "Arial", size: 22)
         label.textAlignment = .center
         return label
