@@ -44,7 +44,7 @@ class SearchController: UIViewController {
   
   
   func getCategories() {
-    CategoriesAPIClient.getCategories(location: "40.7,-74", date: DateHelper.formatISOToDate(dateString: "MM/dd/yyyy")) { (appError, categories) in
+    CategoriesAPIClient.getCategories(location: "40.7,-74", date: DateHelper.formatISOToDate(dateString: "yyyyMMdd")) { (appError, categories) in
       if let appError = appError {
         print(appError)
       }

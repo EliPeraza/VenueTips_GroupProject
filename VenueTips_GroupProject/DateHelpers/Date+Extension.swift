@@ -22,12 +22,12 @@ extension Date {
 struct DateHelper {
     static func formatISOToDate(dateString: String) -> String {
         let isoDateFormatter = ISO8601DateFormatter()
-        var formattedDate = dateString
-        if let date = isoDateFormatter.date(from: dateString) {
+        
+//        let date = isoDateFormatter.string(from: Date())
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM/dd/yyyy"
-            formattedDate = dateFormatter.string(from: date)
-        }
-        return formattedDate
+            dateFormatter.dateFormat = "yyyyMMdd"
+        
+        
+        return dateFormatter.string(from: Date())
     }
 }

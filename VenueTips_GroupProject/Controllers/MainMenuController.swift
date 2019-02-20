@@ -25,7 +25,8 @@ enum MainCategories: String, CaseIterable {
 
 
 class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-  
+    
+  let date = DateHelper.formatISOToDate(dateString: "yyyyMMdd")
   var mainView = MainView()
   let locationManager = CLLocationManager()
   var nearbyVenues = [VenueDetails]() {
@@ -78,7 +79,7 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
   func searchForCurrentLocation() {
     if let currentLocation = locationManager.location?.coordinate{
       let myCurrentRegion = "\(currentLocation.latitude),\(currentLocation.longitude)"
-      VenueAPIClient.searchForVenueNearBy(location: myCurrentRegion, keyword: nil, date: "20190219") { (appError, venueDetail) in
+      VenueAPIClient.searchForVenueNearBy(location: myCurrentRegion, keyword: nil, date: DateHelper.formatISOToDate(dateString: date)) { (appError, venueDetail) in
         if let appError = appError {
           print(appError)
         } else if let venueDetail = venueDetail {
@@ -96,7 +97,7 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
     cell.venueNameLabel.text = currentVenue.name
     cell.venueAddressLabel.text = currentVenue.location.address
     //TO DO: GET DATE
-    ImageAPIClient.searchImageForVenue(venueID: currentVenue.id, date: "20190219") { (appError, photoDetail) in
+    ImageAPIClient.searchImageForVenue(venueID: currentVenue.id, date: date) { (appError, photoDetail) in
       if let appError = appError {
         print(appError)
       }
