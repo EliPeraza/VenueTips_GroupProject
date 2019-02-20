@@ -109,26 +109,20 @@ extension SearchController: UISearchBarDelegate {
             else {return getCategories() }
         categoriesTest = categoriesTest.filter{ $0.name.contains(searchTextEncoded.capitalized) }
         venueToSend = venue
-        guard let location = searchView.locationSearchBar.text,
-                !location.isEmpty else {return}
+        guard let location = searchView.locationSearchBar.text else {return}
             locationToSend = location
-
-        
-//        let alert = UIAlertController(title: "Please Enter Location", message: nil, preferredStyle: .alert)
-//        let ok = UIAlertAction.init(title: "Ok", style: .default) { (UIAlertAction) in
-//            alert.dismiss(animated: true, completion: nil)
-//        }
-//        alert.addAction(ok)
-//        present(alert, animated: true, completion: nil)
+        if (searchView.locationSearchBar.text?.isEmpty)! {
+            let alert = UIAlertController(title: "Please Enter Location", message: nil, preferredStyle: .alert)
+                    let ok = UIAlertAction.init(title: "Ok", style: .default) { (UIAlertAction) in
+                        alert.dismiss(animated: true, completion: nil)
+                    }
+                    alert.addAction(ok)
+                    present(alert, animated: true, completion: nil)
+            return
+        }
         
         dismiss(animated: true, completion: nil)
         segueDelegate?.prepareForSegue(vc: vc, location: locationToSend, keyword: venueToSend)    
-        let alert = UIAlertController(title: "No Results Found", message: nil, preferredStyle: .alert)
-        let ok = UIAlertAction.init(title: "Ok", style: .default) { (UIAlertAction) in
-            alert.dismiss(animated: true, completion: nil)
-        }
-        alert.addAction(ok)
-        present(alert, animated: true, completion: nil)
         
     }
 }
