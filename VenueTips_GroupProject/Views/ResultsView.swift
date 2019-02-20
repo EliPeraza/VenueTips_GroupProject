@@ -81,7 +81,7 @@ class ResultsView: UIView {
         listTableView.heightAnchor.constraint(equalToConstant: 0).isActive = true
         listTableView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         listTableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        listTableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        listTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
     
