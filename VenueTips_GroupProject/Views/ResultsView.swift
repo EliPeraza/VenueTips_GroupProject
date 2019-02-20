@@ -39,7 +39,8 @@ class ResultsView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
-//        listTableView.register(<#T##cellClass: AnyClass?##AnyClass?#>, forCellReuseIdentifier: <#T##String#>)
+
+        listTableView.register(VenueListCell.self, forCellReuseIdentifier: "VenueListCell")
         commonInit()
     }
     
@@ -50,7 +51,7 @@ class ResultsView: UIView {
     }
 
     private func commonInit() {
-        backgroundColor = .blue
+        backgroundColor = .white
         self.addSubview(searchBar)
         self.addSubview(mapView)
         self.addSubview(listTableView)
@@ -70,7 +71,7 @@ class ResultsView: UIView {
         mapView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         mapView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
+      
         button.translatesAutoresizingMaskIntoConstraints = false
         button.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         button.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
@@ -81,7 +82,7 @@ class ResultsView: UIView {
         listTableView.heightAnchor.constraint(equalToConstant: 0).isActive = true
         listTableView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         listTableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        listTableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        listTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
     

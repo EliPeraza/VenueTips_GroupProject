@@ -22,8 +22,11 @@ enum MainCategories: String, CaseIterable {
     case Parks = "Parks"
     case Gyms = "Gyms"
 }
+
+
 class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-  
+    
+  let date = DateHelper.formatISOToDate(dateString: "yyyyMMdd")
   var mainView = MainView()
   let locationManager = CLLocationManager()
   var nearbyVenues = [VenueDetails]() {
@@ -43,15 +46,7 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
     mainView.venueSearchBar.delegate = self
     mainView.exploreNearByCollectionView.dataSource = self
     mainView.exploreNearByCollectionView.delegate = self
-    //            VenueAPIClient.searchForVenueAnyLocation(location: "Queens, NY", keyword: "tacos") { (appError, venues) in
-    //              if let appError = appError {
-    //                print(appError)
-    //              }
-    //              if let venues = venues{
-    //                self.nearbyVenues = venues
-    //              }
-    //
-    //            }
+
     
   }
   func addActionToButtons(){
@@ -84,7 +79,7 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
   func searchForCurrentLocation() {
     if let currentLocation = locationManager.location?.coordinate{
       let myCurrentRegion = "\(currentLocation.latitude),\(currentLocation.longitude)"
-      VenueAPIClient.searchForVenueNearBy(location: myCurrentRegion, keyword: nil, date: DateHelper.formatISOToDate(dateString: "MM/dd/yyyy")) { (appError, venueDetail) in
+      VenueAPIClient.searchForVenueNearBy(location: myCurrentRegion, keyword: nil, date: DateHelper.formatISOToDate(dateString: date)) { (appError, venueDetail) in
         if let appError = appError {
           print(appError)
         } else if let venueDetail = venueDetail {
@@ -102,13 +97,18 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
     cell.venueNameLabel.text = currentVenue.name
     cell.venueAddressLabel.text = currentVenue.location.address
     //TO DO: GET DATE
-    ImageAPIClient.searchImageForVenue(venueID: currentVenue.id, date: DateHelper.formatISOToDate(dateString: "MM/dd/yyyy")) { (appError, photoDetail) in
+    ImageAPIClient.searchImageForVenue(venueID: currentVenue.id, date: date) { (appError, photoDetail) in
       if let appError = appError {
         print(appError)
       }
       if let photoDetail = photoDetail {
         if let photodetail = photoDetail.first{
           let url = "\(photodetail.prefix)original\(photodetail.suffix)"
+            if let image = ImageHelper.fetchImageFromCache(urlString: url){
+                DispatchQueue.main.async {
+                    cell.venueImage.image = image
+                }
+            } else {
           ImageHelper.fetchImageFromNetwork(urlString: url, completion: { (appError, photo) in
             if let appError = appError {
               print(appError)
@@ -117,6 +117,7 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
               cell.venueImage.image = photo
             }
           })
+        }
         } else {
           print("photo detail is nil")
         }

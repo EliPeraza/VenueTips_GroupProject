@@ -11,9 +11,14 @@ import Foundation
 
 
 struct DataManager {
-   static private var categories = [CategoryToSave]()
-   static private var venues = [Venue]()
-   static var categoriesFileName = "categoriesFileName.plist"
+    static private var categories = [CategoryToSave]()
+    static private var venues = [Venue]()
+    static private var tips = [VenueTip]()
+    static var tipsFileName = "tipsFileName.plist"
+    static var categoriesFileName = "categoriesFileName.plist"
+}
+
+extension DataManager {
     
     static func saveCategory(fileName: String) {
         let path = DataPersistenceManager.filepathToDocumentsDirectory(filename: fileName)
@@ -25,24 +30,9 @@ struct DataManager {
         }
     }
     
-    static func saveVenues(venueName: String) {
-        let path = DataPersistenceManager.filepathToDocumentsDirectory(filename: venueName)
-        do {
-            let data = try PropertyListEncoder().encode(venues)
-            try data.write(to: path, options: .atomic)
-        } catch {
-            print("Property List and Encoding Error: \(error)")
-        }
-    }
-    
     static func addCatergory(fileName: String, category: CategoryToSave) {
         categories.append(category)
         saveCategory(fileName: fileName)
-    }
-    
-    static func addVenue(categoryName: String, venue: Venue) {
-        venues.append(venue)
-        saveVenues(venueName: categoryName)
     }
     
     static func getCategories(fileName: String) -> [CategoryToSave] {
@@ -62,6 +52,24 @@ struct DataManager {
         }
         return categories
     }
+}
+
+extension DataManager {
+    
+    static func saveVenues(venueName: String) {
+        let path = DataPersistenceManager.filepathToDocumentsDirectory(filename: venueName)
+        do {
+            let data = try PropertyListEncoder().encode(venues)
+            try data.write(to: path, options: .atomic)
+        } catch {
+            print("Property List and Encoding Error: \(error)")
+        }
+    }
+    
+    static func addVenue(categoryName: String, venue: Venue) {
+        venues.append(venue)
+        saveVenues(venueName: categoryName)
+    }
     
     static func getVenues(categoryName: String) -> [Venue] {
         let path = DataPersistenceManager.filepathToDocumentsDirectory(filename: categoryName).path
@@ -80,6 +88,41 @@ struct DataManager {
         }
         return venues
     }
+}
+
+extension DataManager {
     
+    static func saveTip(tipComment: String) {
+        let path = DataPersistenceManager.filepathToDocumentsDirectory(filename: tipComment)
+        do {
+            let data = try PropertyListEncoder().encode(tips)
+            try data.write(to: path, options: .atomic)
+        } catch {
+            print("Property List and Encoding Error: \(error)")
+        }
+    }
+    
+    static func addTip (tipComment: String, tip: VenueTip) {
+        tips.append(tip)
+        saveTip(tipComment: tipComment)
+    }
+    
+    static func getTips(tipComment: String) -> [VenueTip] {
+        let path = DataPersistenceManager.filepathToDocumentsDirectory(filename: tipComment).path
+        if FileManager.default.fileExists(atPath: path) {
+            if let data = FileManager.default.contents(atPath: path) {
+                do {
+                    tips = try PropertyListDecoder().decode([VenueTip].self, from: data)
+                } catch {
+                    print("Propery List Decoding Error: \(error)")
+                }
+            } else {
+                print("Categories Data is Nil")
+            }
+        } else {
+            print("\(tipComment) does not Exist")
+        }
+        return tips
+    }
 }
 

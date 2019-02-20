@@ -15,6 +15,11 @@
 		1E2365742214C8F100953D92 /* FavoritesDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2365732214C8F100953D92 /* FavoritesDetailedView.swift */; };
 		1E2365D0221755F900953D92 /* VenueTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2365CF221755F900953D92 /* VenueTip.swift */; };
 		1E2365D322176D3800953D92 /* VenueToSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2365D222176D3800953D92 /* VenueToSave.swift */; };
+		1E23662F221CA27700953D92 /* VenueListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E23662E221CA27700953D92 /* VenueListCell.swift */; };
+		1E236631221CA2AB00953D92 /* SaveToFavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E236630221CA2AB00953D92 /* SaveToFavoritesView.swift */; };
+		1E236633221CA2BE00953D92 /* SaveToFavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E236632221CA2BE00953D92 /* SaveToFavoritesController.swift */; };
+		1E6C1226221DC27B0011C8AA /* AddTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C1225221DC27B0011C8AA /* AddTipView.swift */; };
+		1E6C1228221DC2EE0011C8AA /* AddTipControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6C1227221DC2EE0011C8AA /* AddTipControllerViewController.swift */; };
 		1E8800BB220DF9EE0093142A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8800BA220DF9EE0093142A /* AppDelegate.swift */; };
 		1E8800C2220DF9F00093142A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8800C1220DF9F00093142A /* Assets.xcassets */; };
 		1E8800C5220DF9F00093142A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E8800C3220DF9F00093142A /* LaunchScreen.storyboard */; };
@@ -57,6 +62,11 @@
 		1E23659F2216163300953D92 /* VenueToSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueToSave.swift; sourceTree = "<group>"; };
 		1E2365CF221755F900953D92 /* VenueTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueTip.swift; sourceTree = "<group>"; };
 		1E2365D222176D3800953D92 /* VenueToSave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueToSave.swift; sourceTree = "<group>"; };
+		1E23662E221CA27700953D92 /* VenueListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueListCell.swift; sourceTree = "<group>"; };
+		1E236630221CA2AB00953D92 /* SaveToFavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveToFavoritesView.swift; sourceTree = "<group>"; };
+		1E236632221CA2BE00953D92 /* SaveToFavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveToFavoritesController.swift; sourceTree = "<group>"; };
+		1E6C1225221DC27B0011C8AA /* AddTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTipView.swift; sourceTree = "<group>"; };
+		1E6C1227221DC2EE0011C8AA /* AddTipControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTipControllerViewController.swift; sourceTree = "<group>"; };
 		1E8800B7220DF9EE0093142A /* VenueTips_GroupProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VenueTips_GroupProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8800BA220DF9EE0093142A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E8800C1220DF9F00093142A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -88,7 +98,6 @@
 		1E88012B2211E9610093142A /* MainMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
 		1E88012D2211E9870093142A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		62115972221623C800E38477 /* CategoryToSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryToSave.swift; sourceTree = "<group>"; };
-		621159742216241F00E38477 /* VenueToSave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueToSave.swift; sourceTree = "<group>"; };
 		621159762216245600E38477 /* FavoritesDetailedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesDetailedController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,14 +112,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1E2365D1221765A500953D92 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				621159742216241F00E38477 /* VenueToSave.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		1E8800AE220DF9EE0093142A = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +228,8 @@
 				1E8800FF220E2BF70093142A /* FavoriteController.swift */,
 				1E88012B2211E9610093142A /* MainMenuController.swift */,
 				621159762216245600E38477 /* FavoritesDetailedController.swift */,
+				1E236632221CA2BE00953D92 /* SaveToFavoritesController.swift */,
+				1E6C1227221DC2EE0011C8AA /* AddTipControllerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -241,6 +244,8 @@
 				1E8800F9220E2AF30093142A /* ResultsView.swift */,
 				1E880101220E2C080093142A /* FavoriteView.swift */,
 				1E2365732214C8F100953D92 /* FavoritesDetailedView.swift */,
+				1E236630221CA2AB00953D92 /* SaveToFavoritesView.swift */,
+				1E6C1225221DC27B0011C8AA /* AddTipView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -250,16 +255,9 @@
 			children = (
 				1E88010322109EF40093142A /* FavoriteCollectionCell.swift */,
 				1E23655F2213791100953D92 /* MainViewCell.swift */,
+				1E23662E221CA27700953D92 /* VenueListCell.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		45CAD908221766CF009FB1B4 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				621159742216241F00E38477 /* VenueToSave.swift */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,10 +330,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E236631221CA2AB00953D92 /* SaveToFavoritesView.swift in Sources */,
 				1E8800D4220E1DF70093142A /* NetworkHelper.swift in Sources */,
 				1E8800E0220E1E7F0093142A /* VenueAPIClient.swift in Sources */,
 				1E8800F0220E29DD0093142A /* ImageAPIClient.swift in Sources */,
 				1E2365D0221755F900953D92 /* VenueTip.swift in Sources */,
+				1E6C1228221DC2EE0011C8AA /* AddTipControllerViewController.swift in Sources */,
 				1E8800CD220E1C0A0093142A /* APIKeys.swift in Sources */,
 				1E2365D322176D3800953D92 /* VenueToSave.swift in Sources */,
 				1E2365602213791100953D92 /* MainViewCell.swift in Sources */,
@@ -350,7 +350,9 @@
 				1E8800CF220E1CC40093142A /* Venue.swift in Sources */,
 				1E8800F2220E2A500093142A /* VenueTabBarController.swift in Sources */,
 				1E8800DB220E1E4E0093142A /* Date+Extension.swift in Sources */,
+				1E23662F221CA27700953D92 /* VenueListCell.swift in Sources */,
 				1E2365742214C8F100953D92 /* FavoritesDetailedView.swift in Sources */,
+				1E6C1226221DC27B0011C8AA /* AddTipView.swift in Sources */,
 				1E23656A2214C41E00953D92 /* Categories.swift in Sources */,
 				1E8800FC220E2B680093142A /* SearchDetailedController.swift in Sources */,
 				1E2365702214C49D00953D92 /* DataManager.swift in Sources */,
@@ -360,6 +362,7 @@
 				1E8800FE220E2B7D0093142A /* SearchDetailedView.swift in Sources */,
 				1E88012E2211E9870093142A /* MainView.swift in Sources */,
 				1E88010422109EF40093142A /* FavoriteCollectionCell.swift in Sources */,
+				1E236633221CA2BE00953D92 /* SaveToFavoritesController.swift in Sources */,
 				1E8800D9220E1E350093142A /* ImageHelper.swift in Sources */,
 				1E23656C2214C42F00953D92 /* TrendingAPIClient.swift in Sources */,
 				1E88012C2211E9610093142A /* MainMenuController.swift in Sources */,
