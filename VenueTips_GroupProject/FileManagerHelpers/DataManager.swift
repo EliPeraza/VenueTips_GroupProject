@@ -12,10 +12,12 @@ import Foundation
 
 struct DataManager {
     static private var categories = [CategoryToSave]()
-    static private var venues = [Venue]()
+    static private var venues = [VenueToSave]()
     static private var tips = [VenueTip]()
     static var tipsFileName = "tipsFileName.plist"
     static var categoriesFileName = "categoriesFileName.plist"
+  //TODO: Venues plist
+  
 }
 
 extension DataManager {
@@ -58,6 +60,7 @@ extension DataManager {
     
     static func saveVenues(venueName: String) {
         let path = DataPersistenceManager.filepathToDocumentsDirectory(filename: venueName)
+    
         do {
             let data = try PropertyListEncoder().encode(venues)
             try data.write(to: path, options: .atomic)
@@ -66,17 +69,17 @@ extension DataManager {
         }
     }
     
-    static func addVenue(categoryName: String, venue: Venue) {
+    static func addVenue(categoryName: String, venue: VenueToSave) {
         venues.append(venue)
         saveVenues(venueName: categoryName)
     }
     
-    static func getVenues(categoryName: String) -> [Venue] {
+    static func getVenues(categoryName: String) -> [VenueToSave] {
         let path = DataPersistenceManager.filepathToDocumentsDirectory(filename: categoryName).path
         if FileManager.default.fileExists(atPath: path) {
             if let data = FileManager.default.contents(atPath: path) {
                 do {
-                    venues = try PropertyListDecoder().decode([Venue].self, from: data)
+                    venues = try PropertyListDecoder().decode([VenueToSave].self, from: data)
                 } catch {
                     print("Propery List Decoding Error: \(error)")
                 }
@@ -92,8 +95,9 @@ extension DataManager {
 
 extension DataManager {
     
-    static func saveTip(tipComment: String) {
-        let path = DataPersistenceManager.filepathToDocumentsDirectory(filename: tipComment)
+  static func saveTip(venueID: String, venueInfo: VenueTip) {
+      let path = DataPersistenceManager.filepathToDocumentsDirectory(filename: tipsFileName)
+      print("this is the path I am saving to: \(path)")
         do {
             let data = try PropertyListEncoder().encode(tips)
             try data.write(to: path, options: .atomic)
@@ -102,13 +106,13 @@ extension DataManager {
         }
     }
     
-    static func addTip (tipComment: String, tip: VenueTip) {
+    static func addTip (venueID: String, tip: VenueTip) {
         tips.append(tip)
-        saveTip(tipComment: tipComment)
+        saveTip(venueID: venueID, venueInfo: tip)
     }
     
-    static func getTips(tipComment: String) -> [VenueTip] {
-        let path = DataPersistenceManager.filepathToDocumentsDirectory(filename: tipComment).path
+    static func getTips(venueID: String) -> [VenueTip] {
+        let path = DataPersistenceManager.filepathToDocumentsDirectory(filename: tipsFileName).path
         if FileManager.default.fileExists(atPath: path) {
             if let data = FileManager.default.contents(atPath: path) {
                 do {
@@ -120,7 +124,7 @@ extension DataManager {
                 print("Categories Data is Nil")
             }
         } else {
-            print("\(tipComment) does not Exist")
+            print("\(venueID) does not Exist")
         }
         return tips
     }

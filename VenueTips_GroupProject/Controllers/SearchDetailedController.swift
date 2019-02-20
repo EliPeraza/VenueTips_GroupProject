@@ -35,22 +35,28 @@ class SearchDetailedController: UIViewController {
         setupDetailed()
         
     }
-    
-    @objc func addTipButtonPressed() {
-        let addTipController = AddTipControllerViewController()
-        navigationController?.pushViewController(addTipController, animated: true)
-    }
+   
+  }
+  
+  @objc func addTipButtonPressed() {
+    let addTipController = AddTipControllerViewController()
+    addTipController.venueID = venueInfoReceivedFromMain?.id ?? "no id"
+    navigationController?.pushViewController(addTipController, animated: true)
+  }
     @objc func directionPressed() {
         openMaps()
     }
-    @objc func favoriteButtonPressed() {
-        //TODO: Pull new controller with table view with categories to select where we are saving the venue
-        //Call the
-    }
-    
-    @objc func cancelButtonPressed() {
-        navigationController?.popViewController(animated: true)
-    }
+  @objc func favoriteButtonPressed() {
+    //TODO: Pull new controller with table view with categories to select where we are saving the venue
+    //Call the
+    let saveToFavoritesVC = SaveToFavoritesController()
+    saveToFavoritesVC.venueName = venueInfoReceivedFromMain!.name
+    navigationController?.pushViewController(saveToFavoritesVC, animated: true)
+  }
+  
+  @objc func cancelButtonPressed() {
+    navigationController?.popViewController(animated: true)
+  
     func openMaps() {
         let latitude: CLLocationDegrees = (venueInfoReceivedFromMain?.location.lat)!
         let longitude: CLLocationDegrees = (venueInfoReceivedFromMain?.location.lng)!
@@ -88,16 +94,17 @@ class SearchDetailedController: UIViewController {
         }
         
     }
-    func setupDetailed() {
-        searchDetailedView.venueName.text = venueInfoReceivedFromMain?.name
-        searchDetailedView.venueAddress.setTitle("Directions", for: .normal)
-        searchDetailedView.addCommentButton.setTitle("Add a tip", for: .normal)
-        searchDetailedView.commentsLabel.text = "Tips by other users:"
-        if let image = imageReceivedFromMain {
-            searchDetailedView.venueImage.image = image
-        } else {
-            searchDetailedView.venueImage.image = UIImage(named: "placeholder")
-        }
+
+  func setupDetailed() {
+    searchDetailedView.venueName.text = venueInfoReceivedFromMain?.name
+    searchDetailedView.venueAddress.setTitle("Directions", for: .normal)
+    searchDetailedView.addCommentButton.setTitle("Add a Comment", for: .normal)
+    searchDetailedView.commentsLabel.text = "Comments by other users:"
+    if let image = imageReceivedFromMain {
+      searchDetailedView.venueImage.image = image
+    } else {
+     searchDetailedView.venueImage.image = UIImage(named: "placeholder")
+
     }
     
 }

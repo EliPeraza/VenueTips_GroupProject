@@ -50,6 +50,7 @@
 		1E88012E2211E9870093142A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E88012D2211E9870093142A /* MainView.swift */; };
 		62115973221623C800E38477 /* CategoryToSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62115972221623C800E38477 /* CategoryToSave.swift */; };
 		621159772216245600E38477 /* FavoritesDetailedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621159762216245600E38477 /* FavoritesDetailedController.swift */; };
+		D5D03CD8221DF0FF00F04E03 /* FavoriteCategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D03CD7221DF0FF00F04E03 /* FavoriteCategoriesTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		1E88012D2211E9870093142A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		62115972221623C800E38477 /* CategoryToSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryToSave.swift; sourceTree = "<group>"; };
 		621159762216245600E38477 /* FavoritesDetailedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesDetailedController.swift; sourceTree = "<group>"; };
+		D5D03CD7221DF0FF00F04E03 /* FavoriteCategoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCategoriesTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				1E88010322109EF40093142A /* FavoriteCollectionCell.swift */,
+				D5D03CD7221DF0FF00F04E03 /* FavoriteCategoriesTableViewCell.swift */,
 				1E23655F2213791100953D92 /* MainViewCell.swift */,
 				1E23662E221CA27700953D92 /* VenueListCell.swift */,
 			);
@@ -341,6 +344,7 @@
 				1E2365602213791100953D92 /* MainViewCell.swift in Sources */,
 				1E8800DE220E1E6B0093142A /* String+DateExtension.swift in Sources */,
 				1E8800EE220E20660093142A /* KeysForUserDefaults.swift in Sources */,
+				D5D03CD8221DF0FF00F04E03 /* FavoriteCategoriesTableViewCell.swift in Sources */,
 				1E8800D7220E1E270093142A /* AppError.swift in Sources */,
 				1E8800FA220E2AF30093142A /* ResultsView.swift in Sources */,
 				1E8800F6220E2A930093142A /* ResultsController.swift in Sources */,
