@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import MapKit
 class SearchDetailedController: UIViewController {
   
   var venueInfoReceivedFromMain: VenueDetails?
@@ -22,13 +22,15 @@ class SearchDetailedController: UIViewController {
     view.backgroundColor = .white
     navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: #selector(favoriteButtonPressed))
     navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed))
-
+    searchDetailedView.venueAddress.addTarget(self, action: #selector(directionPressed), for: .touchUpInside)
     
     setupDetailed()
     
     
   }
-  
+    @objc func directionPressed() {
+        openMaps()
+    }
   @objc func favoriteButtonPressed() {
     
   }
@@ -36,7 +38,21 @@ class SearchDetailedController: UIViewController {
   @objc func cancelButtonPressed() {
     navigationController?.popViewController(animated: true)
   }
-  
+    func openMaps() {
+            let latitude: CLLocationDegrees = (venueInfoReceivedFromMain?.location.lat)!
+            let longitude: CLLocationDegrees = (venueInfoReceivedFromMain?.location.lng)!
+
+            let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+            let regionSpan = MKCoordinateRegion(center: coordinates, latitudinalMeters: 1000, longitudinalMeters: 1000)
+            let options = [
+                MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+                MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+            ]
+            let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+            let mapItem = MKMapItem(placemark: placemark)
+            mapItem.name = venueInfoReceivedFromMain?.name
+            mapItem.openInMaps(launchOptions: options)
+    }
   func setupDetailed() {
     searchDetailedView.venueName.text = venueInfoReceivedFromMain?.name
     searchDetailedView.venueAddress.setTitle("Directions", for: .normal)
