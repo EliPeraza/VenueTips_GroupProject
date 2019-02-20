@@ -102,13 +102,18 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
     cell.venueNameLabel.text = currentVenue.name
     cell.venueAddressLabel.text = currentVenue.location.address
     //TO DO: GET DATE
-    ImageAPIClient.searchImageForVenue(venueID: currentVenue.id, date: DateHelper.formatISOToDate(dateString: "MM/dd/yyyy")) { (appError, photoDetail) in
+    ImageAPIClient.searchImageForVenue(venueID: currentVenue.id, date: "20190219") { (appError, photoDetail) in
       if let appError = appError {
         print(appError)
       }
       if let photoDetail = photoDetail {
         if let photodetail = photoDetail.first{
           let url = "\(photodetail.prefix)original\(photodetail.suffix)"
+            if let image = ImageHelper.fetchImageFromCache(urlString: url){
+                DispatchQueue.main.async {
+                    cell.venueImage.image = image
+                }
+            } else {
           ImageHelper.fetchImageFromNetwork(urlString: url, completion: { (appError, photo) in
             if let appError = appError {
               print(appError)
@@ -117,6 +122,7 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
               cell.venueImage.image = photo
             }
           })
+        }
         } else {
           print("photo detail is nil")
         }
