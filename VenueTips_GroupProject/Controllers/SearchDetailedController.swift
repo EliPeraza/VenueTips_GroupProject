@@ -24,13 +24,15 @@ class SearchDetailedController: UIViewController {
     navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed))
 
     
+    
     setupDetailed()
     
     
   }
   
   @objc func favoriteButtonPressed() {
-    
+    //TODO: Pull new controller with table view with categories to select where we are saving the venue
+    //Call the 
   }
   
   @objc func cancelButtonPressed() {
