@@ -17,7 +17,8 @@ class SearchDetailedView: UIView {
   
   lazy var venueName: UILabel = {
     let venueName = UILabel()
-    venueName.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+    venueName.backgroundColor = .white
+    venueName.textAlignment = .center
     return venueName
   }()
   
@@ -91,6 +92,7 @@ extension SearchDetailedView {
   func venueNameConstraints() {
     self.addSubview(venueName)
     venueName.translatesAutoresizingMaskIntoConstraints = false
+    venueName.topAnchor.constraint(equalTo: venueImage.bottomAnchor, constant: 11).isActive = true
     venueName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11).isActive = true
     venueName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11).isActive = true
     venueName.heightAnchor.constraint(equalToConstant: 30).isActive = true
@@ -100,8 +102,8 @@ extension SearchDetailedView {
     self.addSubview(venueAddress)
     venueAddress.translatesAutoresizingMaskIntoConstraints = false
     venueAddress.topAnchor.constraint(equalTo: venueName.bottomAnchor, constant: 11).isActive = true
-    venueAddress.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11).isActive = true
-    venueAddress.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11).isActive = true
+    venueAddress.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 33).isActive = true
+    venueAddress.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -33).isActive = true
     venueAddress.heightAnchor.constraint(equalToConstant: 40).isActive = true
   }
   
@@ -109,16 +111,16 @@ extension SearchDetailedView {
   func addCommentButtonConstraints() {
     self.addSubview(addCommentButton)
     addCommentButton.translatesAutoresizingMaskIntoConstraints = false
-    addCommentButton.topAnchor.constraint(equalTo: venueImage.bottomAnchor, constant: 11).isActive = true
-    addCommentButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 11).isActive = true
-    addCommentButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -11).isActive = true
+    addCommentButton.topAnchor.constraint(equalTo: venueAddress.bottomAnchor, constant: 11).isActive = true
+    addCommentButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 33).isActive = true
+    addCommentButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -33).isActive = true
     
   }
   
   func commentsLabelConstraints() {
     self.addSubview(commentsLabel)
     commentsLabel.translatesAutoresizingMaskIntoConstraints = false
-    commentsLabel.topAnchor.constraint(equalTo: venueAddress.bottomAnchor, constant: 11).isActive = true
+//    commentsLabel.topAnchor.constraint(equalTo: addCommentButton.bottomAnchor, constant: 11).isActive = true
     commentsLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11).isActive = true
     commentsLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11).isActive = true
     commentsLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
@@ -128,7 +130,7 @@ extension SearchDetailedView {
     self.addSubview(detailedCommentsTableView)
     detailedCommentsTableView.translatesAutoresizingMaskIntoConstraints = false
     detailedCommentsTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -11).isActive = true
-    detailedCommentsTableView.topAnchor.constraint(equalTo: commentsLabel.bottomAnchor, constant: 0).isActive = true
+    detailedCommentsTableView.topAnchor.constraint(equalTo: addCommentButton.bottomAnchor, constant: 0).isActive = true
     detailedCommentsTableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 11).isActive = true
     detailedCommentsTableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -11).isActive = true
   }
