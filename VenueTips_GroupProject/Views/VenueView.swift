@@ -17,43 +17,38 @@ class VenueView: UIView {
     lazy var button0: UIButton = {
         var button = UIButton()
         button.setTitle("button 0", for: .normal)
-        button.backgroundColor = .orange
         return button
     }()
     lazy var button1: UIButton = {
         var button = UIButton()
         button.setTitle("Button1", for: .normal)
-        button.backgroundColor = .orange
         return button
     }()
     lazy var button2: UIButton = {
         var button = UIButton()
         button.setTitle("Button2", for: .normal)
-        button.backgroundColor = .orange
         return button
     }()
     lazy var button3: UIButton = {
         var button = UIButton()
         button.setTitle("Button3", for: .normal)
-        button.backgroundColor = .orange
         return button
     }()
     lazy var button4: UIButton = {
         var button = UIButton()
         button.setTitle("Button4", for: .normal)
-        button.backgroundColor = .orange
         return button
     }()
     lazy var button5: UIButton = {
         var button = UIButton()
         button.setTitle("Button5", for: .normal)
-        button.backgroundColor = .orange
         return button
     }()
     lazy var exploreNearByLabel: UILabel = {
         var label = UILabel()
-        label.text = "Explore Near By"
-        label.font = UIFont(name: "Arial", size: 22)
+        label.text = "Explore NearBy"
+//        label.font = UIFont(name: "Arial", size: 22)
+        label.font = UIFont.boldSystemFont(ofSize: 22)
         label.textAlignment = .center
         return label
     }()
@@ -63,7 +58,8 @@ class VenueView: UIView {
         layout.sectionInset = UIEdgeInsets.init(top: 20, left: 10, bottom: 20, right: 10)
         layout.scrollDirection = .horizontal
         var collectionView = UICollectionView.init(frame: self.bounds, collectionViewLayout: layout)
-        collectionView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        collectionView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        collectionView.backgroundColor = .clear
         return collectionView
     }()
     

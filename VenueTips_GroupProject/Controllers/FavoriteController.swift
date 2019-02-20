@@ -34,11 +34,21 @@ class FavoriteController: UIViewController {
     
     let addCategoryButton = UIBarButtonItem(title: "New Category", style: UIBarButtonItem.Style.plain, target: self, action: #selector(addCategoryButtonPressed))
     self.navigationItem.rightBarButtonItem = addCategoryButton
-    
+    reload()
     //    getCategories()
     
   }
-  
+    func reload(){
+        categories = DataManager.getCategories(fileName: DataManager.categoriesFileName)
+        favoriteView.favoriteCollectionView.reloadData()
+        
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        favoriteView.favoriteCollectionView.reloadData()
+        categories = DataManager.getCategories(fileName: DataManager.categoriesFileName)
+        
+    }
   
   @objc private func addCategoryButtonPressed() {
     showAlert()
@@ -59,12 +69,13 @@ class FavoriteController: UIViewController {
   func showAlert() {
     let alert = UIAlertController(title: "Enter Category Name", message: nil, preferredStyle: .alert)
     alert.addTextField { (texField) in
-      texField.text = "E.g Tacos or Yoga"
+      texField.placeholder = "E.g Tacos or Yoga"
     }
     let ok = UIAlertAction(title: "Ok", style: .default) { (done) in
       if let categoryName =  alert.textFields?.first?.text {
         let categoryToSave = CategoryToSave.init(categoryName: categoryName)
         DataManager.addCatergory(fileName: DataManager.categoriesFileName, category: categoryToSave)
+        self.reload()
       }
     }
     let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -91,7 +102,7 @@ extension FavoriteController: UICollectionViewDelegateFlowLayout, UICollectionVi
     let currentCategory = categories[indexPath.row]
     
     cell.title.text = currentCategory.categoryName
-    cell.backgroundColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+    cell.backgroundColor = #colorLiteral(red: 0.7934073227, green: 0.8359052415, blue: 0.7860631249, alpha: 1)
     return cell
     
   }
@@ -108,7 +119,7 @@ extension FavoriteController: UICollectionViewDelegateFlowLayout, UICollectionVi
   }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     
-    return CGSize.init(width: 120, height: 120)
+    return CGSize.init(width: 300, height: 300)
     
   }
 }

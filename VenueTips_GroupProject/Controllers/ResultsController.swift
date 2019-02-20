@@ -192,6 +192,7 @@ extension ResultsController: CLLocationManagerDelegate {
 
 extension ResultsController: UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
         if let text = searchBar.text {
         getVenues(location: location, keyword: text, date: date)
         getVenues(location: location, keyword: text, date: date)

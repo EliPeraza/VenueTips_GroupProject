@@ -27,7 +27,7 @@ class ResultsView: UIView {
     lazy var button: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "icons8-chevron_up"), for: .normal)
-        button.backgroundColor = .clear
+        button.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
 //        button.setImage("", for: .normal) speak to Leandro to get image for button and cell file
         return button
     }()

@@ -13,8 +13,9 @@ class SearchView: UIView {
     lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.setTitle("Dismiss", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.setTitleColor(.red, for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        button.backgroundColor = #colorLiteral(red: 0.8893435346, green: 0.8817247842, blue: 0.8608004469, alpha: 1)
         return button
     }()
     
@@ -29,7 +30,7 @@ class SearchView: UIView {
     
     lazy var locationSearchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.placeholder = "Enter Location"
+        searchBar.placeholder = "Current Location"
         return searchBar
     }()
     

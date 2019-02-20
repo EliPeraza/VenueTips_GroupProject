@@ -18,7 +18,7 @@ class SearchDetailedController: UIViewController {
     var venueInfoReceivedFromMain: VenueDetails?
     
     var imageReceivedFromMain: UIImage?
-    var test = ResultsView()
+    var resultView = ResultsView()
     
     let searchDetailedView = SearchDetailedView()
     
@@ -29,15 +29,17 @@ class SearchDetailedController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: #selector(favoriteButtonPressed))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed))
         searchDetailedView.addCommentButton.addTarget(self, action: #selector(addTipButtonPressed), for: .touchUpInside)
-        test.mapView.delegate = self
+        resultView.mapView.delegate = self
         searchDetailedView.venueAddress.addTarget(self, action: #selector(directionPressed), for: .touchUpInside)
         
         setupDetailed()
         
     }
     
+    
     @objc func addTipButtonPressed() {
         let addTipController = AddTipControllerViewController()
+        addTipController.venueID = venueInfoReceivedFromMain?.id ?? "no id"
         navigationController?.pushViewController(addTipController, animated: true)
     }
     @objc func directionPressed() {
@@ -46,11 +48,15 @@ class SearchDetailedController: UIViewController {
     @objc func favoriteButtonPressed() {
         //TODO: Pull new controller with table view with categories to select where we are saving the venue
         //Call the
+        let saveToFavoritesVC = SaveToFavoritesController()
+        saveToFavoritesVC.venueName = venueInfoReceivedFromMain!.name
+        navigationController?.pushViewController(saveToFavoritesVC, animated: true)
     }
     
     @objc func cancelButtonPressed() {
         navigationController?.popViewController(animated: true)
     }
+    
     func openMaps() {
         let latitude: CLLocationDegrees = (venueInfoReceivedFromMain?.location.lat)!
         let longitude: CLLocationDegrees = (venueInfoReceivedFromMain?.location.lng)!
@@ -69,6 +75,7 @@ class SearchDetailedController: UIViewController {
         directionTrailCalling(request: direction(location: [coordinates]))
         
     }
+    
     func direction(location: [CLLocationCoordinate2D]) -> MKDirections.Request {
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: (locationManager.location?.coordinate)!, addressDictionary: nil))
         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: location.last!, addressDictionary: nil))
@@ -82,21 +89,22 @@ class SearchDetailedController: UIViewController {
         direction.calculate { (directions, error) in
             guard let directionFinallyGotten = directions else {return print(error!)}
             for location in directionFinallyGotten.routes{
-                self.test.mapView.addOverlay(location.polyline)
-                self.test.mapView.setVisibleMapRect(location.polyline.boundingMapRect, animated: true)
+                self.resultView.mapView.addOverlay(location.polyline)
+                self.resultView.mapView.setVisibleMapRect(location.polyline.boundingMapRect, animated: true)
             }
         }
-        
     }
+    
     func setupDetailed() {
         searchDetailedView.venueName.text = venueInfoReceivedFromMain?.name
         searchDetailedView.venueAddress.setTitle("Directions", for: .normal)
-        searchDetailedView.addCommentButton.setTitle("Add a tip", for: .normal)
-        searchDetailedView.commentsLabel.text = "Tips by other users:"
+        searchDetailedView.addCommentButton.setTitle("Add a Comment", for: .normal)
+        searchDetailedView.commentsLabel.text = "Comments by other users:"
         if let image = imageReceivedFromMain {
             searchDetailedView.venueImage.image = image
         } else {
             searchDetailedView.venueImage.image = UIImage(named: "placeholder")
+            
         }
     }
     
@@ -110,5 +118,4 @@ extension SearchDetailedController: MKMapViewDelegate {
         polylineRenderer.lineWidth = 2
         return polylineRenderer
     }
-    
 }
