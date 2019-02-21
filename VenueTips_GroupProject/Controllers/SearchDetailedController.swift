@@ -24,6 +24,7 @@ class SearchDetailedController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.addSubview(searchDetailedView)
         view.backgroundColor = .white
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: #selector(favoriteButtonPressed))
@@ -96,6 +97,11 @@ class SearchDetailedController: UIViewController {
     }
     
     func setupDetailed() {
+//        if searchDetailedView.tipsCommentsTableView.count = 0 {
+//            searchDetailedView.commentsLabel.text = "Enter a Comment"
+//        } else {
+//            searchDetailedView.commentsLabel.text = "Comments by other users:"
+//        }
         searchDetailedView.venueName.text = venueInfoReceivedFromMain?.name
         searchDetailedView.venueAddress.setTitle("Directions", for: .normal)
         searchDetailedView.addCommentButton.setTitle("Add a Comment", for: .normal)
