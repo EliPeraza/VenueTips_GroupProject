@@ -102,7 +102,10 @@ extension FavoriteController: UICollectionViewDelegateFlowLayout, UICollectionVi
     let currentCategory = categories[indexPath.row]
     
     cell.title.text = currentCategory.categoryName
-    cell.backgroundColor = #colorLiteral(red: 0.7934073227, green: 0.8359052415, blue: 0.7860631249, alpha: 1)
+    cell.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+    cell.layer.cornerRadius = 4.0
+    cell.layer.borderWidth = 1.0
+    cell.layer.borderColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
     return cell
     
   }

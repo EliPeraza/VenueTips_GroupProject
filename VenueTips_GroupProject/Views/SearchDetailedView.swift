@@ -24,8 +24,8 @@ class SearchDetailedView: UIView {
   
     lazy var venueAddress: UIButton = {
       let venueAddress = UIButton()
-      venueAddress.backgroundColor = #colorLiteral(red: 0.6608897137, green: 0.8383933291, blue: 0.8979219543, alpha: 1)
-      venueAddress.titleLabel?.textColor = .black
+      venueAddress.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+      venueAddress.titleLabel?.textColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
       venueAddress.layer.cornerRadius = 2.0
       return venueAddress
     }()
@@ -33,14 +33,15 @@ class SearchDetailedView: UIView {
     lazy var addCommentButton: UIButton = {
       let button = UIButton()
       button.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-      button.titleLabel?.textColor = .black
+      button.titleLabel?.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
       return button
     }()
   
   
     lazy var commentsLabel: UILabel = {
       let commentsLabel = UILabel()
-      commentsLabel.backgroundColor = #colorLiteral(red: 0.6608897137, green: 0.8383933291, blue: 0.8979219543, alpha: 1)
+      commentsLabel.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+      commentsLabel.textColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
       return commentsLabel
     }()
  

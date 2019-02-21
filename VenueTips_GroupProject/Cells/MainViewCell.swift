@@ -51,10 +51,10 @@ class MainViewCell: UICollectionViewCell {
   func setupImage(){
     addSubview(venueImage)
     venueImage.translatesAutoresizingMaskIntoConstraints = false
-    venueImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5).isActive = true
-    venueImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8).isActive = true
+    venueImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.6).isActive = true
+    venueImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9).isActive = true
     venueImage.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-    venueImage.topAnchor.constraint(equalTo: topAnchor, constant: 15).isActive = true
+    venueImage.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
   }
   
   func setupVenueName(){

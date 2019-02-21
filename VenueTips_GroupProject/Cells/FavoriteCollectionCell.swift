@@ -19,6 +19,7 @@ class FavoriteCollectionCell: UICollectionViewCell {
    var label = UILabel()
     label.numberOfLines = 3
     label.textAlignment = .center
+    label.textColor = .white
     label.font = UIFont.boldSystemFont(ofSize: 22)
     return label
   }()

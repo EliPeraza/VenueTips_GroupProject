@@ -72,6 +72,7 @@ class MainView: UIView {
         label.text = "Explore Nearby"
 //        label.font = UIFont(name: "Arial", size: 22)
         label.font = UIFont.boldSystemFont(ofSize: 22)
+      label.textColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         label.textAlignment = .center
         return label
     }()
@@ -112,10 +113,10 @@ class MainView: UIView {
         for button in buttons{
             addSubview(button)
             button.translatesAutoresizingMaskIntoConstraints = false
-            button.heightAnchor.constraint(equalToConstant: 90).isActive = true
-            button.widthAnchor.constraint(equalToConstant: 90).isActive = true
+            button.heightAnchor.constraint(equalToConstant: 100).isActive = true
+            button.widthAnchor.constraint(equalToConstant: 100).isActive = true
             button.backgroundColor = .clear
-            button.layer.borderWidth = 5
+            button.layer.borderWidth = 3
             button.layer.cornerRadius = 10
             
         }
@@ -154,7 +155,7 @@ class MainView: UIView {
         exploreNearByCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         exploreNearByCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         exploreNearByCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        exploreNearByCollectionView.topAnchor.constraint(equalTo: exploreNearByLabel.bottomAnchor, constant: 20).isActive = true
+        exploreNearByCollectionView.topAnchor.constraint(equalTo: exploreNearByLabel.bottomAnchor, constant: 11).isActive = true
     }
  
 
