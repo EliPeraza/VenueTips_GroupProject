@@ -94,11 +94,20 @@ class AddTipControllerViewController: UIViewController {
                 print("userinfo is nil")
                 return
         }
-        addTipView.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.height)
+      UIView.animate(withDuration: 0.2) {
+        self.addTipView.addTipField.frame = CGRect(x: self.addTipView.addTipField.frame.origin.x, y: self.addTipView.addTipField.frame.origin.y, width: self.addTipView.addTipField.frame.width, height: self.addTipView.addTipField.frame.height - keyboardFrame.height)
+      }
     }
     
     @objc private func willHideKeyboard(notification: Notification) {
-        addTipView.transform = CGAffineTransform.identity
+      guard let info = notification.userInfo,
+        let keyboardFrame = info["UIKeyboardFrameEndUserInfoKey"] as? CGRect else {
+          print("userinfo is nil")
+          return
+      }
+      UIView.animate(withDuration: 0.2) {
+        self.addTipView.addTipField.frame = CGRect(x: self.addTipView.addTipField.frame.origin.x, y: self.addTipView.addTipField.frame.origin.y, width: self.addTipView.addTipField.frame.width, height: self.addTipView.addTipField.frame.height + keyboardFrame.height)
+      }
     }
     
     private func unregisterKeyboardNotifications() {
