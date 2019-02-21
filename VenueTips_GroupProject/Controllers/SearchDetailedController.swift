@@ -58,7 +58,7 @@ class SearchDetailedController: UIViewController {
   }
   
   func getDataFromDocumentsDirectory() {
-    self.arrayOfVenueTips = DataManager.getTips(venueID: DataManager.tipsFileName).filter{$0.venueID == venueInfoReceivedFromMain?.id}
+    self.arrayOfVenueTips = DataManager.getTips(venueID: DataManager.tipsFileName).filter{$0.venueID == venueInfoReceivedFromMain?.id}.sorted{$0.timeStamp > $1.timeStamp}
     self.searchDetailedView.tipsCommentsTableView.reloadData()
   }
   
@@ -67,9 +67,11 @@ class SearchDetailedController: UIViewController {
     addTipController.venueID = venueInfoReceivedFromMain?.id ?? "no id"
     navigationController?.pushViewController(addTipController, animated: true)
   }
+  
   @objc func directionPressed() {
     openMaps()
   }
+  
   @objc func favoriteButtonPressed() {
     let saveToFavoritesVC = SaveToFavoritesController()
     saveToFavoritesVC.venueName = venueInfoReceivedFromMain!.name

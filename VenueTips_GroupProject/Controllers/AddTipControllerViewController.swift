@@ -46,7 +46,6 @@ class AddTipControllerViewController: UIViewController {
       let alert  = UIAlertController(title: "You will be commenting anonymously", message: nil, preferredStyle: .alert)
       let ok = UIAlertAction.init(title: "Ok", style: .default) { (okAction) in
         if let venueIdToSave = self.venueID {
-          print("this is the venueIdToSave: \(venueIdToSave)")
           let tipToSave = VenueTip.init(venueID: venueIdToSave, userName: "Anonymous", userTip: messageToSave, timeStamp: Date.getISOTimestamp())
           DataManager.addTip(venueID: venueIdToSave, tip: tipToSave)
         }
