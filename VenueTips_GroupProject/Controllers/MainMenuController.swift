@@ -29,6 +29,7 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
   let date = DateHelper.formatISOToDate(dateString: "yyyyMMdd")
   var mainView = MainView()
   let locationManager = CLLocationManager()
+    var myCurrentRegion = String()
   var nearbyVenues = [VenueDetails]() {
     didSet {
       DispatchQueue.main.async {
@@ -46,7 +47,11 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
     mainView.venueSearchBar.delegate = self
     mainView.exploreNearByCollectionView.dataSource = self
     mainView.exploreNearByCollectionView.delegate = self
-
+    if let currentLocation = locationManager.location?.coordinate{
+        myCurrentRegion = "\(currentLocation.latitude),\(currentLocation.longitude)"
+    } else {
+        myCurrentRegion = "40.7,-74"
+    }
     
   }
   func addActionToButtons(){
@@ -55,9 +60,9 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
     
   @objc func categoryButtonPressed(sender: UIButton) {
     print("\(MainCategories.allCases[sender.tag])")
-    guard let currentLocation = locationManager.location?.coordinate  else {print("No location found")
-      return}
-    let myCurrentRegion = "\(currentLocation.latitude),\(currentLocation.longitude)"
+//    guard let currentLocation = locationManager.location?.coordinate  else {print("No location found")
+//      return}
+    
     let category = MainCategories.allCases[sender.tag]
     let vc: ViewControllers = .MainVC
     let resultsController = ResultsController(vc: vc, location: myCurrentRegion, category: category.rawValue, coordinates: true)
@@ -78,8 +83,7 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
     return nearbyVenues.count
   }
   func searchForCurrentLocation() {
-    if let currentLocation = locationManager.location?.coordinate{
-      let myCurrentRegion = "\(currentLocation.latitude),\(currentLocation.longitude)"
+
       VenueAPIClient.searchForVenueNearBy(location: myCurrentRegion, keyword: nil, date: DateHelper.formatISOToDate(dateString: date)) { (appError, venueDetail) in
         if let appError = appError {
           print(appError)
@@ -87,7 +91,7 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
           self.nearbyVenues = venueDetail
         }
       }
-    }
+    
   }
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainViewCell", for: indexPath) as? MainViewCell else {print("No Cell")
@@ -135,7 +139,7 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
   }
   func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
     let searchVC = SearchController()
-    searchVC.modalPresentationStyle = .overCurrentContext
+    searchVC.modalPresentationStyle = .overFullScreen
     searchBar.resignFirstResponder()
     searchVC.segueDelegate = self
     present(searchVC, animated: true, completion: nil)
