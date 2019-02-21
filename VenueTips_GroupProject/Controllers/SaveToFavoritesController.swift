@@ -58,7 +58,7 @@ class SaveToFavoritesController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-
+    
 }
 extension SaveToFavoritesController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

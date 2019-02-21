@@ -140,14 +140,13 @@ class SearchDetailedController: UIViewController {
 
 
 extension SearchDetailedController: MKMapViewDelegate {
-  func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-    let polylineRenderer = MKPolylineRenderer(overlay: overlay)
-    polylineRenderer.strokeColor = UIColor.blue
-    polylineRenderer.fillColor = UIColor.red
-    polylineRenderer.lineWidth = 2
-    return polylineRenderer
-  }
-  
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+        polylineRenderer.strokeColor = UIColor.blue
+        polylineRenderer.fillColor = UIColor.red
+        polylineRenderer.lineWidth = 2
+        return polylineRenderer
+    }
 }
 
 extension SearchDetailedController: UITableViewDelegate, UITableViewDataSource {
