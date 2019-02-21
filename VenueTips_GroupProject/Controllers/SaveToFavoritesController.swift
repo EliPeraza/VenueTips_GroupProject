@@ -85,6 +85,5 @@ extension SaveToFavoritesController: UITableViewDataSource, UITableViewDelegate{
         present(alert, animated: true, completion: nil)
         
     }
-    
-    
 }
+

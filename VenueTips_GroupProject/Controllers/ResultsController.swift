@@ -21,7 +21,7 @@ class ResultsController: UIViewController {
     private var location = String()
     private var category = String()
     private var coordinates = Bool()
-
+    
     private var annotations =  [MKAnnotation]()
     var venues = [VenueDetails]() {
         didSet{
@@ -46,11 +46,11 @@ class ResultsController: UIViewController {
             getVenues(location: location, keyword: category, date: date)
         } else {
             if coordinates {
-            getVenues(location: location, keyword: category, date: date)
+                getVenues(location: location, keyword: category, date: date)
             } else {
                 getVenuesByLocation()
             }
-
+            
         }
     }
     @objc func pullViewButtonPressed() {
@@ -194,22 +194,22 @@ extension ResultsController: UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         if let text = searchBar.text {
-        getVenues(location: location, keyword: text, date: date)
-        getVenues(location: location, keyword: text, date: date)
+            getVenues(location: location, keyword: text, date: date)
+            getVenues(location: location, keyword: text, date: date)
         }
     }
 }
-
+ 
 extension ResultsController: MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let name = view.annotation!.title!
         let filterVenue = venues.filter{$0.name == name!}
         let venueToSend = filterVenue.first!
         let detailVC = SearchDetailedController()
-//        detailVC.modalPresentationStyle = .overCurrentContext
+        //        detailVC.modalPresentationStyle = .overCurrentContext
         detailVC.venueInfoReceivedFromMain = venueToSend
         navigationController?.pushViewController(detailVC, animated: true)
-//        present(detailVC, animated: true, completion: nil)
+        //        present(detailVC, animated: true, completion: nil)
         //TO DO: SEND FILTERED VENUE TO DETAIL
     }
 }

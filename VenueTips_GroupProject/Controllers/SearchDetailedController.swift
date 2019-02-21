@@ -123,10 +123,13 @@ class SearchDetailedController: UIViewController {
   }
   
   func setupDetailed() {
+    if arrayOfVenueTips.count == 0 {
+        searchDetailedView.commentsLabel.text = "Add a Comment:"
+    }
+    searchDetailedView.commentsLabel.text = "Comments by other users:"
     searchDetailedView.venueName.text = venueInfoReceivedFromMain?.name
     searchDetailedView.venueAddress.setTitle("Directions", for: .normal)
     searchDetailedView.addCommentButton.setTitle("Add a Comment", for: .normal)
-    searchDetailedView.commentsLabel.text = "Comments by other users:"
     if let image = imageReceivedFromMain {
       searchDetailedView.venueImage.image = image
     } else {
@@ -164,6 +167,5 @@ extension SearchDetailedController: UITableViewDelegate, UITableViewDataSource {
     
     return cell
     
-    
-  }
+      }
 }
