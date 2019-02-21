@@ -13,7 +13,6 @@ class AddTipControllerViewController: UIViewController {
   
   let addTipView = AddTipView()
   var venueID: String?
-//  let userName = ""
   let tipEntereedByUser = ""
   
   
@@ -28,62 +27,54 @@ class AddTipControllerViewController: UIViewController {
   
   @objc func postButtonPressed() {
     
-    //TODO: if there is text in field then check if there is text in username (if there is not, show alert letting user know that it will be marked anonymous)
-    
-    //DONE: generate object according to model
-    //DONE: call data manager to add to the array
-    
-
-     let messageToSave =  addTipView.addTipField.text ?? "No review entered"
-     let userName = addTipView.addUserNameField.text ?? "Anonymous"
-//    if let venueIdToSave = venueID {
-//      print("this is the venueIdToSave: \(venueIdToSave)")
-//      let tipToSave = VenueTip.init(venueID: venueIdToSave, userName: userName, userTip: messageToSave, timeStamp: Date.getISOTimestamp())
-//    DataManager.addTip(venueID: venueIdToSave, tip: tipToSave)
-//    }
-   // TODO: else (if there is no text in the addTipField display an alert about not being able to save)
-    
-   // TODO: IF text is empty user should not be able to post, display alert
+    let messageToSave =  addTipView.addTipField.text ?? "No review entered"
+    let userName = addTipView.addUserNameField.text ?? "Anonymous"
     
     if !messageToSave.isEmpty && !userName.isEmpty {
-        let alert = UIAlertController(title: "Comment Added", message: nil, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alert.addAction(ok)
-        self.present(alert, animated: true, completion: nil)
-        if let venueIdToSave = venueID {
-            print("this is the venueIdToSave: \(venueIdToSave)")
-            let tipToSave = VenueTip.init(venueID: venueIdToSave, userName: userName, userTip: messageToSave, timeStamp: Date.getISOTimestamp())
-            DataManager.addTip(venueID: venueIdToSave, tip: tipToSave)
-        }
+      if let venueIdToSave = venueID {
+        let tipToSave = VenueTip.init(venueID: venueIdToSave, userName: userName, userTip: messageToSave, timeStamp: Date.getISOTimestamp())
+        DataManager.addTip(venueID: venueIdToSave, tip: tipToSave)
+      }
+      let alert = UIAlertController(title: "Comment Added", message: nil, preferredStyle: .alert)
+      let ok = UIAlertAction(title: "Ok", style: .default) { (okAction) in
+        self.navigationController?.popViewController(animated: true)
+      }
+      alert.addAction(ok)
+      self.present(alert, animated: true, completion: nil)
+      
     } else if !messageToSave.isEmpty && userName.isEmpty {
-        let alert  = UIAlertController(title: "You will be commenting anonymously", message: nil, preferredStyle: .alert)
-        let ok = UIAlertAction.init(title: "Ok", style: .default, handler: nil)
-        alert.addAction(ok)
-        self.present(alert, animated: true, completion: nil)
-        if let venueIdToSave = venueID {
-                print("this is the venueIdToSave: \(venueIdToSave)")
-                let tipToSave = VenueTip.init(venueID: venueIdToSave, userName: userName, userTip: messageToSave, timeStamp: Date.getISOTimestamp())
-                DataManager.addTip(venueID: venueIdToSave, tip: tipToSave)
+      let alert  = UIAlertController(title: "You will be commenting anonymously", message: nil, preferredStyle: .alert)
+      let ok = UIAlertAction.init(title: "Ok", style: .default) { (okAction) in
+        if let venueIdToSave = self.venueID {
+          let tipToSave = VenueTip.init(venueID: venueIdToSave, userName: "Anonymous", userTip: messageToSave, timeStamp: Date.getISOTimestamp())
+          DataManager.addTip(venueID: venueIdToSave, tip: tipToSave)
         }
-            let userName = "anonymous"
-            if let venueIdToSave = venueID {
-                print("this is the venueIdToSave: \(venueIdToSave)")
-                let tipToSave = VenueTip.init(venueID: venueIdToSave, userName: userName, userTip: messageToSave, timeStamp: Date.getISOTimestamp())
-                DataManager.addTip(venueID: venueIdToSave, tip: tipToSave)
-            }
-        
-    } else if messageToSave.isEmpty && userName.isEmpty {
-        let alert = UIAlertController(title: "One field Required", message: "Atleast one field is required!", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alert.addAction(ok)
-        self.present(alert, animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
+      }
+      let cancel = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
+      alert.addAction(ok)
+      alert.addAction(cancel)
+      self.present(alert, animated: true, completion: nil)
     } else if messageToSave.isEmpty && !userName.isEmpty {
-        let alert = UIAlertController(title: "Please add a comment", message: "", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alert.addAction(ok)
-        self.present(alert, animated: true, completion: nil)
+      let alert = UIAlertController(title: "Please add a comment to proceed", message: "or press cancel to go back", preferredStyle: .alert)
+      let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
+      let cancel = UIAlertAction.init(title: "Cancel", style: .cancel) { (cancelAction) in
+        self.navigationController?.popViewController(animated: true)
+      }
+      alert.addAction(ok)
+      alert.addAction(cancel)
+      self.present(alert, animated: true, completion: nil)
+    } else if messageToSave.isEmpty && userName.isEmpty {
+      let alert = UIAlertController(title: "Comment required to post", message: "Please press ok to continue or cancel to go back", preferredStyle: .alert)
+      let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
+      let cancel = UIAlertAction.init(title: "Cancel", style: .cancel) { (cancelAction) in
+        self.navigationController?.popViewController(animated: true)
+      }
+      alert.addAction(ok)
+      alert.addAction(cancel)
+      self.present(alert, animated: true, completion: nil)
+      return
     }
-    return
-        }
-    }
+  }
+}
 
