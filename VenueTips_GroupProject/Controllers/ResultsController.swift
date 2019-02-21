@@ -26,6 +26,7 @@ class ResultsController: UIViewController {
     var venues = [VenueDetails]() {
         didSet{
             DispatchQueue.main.async {
+                
                 self.addAnnotation()
                 self.resultsView.listTableView.reloadData()
             }
@@ -50,7 +51,6 @@ class ResultsController: UIViewController {
             } else {
                 getVenuesByLocation()
             }
-
         }
     }
     @objc func pullViewButtonPressed() {
@@ -98,13 +98,24 @@ class ResultsController: UIViewController {
         VenueAPIClient.searchForVenueNearBy(location: location, keyword: keyword, date: date) { (appError, venues) in
             if let error = appError {
                 print(error)
+                let alert = UIAlertController.init(title: "Invalid Venue", message: nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
+                    alert.dismiss(animated: true, completion: nil)
+                }))
+                self.present(alert, animated: true, completion: nil)
             }
             if let venues = venues {
                 self.venues = venues
+                if self.venues.count == 0 {
+                    let alert = UIAlertController.init(title: "Invalid Venue", message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
+                        alert.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
             
         }
-        
     }
     func getVenuesByLocation() {
         VenueAPIClient.searchForVenueAnyLocation(location: location, keyword: category, date: date) { (appError, venues) in
@@ -118,7 +129,7 @@ class ResultsController: UIViewController {
     }
     func addAnnotation() {
         resultsView.mapView.removeAnnotations(annotations)
-        
+        annotations.removeAll()
         for venue in venues{
             let annotation = MKPointAnnotation()
             let coordinate = CLLocationCoordinate2D(latitude: venue.location.lat, longitude: venue.location.lng)
@@ -175,17 +186,24 @@ extension ResultsController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let venueToSend = venues[indexPath.row]
+        let detailVC = SearchDetailedController()
+        detailVC.venueInfoReceivedFromMain = venueToSend
+        navigationController?.pushViewController(detailVC, animated: true)
+        
+    }
 }
 
 extension ResultsController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         let currentLocation = resultsView.mapView.userLocation
-        let myCurrentRegion = MKCoordinateRegion(center: currentLocation.coordinate, latitudinalMeters: 500, longitudinalMeters: 500) //the lat and log is the zoom
+        let myCurrentRegion = MKCoordinateRegion(center: currentLocation.coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000) //the lat and log is the zoom
         resultsView.mapView.setRegion(myCurrentRegion, animated: true)
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let currentLocation = locations.last else {return}
-        let myCurrentRegion = MKCoordinateRegion(center: currentLocation.coordinate, latitudinalMeters: 500, longitudinalMeters: 500) //the lat and log is the zoom
+        let myCurrentRegion = MKCoordinateRegion(center: currentLocation.coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000) //the lat and log is the zoom
         resultsView.mapView.setRegion(myCurrentRegion, animated: true)
     }
 }
@@ -193,7 +211,6 @@ extension ResultsController: CLLocationManagerDelegate {
 extension ResultsController: UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.text {
-        getVenues(location: location, keyword: text, date: date)
         getVenues(location: location, keyword: text, date: date)
         }
     }

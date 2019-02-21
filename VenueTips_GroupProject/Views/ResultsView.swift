@@ -13,7 +13,8 @@ class ResultsView: UIView {
 
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.placeholder = "E.g. Sushi, Tacos etc."
+        searchBar.placeholder = "Enter Venue or Food e.g Tacos or Yoga"
+
         return searchBar
     }()
 
@@ -27,7 +28,7 @@ class ResultsView: UIView {
     lazy var button: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "icons8-chevron_up"), for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        button.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
 //        button.setImage("", for: .normal) speak to Leandro to get image for button and cell file
         return button
     }()
@@ -85,8 +86,6 @@ class ResultsView: UIView {
         listTableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         listTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
-    
-    
     
 }
 

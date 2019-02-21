@@ -38,13 +38,8 @@ extension FavoritesDetailedController: UITableViewDelegate, UITableViewDataSourc
   }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = UITableViewCell()
-    
-
-    
     let favoriteVenueToSet = favoriteVenues[indexPath.row]
     cell.textLabel?.text = favoriteVenueToSet.name
-
-    
     return cell
 
   }

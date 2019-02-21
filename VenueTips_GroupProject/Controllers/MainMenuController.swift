@@ -57,6 +57,7 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
   func addActionToButtons(){
     mainView.buttons.forEach {$0.addTarget(self, action: #selector(categoryButtonPressed(sender:)), for: .touchUpInside)}
   }
+    
   @objc func categoryButtonPressed(sender: UIButton) {
     print("\(MainCategories.allCases[sender.tag])")
 //    guard let currentLocation = locationManager.location?.coordinate  else {print("No location found")
@@ -96,6 +97,9 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainViewCell", for: indexPath) as? MainViewCell else {print("No Cell")
       return UICollectionViewCell()}
     
+    cell.layer.cornerRadius = 6.0
+    cell.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+    
     let currentVenue = nearbyVenues[indexPath.row]
     
     cell.venueNameLabel.text = currentVenue.name
@@ -131,11 +135,11 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
     return cell
   }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return  CGSize.init(width: collectionView.bounds.width * 0.75, height: collectionView.bounds.height * 0.75)
+    return  CGSize.init(width: collectionView.bounds.width * 0.75, height: collectionView.bounds.height * 0.90)
   }
   func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
     let searchVC = SearchController()
-    searchVC.modalPresentationStyle = .overCurrentContext
+    searchVC.modalPresentationStyle = .overFullScreen
     searchBar.resignFirstResponder()
     searchVC.segueDelegate = self
     present(searchVC, animated: true, completion: nil)
@@ -160,7 +164,6 @@ class MainMenuController: UIViewController, UISearchBarDelegate, UICollectionVie
     navigationController?.pushViewController(searchDetailedController, animated: true)
     
   }
-  
   
 }
 extension MainMenuController: CLLocationManagerDelegate {
