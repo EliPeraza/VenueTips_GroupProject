@@ -26,7 +26,6 @@ class FavoriteController: UIViewController {
     super.viewDidLoad()
     view.addSubview(favoriteView)
     view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-    
     favoriteView.favoriteCollectionView.register(FavoriteCollectionCell.self, forCellWithReuseIdentifier: "FavoriteCollectionCell")
     
     favoriteView.favoriteCollectionView.dataSource = self

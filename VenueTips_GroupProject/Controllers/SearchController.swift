@@ -74,19 +74,19 @@ extension SearchController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let resultsCategory = categoriesTest[indexPath.row].name.replacingOccurrences(of: " ", with: "")
         let vc = ViewControllers.SearchVC
-
-        if let searchLocation = searchView.locationSearchBar.text {
-        dismiss(animated: true, completion: nil)
-        segueDelegate?.prepareForSegue(vc: vc, location: searchLocation, keyword: resultsCategory)
-        }
         if (searchView.locationSearchBar.text?.isEmpty)! {
-//            print("Show alert")
+            //            print("Show alert")
             let alert = UIAlertController(title: "Please enter a location", message: nil, preferredStyle: .alert)
             let ok = UIAlertAction.init(title: "OK", style: .default) { (UIAlertAction) in
                 alert.dismiss(animated: true, completion: nil)
             }
             alert.addAction(ok)
             present(alert, animated: true, completion: nil)
+        } else {
+        if let searchLocation = searchView.locationSearchBar.text {
+        dismiss(animated: true, completion: nil)
+        segueDelegate?.prepareForSegue(vc: vc, location: searchLocation, keyword: resultsCategory)
+        }
         }
     }
 }
