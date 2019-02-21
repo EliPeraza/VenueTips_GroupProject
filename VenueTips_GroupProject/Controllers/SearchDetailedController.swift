@@ -23,7 +23,7 @@ class SearchDetailedController: UIViewController {
   
   let searchDetailedView = SearchDetailedView()
   
-  var arrayOfVenueTips = DataManager.getTips(venueID: DataManager.tipsFileName) {
+  var arrayOfVenueTips = [VenueTip]() {
     didSet {
       DispatchQueue.main.async {
         self.searchDetailedView.tipsCommentsTableView.reloadData()
@@ -47,10 +47,20 @@ class SearchDetailedController: UIViewController {
     searchDetailedView.tipsCommentsTableView.dataSource = self
     
     searchDetailedView.tipsCommentsTableView.register(VenueTipCell.self, forCellReuseIdentifier: "VenueTipsCell")
+    
+    getDataFromDocumentsDirectory()
+    
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(true)
+    getDataFromDocumentsDirectory()
+  }
   
-  
+  func getDataFromDocumentsDirectory() {
+    self.arrayOfVenueTips = DataManager.getTips(venueID: DataManager.tipsFileName).filter{$0.venueID == venueInfoReceivedFromMain?.id}
+    self.searchDetailedView.tipsCommentsTableView.reloadData()
+  }
   
   @objc func addTipButtonPressed() {
     let addTipController = AddTipControllerViewController()
@@ -61,8 +71,6 @@ class SearchDetailedController: UIViewController {
     openMaps()
   }
   @objc func favoriteButtonPressed() {
-    //TODO: Pull new controller with table view with categories to select where we are saving the venue
-    //Call the
     let saveToFavoritesVC = SaveToFavoritesController()
     saveToFavoritesVC.venueName = venueInfoReceivedFromMain!.name
     navigationController?.pushViewController(saveToFavoritesVC, animated: true)
@@ -72,72 +80,72 @@ class SearchDetailedController: UIViewController {
     navigationController?.popViewController(animated: true)
   }
   
-    func openMaps() {
-      let latitude: CLLocationDegrees = (venueInfoReceivedFromMain?.location.lat)!
-      let longitude: CLLocationDegrees = (venueInfoReceivedFromMain?.location.lng)!
-      let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
-      let regionSpan = MKCoordinateRegion(center: coordinates, latitudinalMeters: 1000, longitudinalMeters: 1000)
-      let options = [
-        MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
-        MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
-      ]
-      
-      let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-      let mapItem = MKMapItem(placemark: placemark)
-      mapItem.name = venueInfoReceivedFromMain?.name
-      mapItem.openInMaps(launchOptions: options)
-      
-      directionTrailCalling(request: direction(location: [coordinates]))
-      
-    }
+  func openMaps() {
+    let latitude: CLLocationDegrees = (venueInfoReceivedFromMain?.location.lat)!
+    let longitude: CLLocationDegrees = (venueInfoReceivedFromMain?.location.lng)!
+    let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+    let regionSpan = MKCoordinateRegion(center: coordinates, latitudinalMeters: 1000, longitudinalMeters: 1000)
+    let options = [
+      MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+      MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+    ]
     
+    let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+    let mapItem = MKMapItem(placemark: placemark)
+    mapItem.name = venueInfoReceivedFromMain?.name
+    mapItem.openInMaps(launchOptions: options)
     
-    func direction(location: [CLLocationCoordinate2D]) -> MKDirections.Request {
-      request.source = MKMapItem(placemark: MKPlacemark(coordinate: (locationManager.location?.coordinate)!, addressDictionary: nil))
-      request.destination = MKMapItem(placemark: MKPlacemark(coordinate: location.last!, addressDictionary: nil))
-      request.requestsAlternateRoutes = false
-      request.transportType = .walking
-      return request
-    }
+    directionTrailCalling(request: direction(location: [coordinates]))
     
-    func directionTrailCalling(request: MKDirections.Request){
-      let direction = MKDirections(request: request)
-      direction.calculate { (directions, error) in
-        guard let directionFinallyGotten = directions else {return print(error!)}
-        for location in directionFinallyGotten.routes{
-          self.test.mapView.addOverlay(location.polyline)
-          self.test.mapView.setVisibleMapRect(location.polyline.boundingMapRect, animated: true)
-        }
+  }
+  
+  
+  func direction(location: [CLLocationCoordinate2D]) -> MKDirections.Request {
+    request.source = MKMapItem(placemark: MKPlacemark(coordinate: (locationManager.location?.coordinate)!, addressDictionary: nil))
+    request.destination = MKMapItem(placemark: MKPlacemark(coordinate: location.last!, addressDictionary: nil))
+    request.requestsAlternateRoutes = false
+    request.transportType = .walking
+    return request
+  }
+  
+  func directionTrailCalling(request: MKDirections.Request){
+    let direction = MKDirections(request: request)
+    direction.calculate { (directions, error) in
+      guard let directionFinallyGotten = directions else {return print(error!)}
+      for location in directionFinallyGotten.routes{
+        self.test.mapView.addOverlay(location.polyline)
+        self.test.mapView.setVisibleMapRect(location.polyline.boundingMapRect, animated: true)
       }
-      
     }
     
-    func setupDetailed() {
-      searchDetailedView.venueName.text = venueInfoReceivedFromMain?.name
-      searchDetailedView.venueAddress.setTitle("Directions", for: .normal)
-      searchDetailedView.addCommentButton.setTitle("Add a Comment", for: .normal)
-      searchDetailedView.commentsLabel.text = "Comments by other users:"
-      if let image = imageReceivedFromMain {
-        searchDetailedView.venueImage.image = image
-      } else {
-        searchDetailedView.venueImage.image = UIImage(named: "placeholder")
-        
-      }
+  }
+  
+  func setupDetailed() {
+    searchDetailedView.venueName.text = venueInfoReceivedFromMain?.name
+    searchDetailedView.venueAddress.setTitle("Directions", for: .normal)
+    searchDetailedView.addCommentButton.setTitle("Add a Comment", for: .normal)
+    searchDetailedView.commentsLabel.text = "Comments by other users:"
+    if let image = imageReceivedFromMain {
+      searchDetailedView.venueImage.image = image
+    } else {
+      searchDetailedView.venueImage.image = UIImage(named: "placeholder")
       
     }
     
   }
+  
+}
 
 
 extension SearchDetailedController: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-      let polylineRenderer = MKPolylineRenderer(overlay: overlay)
-      polylineRenderer.strokeColor = UIColor.blue
-      polylineRenderer.fillColor = UIColor.red
-      polylineRenderer.lineWidth = 2
-      return polylineRenderer
-    }
-    
+  func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+    let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+    polylineRenderer.strokeColor = UIColor.blue
+    polylineRenderer.fillColor = UIColor.red
+    polylineRenderer.lineWidth = 2
+    return polylineRenderer
+  }
+  
 }
 
 extension SearchDetailedController: UITableViewDelegate, UITableViewDataSource {
@@ -149,10 +157,12 @@ extension SearchDetailedController: UITableViewDelegate, UITableViewDataSource {
     guard let cell = searchDetailedView.tipsCommentsTableView.dequeueReusableCell(withIdentifier: "VenueTipsCell", for: indexPath) as? VenueTipCell else {return UITableViewCell()}
     
     let currentTip = arrayOfVenueTips[indexPath.row]
-    cell.textLabel?.text = currentTip.userTip
-    cell.textLabel?.text = "hello"
-    return cell
-  }
   
-
+    cell.textLabel?.text = "\(currentTip.userName): "
+    cell.detailTextLabel?.text = currentTip.userTip
+    
+    return cell
+    
+    
+  }
 }

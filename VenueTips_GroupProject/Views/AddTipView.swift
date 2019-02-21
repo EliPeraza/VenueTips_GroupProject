@@ -13,8 +13,8 @@ class AddTipView: UIView {
     lazy var addUserNameField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Enter your username"
-        tf.textColor = #colorLiteral(red: 0.004859850742, green: 0.09608627111, blue: 0.5749928951, alpha: 1)
-        tf.backgroundColor = .red
+        tf.textColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
+        tf.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         tf.font = UIFont(name: "Thonburi", size: 20)
         //    tf.layer.borderColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
         //    tf.layer.cornerRadius = 3.0
@@ -26,8 +26,8 @@ class AddTipView: UIView {
     lazy var addTipField: UITextField = {
     let tf = UITextField()
     tf.placeholder = "Add comment"
-    tf.textColor = #colorLiteral(red: 0.004859850742, green: 0.09608627111, blue: 0.5749928951, alpha: 1)
-    tf.backgroundColor = .green
+    tf.textColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
+    tf.backgroundColor = #colorLiteral(red: 0.9450980392, green: 0.9450980392, blue: 0.9490196078, alpha: 1)
     tf.font = UIFont(name: "Thonburi", size: 20)
 //    tf.layer.borderColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
 //    tf.layer.cornerRadius = 3.0
