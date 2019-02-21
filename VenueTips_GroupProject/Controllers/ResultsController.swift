@@ -198,14 +198,10 @@ extension ResultsController: UITableViewDataSource, UITableViewDelegate{
 extension ResultsController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         let currentLocation = resultsView.mapView.userLocation
-        let myCurrentRegion = MKCoordinateRegion(center: currentLocation.coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000) //the lat and log is the zoom
+        let myCurrentRegion = MKCoordinateRegion(center: currentLocation.coordinate, latitudinalMeters: 3000, longitudinalMeters: 3000) //the lat and log is the zoom
         resultsView.mapView.setRegion(myCurrentRegion, animated: true)
     }
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let currentLocation = locations.last else {return}
-        let myCurrentRegion = MKCoordinateRegion(center: currentLocation.coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000) //the lat and log is the zoom
-        resultsView.mapView.setRegion(myCurrentRegion, animated: true)
-    }
+
 }
 
 extension ResultsController: UISearchBarDelegate{
