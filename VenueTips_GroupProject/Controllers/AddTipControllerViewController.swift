@@ -23,6 +23,8 @@ class AddTipControllerViewController: UIViewController {
     navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Post", style: .plain, target: self, action: #selector(postButtonPressed))
     view.backgroundColor = .white
     
+    
+    
   }
   
   @objc func postButtonPressed() {

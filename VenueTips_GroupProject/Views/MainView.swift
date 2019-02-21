@@ -82,7 +82,7 @@ class MainView: UIView {
         layout.scrollDirection = .horizontal
         var collectionView = UICollectionView.init(frame: self.bounds, collectionViewLayout: layout)
         collectionView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        collectionView.layer.borderWidth = 4
+        collectionView.layer.borderWidth = 2
         collectionView.backgroundColor = .clear
         return collectionView
     }()
