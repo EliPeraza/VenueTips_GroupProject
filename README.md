@@ -19,7 +19,8 @@ Are you hanging out with friends and want to grab a quick bite?
 -   When using Current Location, users have access to real location updates.
 -   Users also have access to Apple Maps to get directions to their venue of choice.
 
-  
+
+  ![Getting authorization to use location](https://github.com/EliPeraza/VenueTips_GroupProject/blob/master/spot-location-app.gif)
 
 **Multiple search options to meet the needs and preference of a wide audience:**
 
