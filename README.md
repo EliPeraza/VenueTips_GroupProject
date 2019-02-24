@@ -53,12 +53,12 @@ Are you hanging out with friends and want to grab a quick bite?
 
 ![Spot demo](https://github.com/EliPeraza/VenueTips_GroupProject/blob/master/spotDemo.jpg)
 
+From left to right:
 -   [Elizabeth Peraza](https://github.com/EliPeraza):  Tech Lead.
 -   [Leandro Wauters](https://github.com/leandrowauters): UI/UX Designer.
 -   [Jabeen Cheema](https://github.com/JabeenCheema): Program Manager.
 -   [Diego Estrella III](https://github.com/Destrella3): Quality Assurance.
 
- -  *(Appearance from left to right )
   
 
 ## Next Steps:
